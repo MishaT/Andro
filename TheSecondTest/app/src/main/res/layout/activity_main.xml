@@ -8,17 +8,17 @@
 
     <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:id="@+id/textViewHello" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageButton"
         android:src="@drawable/pawn"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="48dp"
+        android:layout_below="@+id/textViewHello"
+        android:layout_toRightOf="@+id/textViewHello"
+        android:layout_toEndOf="@+id/textViewHello"
+        android:layout_marginTop="220dp"
         android:onClick="onPawnClick" />
 
     <TextView
@@ -30,5 +30,23 @@
         android:layout_alignLeft="@+id/imageButton"
         android:layout_alignStart="@+id/imageButton"
         android:text="@string/InitialText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_hello_caption"
+        android:id="@+id/buttonHello"
+        android:layout_below="@+id/textViewHello"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_crowns_caption"
+        android:id="@+id/buttonCrowsCounter"
+        android:layout_below="@+id/buttonHello"
+        android:layout_centerHorizontal="true"
+        android:onClick="onCrowsCounterClick" />
 
 </RelativeLayout>

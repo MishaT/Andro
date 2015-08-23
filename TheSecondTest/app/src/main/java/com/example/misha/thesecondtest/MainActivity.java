@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 
     private TextView mPawnText;
+    private  int mCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,5 +45,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void onPawnClick(View view) {
         mPawnText.setText("Hello Pawn");
+    }
+
+    public void onCrowsCounterClick(View view) {
+        TextView lTextViewHello = (TextView)findViewById(R.id.textViewHello);
+       // mCount = mCount + 1;
+        lTextViewHello.setText("I counted " + ++mCount + " Crowns");
     }
 }
