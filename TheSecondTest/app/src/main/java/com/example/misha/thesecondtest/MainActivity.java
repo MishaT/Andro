@@ -1,5 +1,7 @@
 package com.example.misha.thesecondtest;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +25,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         mInputText = (TextView)findViewById(R.id.inputText);
         mStatusBar = (TextView)findViewById(R.id.textViewOperator);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
@@ -43,10 +46,17 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
+        if (id == R.id.action_about) {
+            onAboutClick();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
+    public void onAboutClick(){   //(View view)
+        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
+    }
 //==================================================
     public void setOperator(String newOperator) {
         mStatusBar.setText(newOperator);

@@ -3,7 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="InitialText"></string>
-    <string name="button_hello_caption">Поздороваться</string>
-    <string name="button_crowns_caption">Do Count Crows!</string>
+    <string name="about_text">
+    This ia <b>The Calculator!</b>\n
+    It could calculate digits.\n\n
+    Made by <b><i>Misha Tolkachov</i></b>\n
+    </string>
+    <string name="about_title">About The Calculator</string>
 </resources>
