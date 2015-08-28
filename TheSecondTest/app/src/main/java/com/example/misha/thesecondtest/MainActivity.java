@@ -13,6 +13,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView mInputText;
     private TextView mStatusBar;
     private boolean isNewValue = false;
+    private boolean isCalculated = true;
     private float mCurrentValue = 0;
     private String mOperator = ""; //todo: change it to the special type
 
@@ -49,7 +50,9 @@ public class MainActivity extends ActionBarActivity {
 //==================================================
     public void setOperator(String newOperator) {
         mStatusBar.setText(newOperator);
-        doCalculate();
+
+        if (!isCalculated) doCalculate();
+
         mOperator = newOperator;
     }
 
@@ -64,15 +67,14 @@ public class MainActivity extends ActionBarActivity {
             mInputText.setText(lCurrentText + digit);
 
         }
+        isCalculated = false;
     }
 
     public void doCalculate(){
         float lEditingValue = Float.parseFloat(mInputText.getText().toString());
         float lResult = 0;
-       // if (isNewValue)
-         //   return;
 
-        if ((mCurrentValue == 0)||(isNewValue)){
+        if ((mCurrentValue == 0)){
             mCurrentValue = lEditingValue;
            }
         else {
@@ -95,13 +97,13 @@ public class MainActivity extends ActionBarActivity {
                     lResult = mCurrentValue * lEditingValue;
                 }
                 break;
-
             }
 
             mInputText.setText(Float.toString(lResult));
-            mCurrentValue = 0;
+            mCurrentValue = lResult;
         }
         isNewValue = true;
+        isCalculated = true;
     }
 
     public void btnClearClick(View view) {
@@ -112,7 +114,6 @@ public class MainActivity extends ActionBarActivity {
 
     public void btnEqualClick(View view) {
         setOperator("=");
-        //do calculate result here
     }
     //-----------------------------------------
     public void btnPlusClick(View view) {
@@ -135,7 +136,6 @@ public class MainActivity extends ActionBarActivity {
             lText = "-" + lText;
         }
         mInputText.setText(lText);
-
     }
 
     public void btnDivideClick(View view) {
