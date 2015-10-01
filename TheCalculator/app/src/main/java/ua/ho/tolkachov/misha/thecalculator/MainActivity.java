@@ -45,6 +45,7 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            onSettingsClick();
             return true;
         }
         if (id == R.id.action_about) {
@@ -56,6 +57,10 @@ public class MainActivity extends Activity {
 
     public void onAboutClick(){   //(View view)
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
+    }
+    public void onSettingsClick(){
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
     //==================================================
@@ -95,7 +100,7 @@ public class MainActivity extends Activity {
         if (digit.equals(".") & (lCurrentText.indexOf(".") >= 0))
             return;
 
-        if ((isNewValue) || lCurrentText.equals ("0"))  // Float.parseFloat(lCurrentText) == 0))
+        if ((isNewValue) || lCurrentText.equals("0"))  // Float.parseFloat(lCurrentText) == 0))
         {
             if (digit.equals("."))
                 mInputText.setText("0" + digit);
