@@ -1,13 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
+    signingConfigs {
+        config {
+            keyAlias 'AndroidApps'
+            keyPassword 'M1shanja1'
+            storeFile file('C:/Users/Misha/Android_Key_Store.jks')
+            storePassword 'M1shanja1'
+        }
+    }
+    compileSdkVersion 15
     buildToolsVersion "22.0.1"
-
     defaultConfig {
-        applicationId "com.example.misha.thesecondtest"
-        minSdkVersion 15
-        targetSdkVersion 22
+        applicationId 'com.tolkachov.misha.thesecondtest'
+        minSdkVersion 19
+        targetSdkVersion 19
         versionCode 1
         versionName "1.0"
     }
@@ -15,11 +22,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.2.0'
 }
