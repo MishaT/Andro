@@ -4,13 +4,23 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
+
+    private RelativeLayout mRelativeLayout;
+    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mRelativeLayout = (RelativeLayout)findViewById(R.id.relativeLayout1);
+        mTextView = (TextView)findViewById(R.id.textView1);
     }
 
     @Override
@@ -33,5 +43,28 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public void onButtonClick(View view) {
+        int colorValue = 0;
+
+        switch (view.getId()){
+            case R.id.buttonRed:
+                mTextView.setText(R.string.red);
+                colorValue = getResources().getColor(R.color.redColor);
+                break;
+            case R.id.buttonYellow:
+                mTextView.setText(R.string.yellow);
+                colorValue = getResources().getColor(R.color.yellowColor);
+                break;
+            case R.id.buttonGreen:
+                mTextView.setText(R.string.green);
+                colorValue = getResources().getColor(R.color.greenColor);
+                break;
+        }
+
+        mRelativeLayout.setBackgroundColor(colorValue);
     }
 }

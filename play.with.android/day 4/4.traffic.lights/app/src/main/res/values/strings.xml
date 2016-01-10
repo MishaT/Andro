@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Day4.Traffic.Lights</string>
     <string name="action_settings">Settings</string>
+    <string name="red">Red</string>
+    <string name="yellow">Yellow</string>
+    <string name="green">Green</string>
 </resources>
