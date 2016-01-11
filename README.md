@@ -1,2 +1,0 @@
-# Andro
-for Android projects
