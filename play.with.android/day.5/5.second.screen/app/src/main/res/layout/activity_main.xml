@@ -9,19 +9,55 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ua.ho.tolkachov.misha.secondscreen.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Screen"
+        android:text="About"
         android:id="@+id/btnNewScreen"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:layout_below="@+id/btnSecondScreen"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:id="@+id/btnSecondScreen"
+        android:onClick="onSecondClick"
+        android:layout_below="@+id/edSender"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Recipient"
+        android:ems="10"
+        android:id="@+id/edRecipient"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Description"
+        android:ems="10"
+        android:id="@+id/edDescription"
+        android:layout_below="@+id/edRecipient"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Sender"
+        android:ems="10"
+        android:id="@+id/edSender"
+        android:layout_below="@+id/edDescription"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

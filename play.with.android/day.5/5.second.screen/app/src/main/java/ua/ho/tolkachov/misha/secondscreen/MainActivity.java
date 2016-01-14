@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -40,6 +41,19 @@ public class MainActivity extends ActionBarActivity {
 
     public void onClick(View view){
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    public void onSecondClick(View view) {
+        EditText userEditText = (EditText)findViewById(R.id.edRecipient);
+        EditText giftEditText = (EditText)findViewById(R.id.edDescription);
+        EditText senderEditText = (EditText)findViewById(R.id.edSender);
+
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra("username", userEditText.getText().toString());
+        intent.putExtra("gift", giftEditText.getText().toString());
+        intent.putExtra("sender", senderEditText.getText().toString());
+
         startActivity(intent);
     }
 }

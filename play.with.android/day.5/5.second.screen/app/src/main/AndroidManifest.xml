@@ -17,10 +17,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity"
-            android:label="@string/about_title">
+        <activity
+            android:name=".AboutActivity"
+            android:label="@string/about_title"></activity>
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_second"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ua.ho.tolkachov.misha.secondscreen.MainActivity" />
         </activity>
-
-</application>
+    </application>
 
 </manifest>
