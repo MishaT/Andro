@@ -8,4 +8,5 @@
     <string name="answerCrow">Crow</string>
     <string name="answerDog">Dog</string>
     <string name="answerCat">Cat</string>
+    <string name="title_activity_third">ThirdActivity</string>
 </resources>

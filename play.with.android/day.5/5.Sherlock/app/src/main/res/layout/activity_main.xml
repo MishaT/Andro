@@ -22,23 +22,40 @@
         android:layout_height="wrap_content"
         android:text="@string/who"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/textViewInfo"
+        android:layout_alignEnd="@+id/textViewInfo" />
 
 
     <TextView
         android:id="@+id/textViewInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_below="@+id/texViewLabel"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btnChoose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/chooseBtnCaption"
+        android:onClick="onClick"
         android:layout_below="@+id/textViewInfo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onClick"/>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <Button
+        android:id="@+id/btnTestFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="run from filter"
+        android:onClick="onClickFilter"
+        android:layout_below="@+id/btnChoose"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

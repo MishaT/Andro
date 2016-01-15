@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -42,5 +43,29 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View view) {
         Intent quizIntent = new Intent(MainActivity.this, QuizActivity.class);
         startActivityForResult(quizIntent, CHOOSE_THIEF);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        TextView infoTextView = (TextView)findViewById(R.id.textViewInfo);
+
+        if (requestCode == CHOOSE_THIEF){
+            if (resultCode == RESULT_OK){
+                String thiefName = data.getStringExtra(QuizActivity.THIEF);
+                infoTextView.setText(thiefName);
+            } else {
+                infoTextView.setText("");
+            }
+        }
+    }
+
+
+    public static final String ACTION_SECOND_ACTIVITY = "ua.ho.tolkachov.misha.sherlock.SECOND";
+
+    public void onClickFilter(View view) {
+        startActivity(new Intent(ACTION_SECOND_ACTIVITY));
+
     }
 }
