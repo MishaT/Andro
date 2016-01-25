@@ -1,9 +1,15 @@
 package ua.ho.tolkachov.misha.orientation;
 
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Surface;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -11,6 +17,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
     }
 
     @Override
@@ -34,4 +42,42 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private String getScreenOrientation(){
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            return "Landscape Orientation";
+        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            return "Portrait Orientation";
+        else return "Unknown";
+    }
+
+    private String getRotationOrientation(){
+        int rotate = getWindowManager().getDefaultDisplay().getRotation();
+        switch (rotate) {
+            case Surface.ROTATION_0:
+                return "Did Not Rotate";
+            case Surface.ROTATION_90:
+                return "Turned 90 degrees clockwise";
+            case Surface.ROTATION_180:
+                return "Turned 180 degrees";
+            case Surface.ROTATION_270:
+                return "Turned 90 degrees counterclockwise";
+            default:
+                return "Not Clear";
+        }
+    }
+
+    public void onButtonClick(View view){
+        TextView editText = (TextView)findViewById(R.id.editText1);
+
+        if (view.getId() == findViewById(R.id.button1).getId())
+            editText.setText(getScreenOrientation());
+        else if (view.getId() == findViewById(R.id.button2).getId())
+            editText.setText(getRotationOrientation());
+        else if (view.getId() == findViewById(R.id.button3).getId())
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
+        else if (view.getId() == findViewById(R.id.button4).getId())
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
+    }
+
 }
