@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">8.Toast</string>
     <string name="action_settings">Settings</string>
-    <string name="toastText">It\'s time to go home!</string>
+    <string name="toastText">Hey man!! It\'s time to go home!</string>
 </resources>

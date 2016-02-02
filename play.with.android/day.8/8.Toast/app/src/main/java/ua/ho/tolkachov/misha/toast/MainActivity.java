@@ -9,6 +9,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
     public void showToast(View view) {
         Toast toast = Toast.makeText(MainActivity.this, R.string.toastText, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
+
+        LinearLayout toastContainer = (LinearLayout)toast.getView();
+        ImageView manImageView = new ImageView(getApplicationContext());
+        manImageView.setImageResource(R.drawable.man);
+        toastContainer.addView(manImageView, 0);
         toast.show();
     }
 }
