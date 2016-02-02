@@ -5,4 +5,13 @@
         <!-- Customize your theme here. -->
     </style>
 
-</resources>
+    <style name="Text" parent="AppTheme"></style>
+
+    <style name="myText" parent="@style/Text">
+        <item name = "android:textColor">#00FF00</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    </resources>
