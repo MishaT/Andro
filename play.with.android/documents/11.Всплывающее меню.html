@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://developer.alexanderklimov.ru/android/popupmenu.php -->
+<html class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Android: PopupMenu - Всплывающее меню</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./11.Всплывающее меню_files/bootstrap.min.css">
+<link rel="stylesheet" href="./11.Всплывающее меню_files/font-awesome.min.css">
+<link rel="stylesheet" href="./11.Всплывающее меню_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./11.Всплывающее меню_files/material.indigo-light_blue.min.css"> 
+<script src="./11.Всплывающее меню_files/cb=gapi.loaded_1" async=""></script><script src="./11.Всплывающее меню_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./11.Всплывающее меню_files/plusone.js" gapi_processed="true"></script><script src="./11.Всплывающее меню_files/material.min.js"></script><style type="text/css"></style>
+<link rel="stylesheet" href="./11.Всплывающее меню_files/icon">
+</head>
+
+<body><a href="http://developer.alexanderklimov.ru/android/popupmenu.php#" class="back-to-top" style="display: none;">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/wpf/wpf.php">WPF</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/popupmenu.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./11.Всплывающее меню_files/header.png" alt="Сайт разработчика Александра Климова" border="0"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./11.Всплывающее меню_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="./11.Всплывающее меню_files/counter" height="1" width="1" alt="top.mail.ru" border="0"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>
+<h1 class="text-warning">PopupMenu - Всплывающее меню</h1>
+
+<p>Начиная с Android 3.0, в системе появилась возможность создавать всплывающее меню, привязанное к элементу <b>View</b>. Меню реализовано в виде модального окна, которое отображается снизу от родителя меню или в другом месте, если места снизу недостаточно. <b>PopupMenu</b> не нужно путать с контекстным меню. У них разные задачи, хотя поведение весьма схоже. В новых версиях Android использование всплывающих меню предпочтительнее контекстных, которые можно считать устаревшим интерфейсом.</p><p>
+
+</p><p>В Android 4.0 добавили новую функциональность, чтобы работать было проще. В частности, всплывающее меню можно получить из XML-файла, используя метод <b>inflate(int)</b>, которому следует передать идентификатор ресурса меню. А до этого приходилось использовать отдельный класс <b>MenuInflator</b> с избыточным кодом.</p>
+
+<p>Также появился слушатель <b>PopupMenu.OnDismissListener</b> для работы с закрытием меню. Он срабатывает либо, когда пользователь щёлкает на пункте меню и меню закрывается, либо пользователь щёлкает в другом месте экрана, и меню также закрывается.</p>
+
+<p>Кстати, я обратил внимание, что всплывающее меню может быть прокручиваемым. Когда я щёлкал на изображении, то на экран выводилось только два пункта, и для третьего пункта приходилось прокручивать меню.</p>
+
+<p>Создать всплывающее меню очень просто. По сути мы повторяем шаги по созданию обычного меню. Сначала в ресурсах меню создадим нужный файл:</p>
+
+<h3 class="text-success">res/menu/popupmenu.xml</h3>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+
+    &lt;group android:id="@+id/menugroup1" &gt;
+        &lt;item
+            android:id="@+id/menu1"
+            android:icon="@drawable/ic_launcher"
+            android:title="Popup menu item 1"/&gt;
+        &lt;item
+            android:id="@+id/menu2"
+            android:title="Popup menu item 2"/&gt;
+        &lt;item
+            android:id="@+id/menu3"
+            android:title="Popup menu item 3"&gt;
+            &lt;menu&gt;
+                &lt;item
+                    android:id="@+id/submenu"
+                    android:title="Подменю"/&gt;
+            &lt;/menu&gt;
+        &lt;/item&gt;
+    &lt;/group&gt;
+    &lt;group android:id="@+id/menugroup2" &gt;
+        &lt;item
+            android:id="@+id/menu4"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_launcher"
+            android:title="Popup menu item 4"/&gt;
+        &lt;item
+            android:id="@+id/menu5"
+            android:title="Popup menu item 5"
+            android:enabled="false"/&gt;
+        &lt;item
+            android:id="@+id/menu6"
+            android:title="Popup menu item 6"/&gt;
+    &lt;/group&gt;
+
+&lt;/menu&gt;
+</code></pre>
+
+<p>Я постарался использовать всевозможные варианты использования атрибутов, которые отвечают за вывод флажков, доступность и т.д. Есть и другие атрибуты, о которых читайте в документации.</p>
+
+<p>Далее добавим на экран активности текстовую метку, кнопку и <b>ImageView</b>. При щелчке на каждом из этих компонентов мы будем выводить одинаковое всплывающее меню:</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"&gt;
+
+    &lt;Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Показать меню" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A TextView" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_launcher_cat" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Осталось написать код. Обратите внимание на закомментированный код, который работал в Android 3.0. В Android 4.0 этот код можно не использовать.</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = (Button) findViewById(R.id.button);
+        TextView textView = (TextView) findViewById(R.id.textView);
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+
+        button.setOnClickListener(viewClickListener);
+        textView.setOnClickListener(viewClickListener);
+        imageView.setOnClickListener(viewClickListener);
+
+    }
+
+    View.OnClickListener viewClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            showPopupMenu(v);
+        }
+    };
+
+    private void showPopupMenu(View v) {
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        popupMenu.inflate(R.menu.popupmenu); // Для Android 4.0
+        // для версии Android 3.0 нужно использовать длинный вариант
+        // popupMenu.getMenuInflater().inflate(R.menu.popupmenu,
+        // popupMenu.getMenu());
+
+        popupMenu
+                .setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        // Toast.makeText(PopupMenuDemoActivity.this,
+                        // item.toString(), Toast.LENGTH_LONG).show();
+                        // return true;
+                        switch (item.getItemId()) {
+
+                            case R.id.menu1:
+                                Toast.makeText(getApplicationContext(),
+                                        "Вы выбрали PopupMenu 1",
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            case R.id.menu2:
+                                Toast.makeText(getApplicationContext(),
+                                        "Вы выбрали PopupMenu 2",
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            case R.id.menu3:
+                                Toast.makeText(getApplicationContext(),
+                                        "Вы выбрали PopupMenu 3",
+                                        Toast.LENGTH_SHORT).show();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+
+        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+
+            @Override
+            public void onDismiss(PopupMenu menu) {
+                Toast.makeText(getApplicationContext(), "onDismiss",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        popupMenu.show();
+    }
+}
+</code></pre>
+
+<p>Вам надо создать новый экземпляр <b>PopupMenu</b>, указав контекст активности и компонент, к которому будет привязано это меню. Далее загружаете меню из ресурсов и добавляете методы для обработки щелчков. Для отображения на экране вызывается метод <b>show()</b>.</p>
+
+<p>Запустив проект, вы можете щёлкать по любому элементу на форме и увидеть всплывающее меню. Единственное, что меня удивило, так это отсутствие значка в меню. В документации я не нашёл указаний, что <b>PopupMenu</b> не поддерживает значки, поэтому вопрос остаётся открытым.</p>
+
+<p><img src="./11.Всплывающее меню_files/popupmenu.png" alt="PopupMenu" width="225" height="400"></p>
+
+<p>Вдобавок есть ещё классы <b>android.support.v7.widget.PopupMenu</b> и <b>android.support.v4.widget.PopupMenuCompat</b>.</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=12">Обсуждение статьи</a> на форуме.</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+   
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./11.Всплывающее меню_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./11.Всплывающее меню_files/jquery-1.11.0.min.js"></script>
+	<script src="./11.Всплывающее меню_files/jquery-migrate-1.2.1.min.js"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./11.Всплывающее меню_files/backtotop.js"></script>
+    <script src="./11.Всплывающее меню_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay249993327" id="oauth2relay249993327" src="./11.Всплывающее меню_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

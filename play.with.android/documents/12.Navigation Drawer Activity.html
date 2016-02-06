@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php -->
+<html class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Android: Шаблон Navigation Drawer Activity</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./12.Navigation Drawer Activity_files/bootstrap.min.css">
+<link rel="stylesheet" href="./12.Navigation Drawer Activity_files/font-awesome.min.css">
+<link rel="stylesheet" href="./12.Navigation Drawer Activity_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./12.Navigation Drawer Activity_files/material.indigo-light_blue.min.css"> 
+<script src="./12.Navigation Drawer Activity_files/cb=gapi.loaded_1" async=""></script><script src="./12.Navigation Drawer Activity_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./12.Navigation Drawer Activity_files/plusone.js" gapi_processed="true"></script><script src="./12.Navigation Drawer Activity_files/material.min.js"></script><style type="text/css"></style>
+<link rel="stylesheet" href="./12.Navigation Drawer Activity_files/icon">
+</head>
+
+<body><a href="http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php#" class="back-to-top">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/wpf/wpf.php">WPF</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./12.Navigation Drawer Activity_files/header.png" alt="Сайт разработчика Александра Климова" border="0"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./12.Navigation Drawer Activity_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="./12.Navigation Drawer Activity_files/counter" height="1" width="1" alt="top.mail.ru" border="0"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">Шаблон Navigation Drawer Activity</h1>
+
+<p>Метки: <span class="label label-default">NavigationView</span>, <span class="label label-success">DrawerLayout</span>, <span class="label label-default">Material Design</span></p>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php#navigationview">NavigationView</a><br>
+
+</p>
+
+<p>Рассмотрим новый шаблон <b>Navigation Drawer Activity</b>. Создадим новый проект и выберем нужный шаблон.</p>
+
+<p><img src="./12.Navigation Drawer Activity_files/navigationdrawer1.png" alt="Navigation Drawer Activity"></p>
+
+<p>Для беглого знакомства можете сразу запустить проект и посмотреть его в действии. При запуске приложение выглядит как обычный Hello World. Но есть и отличия. Нажмите на значок в виде трёх горизонтальных полосок в заголовке. Значок в документации называется "гамбургером" (Hamburger menu). Это официальная позиция Гугла. Но в реальности значок символизирует полосатых котов (никому не рассказывайте). При нажатии слева вылезет навигационная шторка. Шторка работает как обычная шторка в ванной. По высоте она занимает весь экран, включая системную область. Можете подвигать шторку вперёд-назад, чтобы увидеть, что верхняя кромка шторки в системной области полупрозрачна и не закрывает системные значки. Подобное поведение доступно на устройствах под Android 5 и выше. На старых устройствах шторка находится под системной панелью.</p>
+
+<p>Сама шторка состоит из двух основных частей - в верхней части находится картинка и текст, а в нижней - меню со значками. Меню в свою очередь разделено на две группы. В верхней части значки можно выбрать и выбранный пункт останется выделенным. В нижней части меню пункты не выделяются. Уберите шторку обратно и вызовите теперь её не нажатием на значок гамбургера, а движением пальца от края экран в центр. Получилось? Отлично, а теперь выдвигайте шторку медленно и наблюдайте за значком гамбургера. Вы увидите, что во время движения значок трансформируется. К сожалению, шторка закрывает значок и непонятно, во что превращаются три полоски. А превращаются они в <del>три кота ж!</del> стрелку. Позже я покажу, ка увидеть её. А может не покажу, я ещё не решил.</p>
+
+<p><img src="./12.Navigation Drawer Activity_files/navigationdrawer3.png" alt="Navigation Drawer"></p>
+
+<p>Возвращаемся в студию и начинаем изучать код проекта.</p>
+
+<p>Если открыть файл <b>activity_main.xml</b> в режиме <b>Design</b>, то можно увидеть, как будет выглядеть приложение с открытой шторкой.</p>
+
+<p><img src="./12.Navigation Drawer Activity_files/navigationdrawer2.png" alt="Design Mode"></p>
+
+<p>Как видите, небольшие расхождения имеются, но в целом совпадает.</p>
+
+<p>Посмотрим на его содержание.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"&gt;
+
+    &lt;include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/&gt;
+
+    &lt;android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer"/&gt;
+
+&lt;/android.support.v4.widget.DrawerLayout&gt;
+</code></pre>
+
+<p>Сейчас важно запомнить, что за выдвигающую шторку отвечает элемент <b>NavigationView</b>, который входит последним в контейнере <b>DrawerLayout</b> и представляет собой навигационное меню. А перед меню находится вставка <b>include</b>, указывающая на разметку <b>app_bar_main.xml</b>.</p>
+
+<p>Атрибут <b>tools:openDrawer</b> позволяет указать студии, что навигационное меню нужно отобразить в раскрытом виде в режиме просмотра разметки.</p>
+
+<h2 class="text-warning" id="navigationview">NavigationView</h2>
+
+<p>В 2014 году Google показал новый дизайн и различные новые примеры по навигации. Но вначале они использовали подручные средства, которые были под рукой - фрагменты.</p>
+
+<p>Спустя год компания разработала на основе предка <b>FrameLayout</b> новый компонент <b>NavigationView</b>, который стал частью библиотеки <a href="http://developer.alexanderklimov.ru/android/android-support-design.php">Android Design Support Library</a>.</p>
+
+<p>Причём подход оказался неожиданным, но логичным. Раз выдвижная шторка содержит навигационное меню, то и класс был спроектирован как меню. Т.е, вы создаёте стандартным способом элементы меню в ресурсах <b>res/menu</b> и таким образом получаете готовую навигацию.</p>
+
+<p>Необходимые рекомендации по созданию навигационной выдвижной шторки можно найти на странице <a href="http://www.google.com/design/spec/patterns/navigation-drawer.html">Navigation drawer - Patterns - Google design guidelines</a>.</p>
+
+<p>Теперь перейдём к деталям.</p>
+
+<p>Теперь в рекомендациях не указаны точные размеры шторки, хотя раньше нужно было самостоятельно указать ширину шторки. Видимо, новый класс сам обеспечивает необходимую ширину. Интерес представляют два последних атрибута.</p>
+
+<p>Тег <b>NavigationView</b> содержит ссылку на собственную разметку в атрибуте <b>app:headerLayout</b>, который указывает на файл <b>nav_header_main.xml</b> (верхняя часть шторки), а также на меню в атрибуте <b>app:menu</b>, который ссылается на ресурс меню <b>menu/activity_main_drawer.xml</b>.</p>
+
+<p>Посмотрим на разметку шторки, откроем файл <b>nav_header_main.xml</b>.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/nav_header_height"
+              android:background="@drawable/side_nav_bar"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:theme="@style/ThemeOverlay.AppCompat.Dark"
+              android:orientation="vertical"
+              android:gravity="bottom"&gt;
+
+    &lt;ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:src="@android:drawable/sym_def_app_icon"
+        android:id="@+id/imageView"/&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:text="Android Studio"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="android.studio@android.com"
+        android:id="@+id/textView"/&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Разметка состоит из <b>ImageView</b> и двух <b>TextView</b>, размещённых в контейнере <b>LinearLayout</b>. Фон контейнера определён в ресурсе <b>drawable/side_nav_bar.xml</b> и представляет собой градиент.</p>
+
+<pre><code class="xml">
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" &gt;
+    &lt;gradient
+        android:startColor="#81C784"
+        android:centerColor="#4CAF50"
+        android:endColor="#2E7D32"
+        android:type="linear"
+        android:angle="135"/&gt;
+&lt;/shape&gt;
+</code></pre>
+
+<p>Остальные атрибуты понятны и не требуют пояснений.</p>
+
+<p>Теперь рассмотрим ресурс навигационного меню <b>res/menu/activity_main_drawer.xml</b>.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+    &lt;group android:checkableBehavior="single"&gt;
+        &lt;item
+            android:id="@+id/nav_camara"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="Import"/&gt;
+        &lt;item
+            android:id="@+id/nav_gallery"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Gallery"/&gt;
+        &lt;item
+            android:id="@+id/nav_slideshow"
+            android:icon="@android:drawable/ic_menu_slideshow"
+            android:title="Slideshow"/&gt;
+        &lt;item
+            android:id="@+id/nav_manage"
+            android:icon="@android:drawable/ic_menu_manage"
+            android:title="Tools"/&gt;
+    &lt;/group&gt;
+
+    &lt;item android:title="Communicate"&gt;
+        &lt;menu&gt;
+            &lt;item
+                android:id="@+id/nav_share"
+                android:icon="@android:drawable/ic_menu_share"
+                android:title="Share"/&gt;
+            &lt;item
+                android:id="@+id/nav_send"
+                android:icon="@android:drawable/ic_menu_send"
+                android:title="Send"/&gt;
+        &lt;/menu&gt;
+    &lt;/item&gt;
+
+&lt;/menu&gt;
+</code></pre>
+
+<p>Принцип создания элементов меню стандартен. Каждый пункт меню представляет собой тег <b>item</b> с указанием значка и текста. Для группировки используется элемент <b>group</b>. Поведение элементов меню в группе регулируется атрибутом <b>android:checkableBehavior</b>. В примере используется значение <b>single</b> - при нажатии на пункт меню, он останется выделенным (принцип переключателя <b>RadioButton</b>). Всего доступно три варианта.</p>
+
+<ul>
+<li><b>single</b> – можно выбрать один элемент группы (переключатель)</li>
+<li><b>all</b> - можно выбрать все элементы группы (флажок)</li>
+<li><b>none</b> – элементы не выбираются</li>
+</ul>
+
+<p>В библиотеке <b>Android Support Design</b> версии 23 вариант <b>all</b> не работает и будет действовать, как со значением <b>single</b>.</p>
+
+<p>Осталось рассмотреть тег <b>include</b>, который ссылается на файл ресурса <b>res/layout/app_bar_main.xml</b>. Он вам будет знаком по шаблону <b>Blank Activity</b>, который мы изучали в статье <a href="http://developer.alexanderklimov.ru/android/android-support-design.php">Библиотека Android Support Design</a>. Только там он находился в файле <b>activity_main.xml</b>, а здесь его перенесли в файл <b>app_bar_main.xml</b>. Всё остальное осталось без изменений. Повторяться не будем.</p>
+
+<p>Теперь изучим код активности для работы со шторкой.</p>
+
+<p>В классе активности реализуется интерфейс <b>OnNavigationItemSelectedListener</b> с его методом <b>onNavigationItemSelected()</b>:</p>
+
+<pre><code class="java">
+public class MainActivity extends AppCompatActivity
+        <b>implements NavigationView.OnNavigationItemSelectedListener</b> {
+    
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camara) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }    
+}
+</code></pre>
+
+<p>Логика кода ничем не отличается о работы с обычным меню. Определяется идентификатор выбранного пункта и далее вам нужно написать свой код. Далее вызывается метод <b>closeDrawer()</b> для закрытия шторки.</p>
+
+<p>Добавим код для первого пункта меню.</p>
+
+<pre><code class="java">
+if (id == R.id.nav_camara) {
+    // Handle the camera action
+    Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+}
+</code></pre>
+
+<p>При нажатии кнопки "Назад" проверяется состояние шторки. Если шторка открыта (<b>isDrawerOpen()</b>), то её закрываем с помощью метода <b>closeDrawer()</b>.</p>
+
+<pre><code class="java">
+@Override
+public void onBackPressed() {
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    if (drawer.isDrawerOpen(GravityCompat.START)) {
+        drawer.closeDrawer(GravityCompat.START);
+    } else {
+        super.onBackPressed();
+    }
+}
+</code></pre>
+
+<p>В методе <b>onCreate()</b> происходит инициализация шторки.</p>
+
+<pre><code class="java">
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    ...
+
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+    drawer.setDrawerListener(toggle);
+    toggle.syncState();
+
+    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    navigationView.setNavigationItemSelectedListener(this);
+}
+</code></pre>
+
+<p>Теперь поговорим об изменениях, которые мы можем внести в проект.</p>
+
+<p>Хотите выдвигать шторку справа? Установите значение <b>end</b> у атрибута <b>layout_gravity</b>. Обычно используется для стран с обратным порядком букв.</p>
+
+<pre><code class="xml">
+&lt;android.support.design.widget.NavigationView
+    ...
+    android:layout_gravity="end"/&gt;
+</code></pre>
+
+<p><img src="./12.Navigation Drawer Activity_files/navigationdrawer4.png" alt="NavigationView end"></p>
+
+<p>Для изменения цвета значков и текста в навигационном меню используйте атрибуты <b>app:itemIconTint</b> и <b>app:itemTextColor</b>.</p>
+
+<pre><code class="xml">
+&lt;android.support.design.widget.NavigationView
+    ...
+    app:itemIconTint="@color/colorAccent"
+    app:itemTextColor="@color/colorPrimaryDark"/&gt;
+</code></pre>
+
+<p>Данным атрибутам соответствуют методы <b>setItemIconTintList()</b> и <b>setItemTextColor()</b> компонента <b>NavigationView</b>.</p>﻿
+
+<p><img src="./12.Navigation Drawer Activity_files/navigationdrawer5.png" alt="NavigationView tint"></p>
+
+<p>Так как наличие шторки не совсем очевидно, можно при первом запуске показать шторку в раскрытом состоянии. Далее можно запомнить состояние шторки при первом запуске в настройках, чтобы во второй раз выводить её уже в закрытом состоянии. Можете самостоятельно реализовать эту возможность.</p>
+
+<pre><code class="java">
+// показываем в открытом состоянии в onCreate()
+drawer.openDrawer(GravityCompat.START);
+</code></pre>
+
+<p>Напоследок покажу превращение значка гамбургера в стрелку в явном виде, как и обещал в начале статьи. Напомню, что по рекомендации Material Design шторка должна закрывать всю область экрана. Но если вы хотите поместить шторку под заголовком, то следует немного поправить разметку. Откроем файл <b>app_bar_main.xml</b> и вырежем из него небольшой кусок. Затем в файле <b>activity_main.xml</b> добавим <b>LinearLayout</b> в качестве корневого контейнера и вставим скопированный ранее кусок кода.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+<b>
+    &lt;android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay"&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/&gt;
+
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+</b>
+    &lt;android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start"&gt;
+
+        &lt;include
+            layout="@layout/app_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/&gt;
+
+        &lt;android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer"/&gt;
+
+    &lt;/android.support.v4.widget.DrawerLayout&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Смотрим на значок.</p>
+
+<iframe width="420" height="315" src="./12.Navigation Drawer Activity_files/Pe-xX0yl32U.html" frameborder="0" allowfullscreen=""></iframe>
+
+<p>Сама анимация значка зависит от переменной <b>toggle</b>. Если вы её уберёте, то никакого значка в заголовке приложения не будет.</p>
+
+<p>Можно поменять цвет значка гамбургера. Откроем файл стилей <b>res/values/styles.xml</b> и добавим:</p>
+
+<pre><code class="xml">
+&lt;!-- Base application theme. --&gt;
+&lt;style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"&gt;
+    &lt;item name="drawerArrowStyle"&gt;@style/DrawerArrowStyle&lt;/item&gt;
+&lt;/style&gt;
+
+&lt;style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle"&gt;
+    &lt;item name="spinBars"&gt;true&lt;/item&gt;
+    &lt;item name="color"&gt;@android:color/white&lt;/item&gt;
+&lt;/style&gt;
+</code></pre>
+
+<p>Элемент <b>spinBars</b> со значением <b>true</b> позволяет использовать анимацию. В противном случае значок будет статичным.</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=22">Обсуждение статьи</a> на форуме.</p>
+
+<p>Библиотека <a href="https://github.com/mxn21/FlowingDrawer">mxn21/FlowingDrawer</a> с прикольным эффектом.</p>
+
+<p><img src="./12.Navigation Drawer Activity_files/screen.gif"></p>
+
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./12.Navigation Drawer Activity_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./12.Navigation Drawer Activity_files/jquery-1.11.0.min.js"></script>
+	<script src="./12.Navigation Drawer Activity_files/jquery-migrate-1.2.1.min.js"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./12.Navigation Drawer Activity_files/backtotop.js"></script>
+    <script src="./12.Navigation Drawer Activity_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay497372455" id="oauth2relay497372455" src="./12.Navigation Drawer Activity_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

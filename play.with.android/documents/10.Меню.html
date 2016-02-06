@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://developer.alexanderklimov.ru/android/menu.php -->
+<html class="mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Android: Меню</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./10.Меню_files/bootstrap.min.css">
+<link rel="stylesheet" href="./10.Меню_files/font-awesome.min.css">
+<link rel="stylesheet" href="./10.Меню_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./10.Меню_files/material.indigo-light_blue.min.css"> 
+<script src="./10.Меню_files/cb=gapi.loaded_1" async=""></script><script src="./10.Меню_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./10.Меню_files/plusone.js" gapi_processed="true"></script><script src="./10.Меню_files/material.min.js"></script><style type="text/css"></style>
+<link rel="stylesheet" href="./10.Меню_files/icon">
+</head>
+
+<body><a href="http://developer.alexanderklimov.ru/android/menu.php#" class="back-to-top">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/wpf/wpf.php">WPF</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/menu.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./10.Меню_files/header.png" alt="Сайт разработчика Александра Климова" border="0"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./10.Меню_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="./10.Меню_files/counter" height="1" width="1" alt="top.mail.ru" border="0"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>
+<h1 class="text-warning">Меню</h1>
+
+<p>Android поддерживает несколько типов меню. Первый - на телефоне есть отдельная кнопка <b>Menu</b> (в старых телефонах), нажатие которой вызывает меню. В новых устройствах отдельную кнопку убрали, заменив на значок меню в виде трёх точек в вертикальной ориентации. Второй тип - контекстное меню, которое появляется при нажатии и удерживания пальца на экране в нужном месте (также можно нажать и удерживать центральную кнопку на телефоне). Контекстное меню в свою очередь может иметь подменю. Сегодня мы познакомимся с первым типом меню. В данной статье будет рассматриваться работа с меню на новых устройствах под управлением Android 4.0 и выше.</p>
+
+<p>В шаблоне <b>Empty Activity</b> нет меню, поэтому мы создадим его сами. Это поможет вам понять принцип работы и получить общее представление о проекте. Запоминать названия классов, методов и код для обработки выбора пунктов меню необязательно. В других шаблонах меню будет встроено и вы можете сразу использовать его.</p> 
+
+<p>Создайте новый проект на основе <b>Empty Activity</b> и запустите его. Никакого меню пока нет.</p>
+
+<p>Создадим несколько строковых ресурсов в файле <b>res/values/strings.xml</b>, которые будут отвечать за пункты меню:</p>
+
+<pre><code class="xml">
+&lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+&lt;string name="action_cat_male"&gt;Кот&lt;/string&gt;
+&lt;string name="action_cat_female"&gt;Кошка&lt;/string&gt;
+&lt;string name="action_kitten"&gt;Котёнок&lt;/string&gt;
+</code></pre>
+
+<p>Теперь создайте новую папку <b>menu</b> в папке <b>res</b> (правый щелчок мыши на папке <b>res</b>, | <b>New</b> | <b>Directory</b>). Далее создайте в созданной папке файл <b>menu_main.xml</b> - имя указывает, что меню относится к основной активности <b>MainActivity</b> (правый щелчок мыши на папке <b>menu</b> | <b>New</b> | <b>Menu Resource File</b>). Если вы будете создавать приложение с несколькими экранами, то у каждой активности будет отдельное меню со своими настройками. Пока откроем файл <b>menu_main.xml</b> и добавим в полученный шаблон свой код:</p>
+
+<pre><code class="xml">
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".MainActivity"&gt;
+    &lt;item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/&gt;
+&lt;/menu&gt;
+</code></pre>
+
+<p>Откроем файл <b>MainActivity</b>. Сейчас в нём только один метод <b>onCreate()</b>. Добавим новый метод <b>onCreateOptionsMenu()</b>. Именно данный метод отвечает за появление меню у активности. Выберите в студии меню <b>Code</b> | <b>Override Methods...</b> и в следующим окне начинайте вводить название метода по первым буквам. Можно вводить по первым заглавным буквам, т.е. <kbd>ocom</kbd> (<b>o</b>n<b>C</b>reate<b>O</b>ptions<b>M</b>enu), чтобы быстро найти нужную строку. Нажимаем кнопку <b>OK</b> и получаем заготовку.</p>
+
+<p><img src="./10.Меню_files/menu3.png" alt="Override methods"></p>
+
+<pre><code class="java">
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    return super.onCreateOptionsMenu(menu);
+}
+</code></pre>
+
+<p>Добавляем в заготовку метод, который берёт данные из ресурсов меню и преобразует их в пункты меню на экране.</p>
+
+<pre><code class="java">
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_main, menu);
+    return true;
+}
+</code></pre>
+
+<p>В методе <b>inflate()</b> вы указываете на ресурс меню (<b>R.menu.menu_main</b>) и объект класса <b>Menu</b>.</p>
+
+<div class="alert alert-info">
+По английски "inflate" переводится как надувать, т.е. по замыслу разработчиков Android, мы как бы надуваем данными объект, например, меню. Но на самом деле слово "inflate" происходит от словосочетания <b>in flat</b> - в квартиру. Существует старинная традиция запускать в квартиру первым кота, который исследует все закоулки дома и заявляет о своём согласии жить в нём. Так и мы запускаем данные из XML-файла в объект MenuInflater.
+</div>
+
+<p>Запустите проект. Теперь в правой части заголовка вы увидите значок из трёх точек, выстроенных в вертикальную линию. Нажмите на значок, чтобы увидеть пункт меню <b>Settings</b>.</p>
+
+<p><img src="./10.Меню_files/menu1.png" alt="" width="350" height="184"></p>
+
+<p>Как не трудно догадаться, элемент <b>item</b> отвечает за отдельный пункт меню. Добавим ещё три пункта по такому же принципу, меняя только идентификатор и текст для меню:</p>
+
+<pre><code class="xml">
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".MainActivity"&gt;
+    &lt;item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/&gt;
+
+    &lt;item
+        android:id="@+id/action_cat1"
+        android:orderInCategory="100"
+        android:title="@string/action_cat_male"
+        app:showAsAction="never"/&gt;
+
+    &lt;item
+        android:id="@+id/action_cat2"
+        android:orderInCategory="100"
+        android:title="@string/action_cat_female"
+        app:showAsAction="never"/&gt;
+
+    &lt;item
+        android:id="@+id/action_cat3"
+        android:orderInCategory="100"
+        android:title="@string/action_kitten"
+        app:showAsAction="never"/&gt;
+&lt;/menu&gt;
+</code></pre>
+
+<p>Запустите проект и попробуйте снова вызвать меню. Вы увидите три новых пункта.</p>
+
+<p><img src="./10.Меню_files/menu2.png" alt="Пункты меню" width="400" height="225"></p>
+
+<p>Атрибут <b>app:showAsAction="never"</b> указывает, что пункты меню никогда не должны выводиться в заголовке приложения, а всегда находиться за тремя точками. Если заменить на значение <b>ifRoom</b>, то пункт сразу выведется в заголовке. Если таких пунктов будет много, то они будут только мешаться. Как правило, в таком варианте выводят очень короткое слово или значок для частых операций, чтобы избежать лишнего щелчка на три точки.</p>
+
+<p>Пока пункты меню не выполняют полезной работы. Любое нажатие на пункт просто закрывает меню без видимых последствий. Мы ещё не написали код для обработки нажатий.</p>
+
+<h2 class="text-warning">Выбор пунктов меню</h2>
+
+<p>Мы научились создавать меню. Но пока оно бесполезно, так как пункты меню никак не реагируют на наши нажатия. Для обработки нажатий пунктов меню служит другой метод <b>onOptionsItemSelected()</b>. Добавим метод по такому же принципу, как для предыдущего примера. Получим заготовку.</p>
+
+<pre><code class="java">
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    return super.onOptionsItemSelected(item);
+}
+</code></pre>
+
+<p>Параметр <b>item</b> отвечает за пункт меню. Вам следует получить идентификатор меню через метод <b>getItemId()</b> и указать для него код. Так как обычно меню состоит из нескольких пунктов, то удобно использовать конструкции <b>if/else</b> или <b>switch</b>. Для вывода информации воспользуемся текстовой меткой. Добавьте на экран активности компонент <b>TextView</b>. Можете использовать имеющийся <b>TextView</b> с надписью "Hello World!", только присвойте ему идентификатор.</p>
+
+<pre><code class="xml">
+&lt;TextView
+    <b>android:id="@+id/textView"</b>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hello World!"/&gt;
+</code></pre>
+
+<p>Добавим код в заготовку для выбранного пункта меню:</p>
+
+<pre><code class="java">
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    // получим идентификатор выбранного пункта меню
+    int id = item.getItemId();
+
+    TextView infoTextView = (TextView) findViewById(R.id.textView);
+
+    // Операции для выбранного пункта меню
+    switch (id) {
+        case R.id.action_cat1:
+            infoTextView.setText("Вы выбрали кота!");
+            return true;
+        case R.id.action_cat2:
+            infoTextView.setText("Вы выбрали кошку!");
+            return true;
+        case R.id.action_cat3:
+            infoTextView.setText("Вы выбрали котёнка!");
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+    }
+}
+</code></pre>
+
+<p>Запустите приложение, вызовите меню и выберите любой пункт меню. В текстовом поле должно появиться сообщение.</p>
+
+<p><img src="./10.Меню_files/menu4.png" alt="Обработка нажатий меню" width="400" height="223"></p>
+
+<p>Существует альтернативный способ через XML, похожий на обработку щелчков кнопки (начиная с Android 3.0). Вы можете добавить атрибут <b>android:onClick</b> в ресурсах меню, и вам не нужно использовать вызов метода <b>onOptionsItemSelected()</b>. При помощи <b>android:onClick</b> вы можете указать нужный метод при выборе пункта меню. Добавьте данный атрибут к пункту <b>Settings</b></p>
+
+<pre><code class="xml">
+&lt;item
+    android:id="@+id/action_settings"
+    android:title="@string/action_settings"
+    android:orderInCategory="100"
+    android:onClick="onSettingsMenuClick"
+    app:showAsAction="never" /&gt;
+</code></pre>
+
+<p>Теперь в коде активности напишем следующее:</p>
+
+<pre><code class="java">
+// у атрибута пункта меню Settings установлено значение android:onClick="onSettingsMenuClick"
+public void onSettingsMenuClick(MenuItem item) {
+    TextView infoTextView = (TextView) findViewById(R.id.textView);
+    infoTextView.setText("Вы выбрали пункт Settings, лучше бы выбрали кота");
+}
+</code></pre>
+
+<h2 class="text-warning">Переключатели</h2>
+
+<p>Внешний вид пунктов меню можно изменить на вид с переключателями. Для этого нужно добавить элемент <b>group</b> с атрибутом <b>android:checkableBehavior="single"</b>:</p>
+
+<pre><code class="xml">
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"&gt;
+    &lt;item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" /&gt;
+
+    &lt;group android:checkableBehavior="single"&gt;
+
+        &lt;item
+            android:id="@+id/action_cat1"
+            android:orderInCategory="100"
+            android:title="@string/action_cat_male"
+            app:showAsAction="never" /&gt;
+
+        &lt;item
+            android:id="@+id/action_cat2"
+            android:orderInCategory="100"
+            android:title="@string/action_cat_female"
+            app:showAsAction="never" /&gt;
+
+        &lt;item
+            android:id="@+id/action_cat3"
+            android:orderInCategory="100"
+            android:title="@string/action_kitten"
+            app:showAsAction="never" /&gt;
+    &lt;/group&gt;
+&lt;/menu&gt;
+</code></pre>
+
+<p><img src="./10.Меню_files/menu5.png" alt="Menu"></p>
+
+<p>Большого смысла в этом режиме я не вижу. И рассматривать его не будем.</p>
+
+<p>Итак, вы получили базовые навыки работы с меню, достаточных для большинства случаев. Если хотите узнать больше, то почитайте <a href="http://developer.alexanderklimov.ru/android/theory/menu.php">дополнительную информацию о меню в разделе Теория</a>.</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=10">Обсуждение статьи</a> на форуме.</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./10.Меню_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./10.Меню_files/jquery-1.11.0.min.js"></script>
+	<script src="./10.Меню_files/jquery-migrate-1.2.1.min.js"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./10.Меню_files/backtotop.js"></script>
+    <script src="./10.Меню_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay469934018" id="oauth2relay469934018" src="./10.Меню_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>
