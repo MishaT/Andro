@@ -1,5 +1,6 @@
 package ua.ho.tolkachov.misha.supportdesign;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,11 +10,19 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Snackbar mSnack;
+
+    View.OnClickListener snackOnClick = new View.OnClickListener(){
+        @Override
+        public void onClick(View view){
+            Toast.makeText(getApplicationContext(), "Good job", Toast.LENGTH_LONG);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +37,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mSnack = Snackbar.make(view, "Go home man!!", Snackbar.LENGTH_INDEFINITE).setAction("Action", null);
+
+                mSnack.setAction("Yes", snackOnClick);
+                View snackBarView = mSnack.getView();
+                //snackBarView.setBackgroundColor(Color.BLUE);
+
+                TextView snackBarTextView = (TextView)snackBarView.findViewById(android.support.design.R.id.snackbar_text);
+                snackBarTextView.setTextColor(Color.RED);
+                snackBarTextView.setTextSize(30);
+
                 mSnack.setCallback(new Snackbar.Callback(){
-                    @Override
-                    public void onDismissed(Snackbar s, int event){
-                        Toast.makeText(getApplicationContext(), "Snackbar is dismiss", Toast.LENGTH_SHORT).show();
-                    }
+                 //   public void onDismissed(Snackbar s, int event){
+                 //   @Override
+                 //       Toast.makeText(getApplicationContext(), "Snackbar is dismiss", Toast.LENGTH_SHORT).show();
+                 //   }
 
                     @Override
                     public void onShown(Snackbar s){
