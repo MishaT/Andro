@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,10 +28,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mSnack = Snackbar.make(view, "Go home man!!", Snackbar.LENGTH_INDEFINITE).setAction("Action", null);
+                mSnack.setCallback(new Snackbar.Callback(){
+                    @Override
+                    public void onDismissed(Snackbar s, int event){
+                        Toast.makeText(getApplicationContext(), "Snackbar is dismiss", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onShown(Snackbar s){
+                        Toast.makeText(getApplicationContext(), "Snackbar is shown", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
                 mSnack.show();
             }
         });
+
         Button dismissButton = (Button) findViewById(R.id.buttonDismiss);
         dismissButton.setOnClickListener(new View.OnClickListener(){
                                            @Override
