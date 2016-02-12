@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">10.Menu</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_man">Man</string>
+    <string name="action_female">Woman</string>
+    <string name="action_child">Baby</string>
 </resources>
