@@ -43,4 +43,8 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void onSettingsMenuClick(MenuItem item) {
+        Toast.makeText(MainActivity.this, "you selected SETTINGS", Toast.LENGTH_SHORT).show();
+    }
 }
