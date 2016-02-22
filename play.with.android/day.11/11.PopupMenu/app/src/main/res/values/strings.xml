@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">11.PopupMenu</string>
+    <string name="popup_menu_1">Popup Menu 1</string>
+    <string name="popup_menu_2">Popup Menu 2</string>
+    <string name="popup_menu_3">Popup Menu 3</string>
+    <string name="popup_menu_4">Popup Menu 4</string>
+    <string name="popup_menu_5">Popup Menu 5</string>
+    <string name="popup_menu_6">Popup Menu 6</string>
+    <string name="sub_menu_1">Sub Menu 1</string>
 </resources>
