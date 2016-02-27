@@ -2,9 +2,11 @@ package ua.ho.tolkachov.misha.popupmenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,8 +34,34 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void showPopupMenu(View v){
-        Toast.makeText(getApplicationContext(), "POPUP", Toast.LENGTH_LONG).show();
+        PopupMenu popupMenu = new PopupMenu(this, v);
+        popupMenu.inflate(R.menu.popupmenu);
 
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
 
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu1:
+                        Toast.makeText(getApplicationContext(), "Menu 1 selected", Toast.LENGTH_LONG).show();
+                        return true;
+                    case R.id.menu2:
+                        Toast.makeText(getApplicationContext(), "Menu 2 selected", Toast.LENGTH_LONG).show();
+                        return true;
+                    case R.id.menu3:
+                        Toast.makeText(getApplicationContext(), "Menu 3 selected", Toast.LENGTH_LONG).show();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+        popupMenu.setOnDismissListener(new PopupMenu.OnDismissListener() {
+            @Override
+            public void onDismiss(PopupMenu menu){
+                Toast.makeText(getApplicationContext(), "Dismissed", Toast.LENGTH_SHORT).show();
+            }
+        });
+        popupMenu.show();
     }
 }
