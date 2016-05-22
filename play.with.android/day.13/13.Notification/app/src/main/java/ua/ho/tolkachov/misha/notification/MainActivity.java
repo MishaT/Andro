@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     private static final int NOTIFY_ID = 101;
+    private static final int NOTIFY_ID2 = 102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,34 @@ public class MainActivity extends AppCompatActivity {
         Notification notification = builder.build();
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFY_ID, notification);
+
+    }
+
+    public void  onClick2 (View v){
+        Context context = getApplicationContext();
+        Resources res = context.getResources();
+
+        Intent notifyIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(res.getString(R.string.my_site_address)));
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notifyIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        Notification.Builder builder = new Notification.Builder(context)
+                .setContentTitle(res.getString(R.string.visit_my_site))
+                .setContentText(res.getString(R.string.my_site_address))
+                .setTicker("Go go!")
+                .setWhen(System.currentTimeMillis())
+                .setContentIntent(pendingIntent)
+                .setDefaults(Notification.DEFAULT_SOUND)
+                .setAutoCancel(true)
+                .setSmallIcon(R.drawable.notification_small);
+
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFY_ID2, builder.build());
+    }
+
+    public void  onClickClearNotification(View view){
+        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.cancel(NOTIFY_ID);
 
     }
 }
