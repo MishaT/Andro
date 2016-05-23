@@ -3,4 +3,9 @@
     <string name="notify_title">Notification</string>
     <string name="notify_ticker">The text of the message!</string>
     <string name="notify_text">New message from Somebody name Who</string>
+    <string name="visit_my_site">Visit my site</string>
+    <string name="my_site_address">http://tolkachov.ho.ua</string>
+    <string name="button1_caption">Show Notification</string>
+    <string name="button2_caption">Another Notification</string>
+    <string name="button3_caption">Hide Notification</string>
 </resources>
