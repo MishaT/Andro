@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,18 +62,35 @@ public class MainActivity extends AppCompatActivity {
                 .setTicker("Go go!")
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(pendingIntent)
-                .setDefaults(Notification.DEFAULT_SOUND)
+               // .setDefaults(Notification.DEFAULT_SOUND)
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.notification_small);
+                .setSmallIcon(android.R.drawable.stat_sys_upload
+                //.setSmallIcon(R.drawable.notification_small
+                );
+
 
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(NOTIFY_ID2, builder.build());
+        Notification noti = builder.build();
+        noti.flags = noti.flags | Notification.FLAG_INSISTENT;
+
+        notificationManager.notify(NOTIFY_ID2, noti);
     }
 
     public void  onClickClearNotification(View view){
+
         NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        if (view.getId() == findViewById(R.id.buttonHideNotification).getId()) {
+            notificationManager.cancel(NOTIFY_ID);
 
-        notificationManager.cancel(NOTIFY_ID);
+        }else if (view.getId() == findViewById(R.id.buttonHideNotification2).getId()) {
+            notificationManager.cancel(NOTIFY_ID2);
+        }
 
+
+    }
+
+    public void onClickNewScreen(View v){
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(intent);
     }
 }
