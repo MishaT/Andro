@@ -36,11 +36,30 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button3_caption"
-        android:id="@+id/button3"
+        android:text="@string/HideNotification_caption"
+        android:id="@+id/buttonHideNotification"
         android:onClick="onClickClearNotification"
         android:layout_below="@+id/button"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="false"
         android:layout_marginTop="49dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/HideAnotherNotification_caption"
+        android:id="@+id/buttonHideNotification2"
+        android:onClick="onClickClearNotification"
+        android:layout_below="@+id/buttonHideNotification"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button4_caption"
+        android:id="@+id/buttonNewScreen"
+        android:onClick="onClickNewScreen"
+        android:layout_below="@+id/buttonHideNotification2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="52dp" />
 
 </RelativeLayout>
