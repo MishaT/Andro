@@ -81,7 +81,8 @@ public class SecondActivity extends Activity {
                     .setContentTitle("the message in the Inbox style")
                     .setContentText("Inbox style Notification!")
                     .setSmallIcon(R.drawable.notification_32)
-                    .addAction(R.drawable.notification_16, "Run Inbox intent", pendingIntent);
+                    .addAction(R.drawable.notification_16, "Run Inbox intent", pendingIntent)
+                    .setPriority(Notification.PRIORITY_MAX);
 
             Notification notification = new Notification.InboxStyle(builder)
                     .addLine("First Line")
