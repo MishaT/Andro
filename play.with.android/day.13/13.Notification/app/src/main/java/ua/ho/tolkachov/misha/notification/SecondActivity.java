@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
@@ -38,9 +39,11 @@ public class SecondActivity extends Activity {
 
             builder.flags |= Notification.FLAG_AUTO_CANCEL;
             notificationManager.notify(0, builder);
+//------------- LONG TEXT ---------------------------------------------------------------
         }else if (v.getId() == findViewById(R.id.btnBigTextNotification).getId()) {
             String bigText = "The Parcel is come, but I will not give it to you. "
                             + "Because You haven't a passport! ";
+
             Notification.Builder builder = new Notification.Builder(this)
                     .setTicker("The parcel is arrive")
                     .setContentTitle("The Parcel")
@@ -54,11 +57,41 @@ public class SecondActivity extends Activity {
                     .build();
 
             notificationManager.notify(1, notification);
-
+//----------- BIG PICTURE -----------------------------------------------------------------
         }else if (v.getId() == findViewById(R.id.btnBigPictureNotification).getId()) {
+            Notification.Builder builder = new Notification.Builder(this);
+            builder.setContentTitle("Big Package")
+                   .setTicker("THe Package is arrive")
+                   .setContentText("the message with LARGE image")
+                   .setSmallIcon(R.mipmap.ic_launcher)
+                   .addAction(R.drawable.notification_16, "just Run", pendingIntent);
 
+            Notification notification = new Notification.BigPictureStyle(builder)
+                    .bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.shrek))
+                    .build();
+
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            notificationManager.notify(2, notification);
+
+
+//----------------------------------------------------------------------------
         }else if (v.getId() == findViewById(R.id.btnInboxStyleNotification).getId()) {
+            Notification.Builder builder = new Notification.Builder(this)
+                    .setTicker("The Package is come")
+                    .setContentTitle("the message in the Inbox style")
+                    .setContentText("Inbox style Notification!")
+                    .setSmallIcon(R.drawable.notification_32)
+                    .addAction(R.drawable.notification_16, "Run Inbox intent", pendingIntent);
 
+            Notification notification = new Notification.InboxStyle(builder)
+                    .addLine("First Line")
+                    .addLine("Second Line")
+                    .addLine("Third Line")
+                    .addLine("Fours Line")
+                    .setSummaryText("+5 more")
+                    .build();
+            notification.flags |= Notification.FLAG_AUTO_CANCEL;
+            notificationManager.notify(3, notification);
         }
 
     }
