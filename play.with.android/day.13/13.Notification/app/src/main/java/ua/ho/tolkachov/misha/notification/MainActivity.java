@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
         }else if (view.getId() == findViewById(R.id.buttonHideNotification2).getId()) {
             notificationManager.cancel(NOTIFY_ID2);
         }
-
-
     }
 
     public void onClickNewScreen(View v){

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)http://developer.alexanderklimov.ru/android/longcat.php -->
+<html class="gr__developer_alexanderklimov_ru mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: Конвертер «38 попугаев»</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./14.Конвертер «38 попугаев»_files/bootstrap.min.css">
+<link rel="stylesheet" href="./14.Конвертер «38 попугаев»_files/font-awesome.min.css">
+<link rel="stylesheet" href="./14.Конвертер «38 попугаев»_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./14.Конвертер «38 попугаев»_files/material.indigo-light_blue.min.css"> 
+<script src="./14.Конвертер «38 попугаев»_files/cb=gapi.loaded_1" async=""></script><script src="./14.Конвертер «38 попугаев»_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./14.Конвертер «38 попугаев»_files/plusone.js" gapi_processed="true"></script><script src="./14.Конвертер «38 попугаев»_files/material.min.js"></script><style type="text/css">:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .back-to-top,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .g-plusone
+{display:none !important;}</style><style>img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.20710944795489605"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fnotification.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.igr0AfA5Tnc.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPBjV8jCsV66g6fU-ymBr6ooBbaQA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1469622269454&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=70788868"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.16953259965550393"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.igr0AfA5Tnc.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPBjV8jCsV66g6fU-ymBr6ooBbaQA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1469622431344&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=24707353"],
+img[src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.9009762557152343"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fdonate.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.igr0AfA5Tnc.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCPBjV8jCsV66g6fU-ymBr6ooBbaQA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1469622459589&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=22796981"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./14.Конвертер «38 попугаев»_files/icon">
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/longcat.php#" class="back-to-top">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/longcat.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./14.Конвертер «38 попугаев»_files/header.png" alt="Сайт разработчика Александра Климова" border="0"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./14.Конвертер «38 попугаев»_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.2671558611254863" height="1" width="1" alt="top.mail.ru" border="0" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">Конвертер «38 попугаев»</h1>
+
+<p><img src="./14.Конвертер «38 попугаев»_files/longcat.jpg" align="right">Пора опять написать какое-нибудь полезное приложение (напоминаю, что до этого мы написали хорошую программу <a href="http://developer.alexanderklimov.ru/android/android3.php">Счётчик ворон</a>). На этот раз напишем конвертер, который позволит нам узнать длину длиннокота не только в метрах, но и в попугаях. Если вы не знаете, кто такой длиннокот, то вам прямая дорога на мой блог <a href="http://alexanderklimov.ru/2010/07/25/caturday-5/">Субкота-5</a>. Надеюсь, что такое субкота, вы знаете?</p>
+
+<p>Изучив данную технику, вы сможете написать собственные конвертеры. Например, вы сможете конвертировать доллары в тугрики, футы в метры, градусы Цельсия в градусы по Фаренгейту, свинец в золото, ну и так далее...</p>
+
+<h2 class="text-warning">Подготовка</h2>
+
+<p>Создаём новый проект <b>Converter</b> и добавляем строковые ресурсы в файл <b>res/values/strings.xml</b>.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="action_settings"&gt;Settings&lt;/string&gt;
+    &lt;string name="app_name"&gt;38 попугаев&lt;/string&gt;
+    &lt;string name="radiobutton_meters"&gt;В метрах&lt;/string&gt;
+    &lt;string name="radiobutton_parrots"&gt;В попугаях&lt;/string&gt;
+    &lt;string name="buttonConvert_text"&gt;Конвертировать&lt;/string&gt;
+    &lt;color name="activity_color"&gt;#3399cc&lt;/color&gt;
+
+&lt;/resources&gt;
+</code></pre>
+
+<p>Открываем файл <b>activity_main.xml</b> в папке <b>res/layout/</b> и настраиваем внешний вид экрана приложения. Удаляем глупую надпись <b>Hello World!</b>. Далее с панели инструментов из раздела <b>Text Fields</b> перетаскиваем элемент <b>Plain Text</b>. Затем в разделе <b>Containers</b> находим элемент <b>RadioGroup</b> и также перетаскиваем на экран. Теперь из раздела <b>Widgets</b> дважды переносим элемент <b>RadioButton</b> и размещаем их внутри <b>RadioGroup</b>. Завершающий штрих - добавляем кнопку.</p>
+
+<p>Мы подготовили каркас приложения. Теперь сделаем небольшой тюнинг. Назначим необходимые свойства добавленным элементам. Свойства можно менять через отдельную панель <b>Properties</b>.</p>
+
+<p>Давайте сделаем так, чтобы при вводе текста в текстовом поле по умолчанию появлялась цифровая клавиатура. Так удобнее будет пользователю вводить длину кота. Выделяем компонент <b>EditText</b>, находим у него свойство <b>InputType</b>, раскрываем его и ставим флажки у свойств <b>numberSigned</b> и <b>numberDecimal</b>.</p>
+
+<p><a href="https://fotki.yandex.ru/users/netsources/view/643687" target="_blank"><img src="./14.Конвертер «38 попугаев»_files/0_9d267_a796f799_L.png" width="461" height="500" border="0" title="convert1.png" alt="convert1.png"></a></p>
+
+<p>Далее присвоим текст переключателям <b>RadioButton</b>. Мы заранее уже заготовили строковые ресурсы для переключателей. Поэтому нам нужно просто назначить нужные ресурсы в свойствах <b>Text</b>: <b>radiobutton_meters</b> и <b>radiobutton_parrots</b>. Убедитесь, что у первого переключателя у свойства <b>Checked</b> установлено значение <b>true</b>.</p>
+
+<p>У кнопки для свойства <b>Text</b> мы используем строковый ресурс <b>buttonConvert_text</b>, а для свойства <b>onClick</b> - <b>onClick</b>.</p>
+
+<p>Чтобы приложение не выглядело стандартным, присвоим свойству <b>background</b> у корневого элемента значение <b>activity_color</b> (цвет морской волны).</p>
+
+<p>Чтобы приложение выглядело профессиональнее, изменим также идентификаторы по умолчанию на более понятные: <b>editText</b>, <b>radioButtonMeter</b>, <b>radioButtonParrot</b>, <b>buttonConverter</b>.</p>
+
+<p>Побудьте дизайнером, придумайте свои варианты. У меня получилось следующее.</p>
+
+<p><img src="./14.Конвертер «38 попугаев»_files/convert3.png"></p>
+
+<p>Код разметки выглядит следующим образом:</p>
+
+<pre><code class="xml">
+&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/activity_color"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".MainActivity"&gt;
+
+    &lt;EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:inputType="numberDecimal|numberSigned"/&gt;
+
+    &lt;RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText"&gt;
+
+        &lt;RadioButton
+            android:id="@+id/radioButtonMeter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/radiobutton_meters"/&gt;
+
+        &lt;RadioButton
+            android:id="@+id/radioButtonParrot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radiobutton_parrots"/&gt;
+    &lt;/RadioGroup&gt;
+
+    &lt;Button
+        android:id="@+id/buttonConverter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radioGroup"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:onClick="onClick"
+        android:text="@string/buttonConvert_text"/&gt;
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<h2 class="text-warning"><s>Ш</s>кодим</h2>
+
+<p>Ну, давайте писать код, что-ли. Открываем файл активности <b>MainActivity.java</b>. Нам понадобятся два метода для конвертации величин и обработчик щелчка кнопки. При пустом значении текстового поля будем выводить Toast-сообщение. Начнём с двух методов.</p>
+
+<p>Методы просты. Указываем количество попугаев  и делим на магическое число 7.6 - получаем метры. И наоборот, указываем число метров и получим количество попугаев. Откуда взялось число 7.6 вы узнаете позже.</p>
+
+<p>При щелчке кнопки получаем текст из текстового поля и в зависимости от того, какой переключатель активен, применяем нужный метод конвертации. Полный код.</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.converter;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    // Конвертируем в метры
+    private float convertParrotToMeter(float parrot) {
+        return (float) (parrot / 7.6);
+    }
+
+    // Конвертируем в попугаи
+    private float convertMeterToParrot(float meter) {
+        return (float) (meter * 7.6);
+    }
+
+    public void onClick(View view) {
+
+        RadioButton meterRadioButton = (RadioButton) findViewById(R.id.radioButtonMeter);
+        EditText inputEditText = (EditText) findViewById(R.id.editText);
+
+        if (inputEditText.getText().length() == 0) {
+            Toast.makeText(getApplicationContext(), "Введите длину кота",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        float inputValue = Float.parseFloat(inputEditText.getText().toString());
+        if (meterRadioButton.isChecked()) {
+            inputEditText.setText(String
+                    .valueOf(convertParrotToMeter(inputValue)));
+        } else {
+            inputEditText.setText(String
+                    .valueOf(convertMeterToParrot(inputValue)));
+        }
+    }
+}
+</code></pre>
+
+<p>Запускаем проект и любуемся новым приложением.</p>
+
+<p><img src="./14.Конвертер «38 попугаев»_files/convert2.png" title="" alt="Готовое приложение" border="0"></p>
+
+<p>Допустим, длина кота 10 метров. Вводим это значение при выбранном варианте "в метрах", переключаемся на "в попугаях" и нажимаем на кнопку. Получаем результат. В программе нет защиты от дурака и вам следует самому позаботиться, чтобы при вводе недопустимых символов программа не завершалась с ошибкой, а предупреждала пользователя.</p>
+
+<h2 class="text-warning">Заключение</h2>
+
+<p>Чтобы быть уверенным, что мы применяли научные методы при написании программы, обратимся к Google с поисковым запросом <a href="http://www.google.ru/search?hl=ru&amp;newwindow=1&amp;q=%D1%83%D0%B4%D0%B0%D0%B2%D1%8B+%D0%B2+%D0%BF%D0%BE%D0%BF%D1%83%D0%B3%D0%B0%D1%8F%D1%85&amp;btnG=%D0%9F%D0%BE%D0%B8%D1%81%D0%BA&amp;lr=#hl=ru&amp;pq=%D1%83%D0%B4%D0%B0%D0%B2%D1%8B%20%D0%B2%20%D0%BF%D0%BE%D0%BF%D1%83%D0%B3%D0%B0%D1%8F%D1%85&amp;xhr=t&amp;q=%D0%BC%D0%B5%D1%82%D1%80%D1%8B+%D0%B2+%D0%BF%D0%BE%D0%BF%D1%83%D0%B3%D0%B0%D1%8F%D1%85&amp;cp=4&amp;pf=p&amp;sclient=psy&amp;lr=&amp;newwindow=1&amp;source=hp&amp;aq=f&amp;aqi=&amp;aql=&amp;oq=%D0%BC%D0%B5%D1%82%D1%80%D1%8B+%D0%B2+%D0%BF%D0%BE%D0%BF%D1%83%D0%B3%D0%B0%D1%8F%D1%85&amp;pbx=1&amp;fp=f5abab7a0ca64023">метры в попугаях</a></p>
+
+<p><img src="./14.Конвертер «38 попугаев»_files/googleCalc.png" alt="Метры в попугаях"></p>
+
+<p>Таким образом, вам осталось поймать длиннокота и измерить его. Результаты необходимо показать коту и, тогда вас ждет сюрприз! Кот от удивления произнесет знаменитую фразу: А в попугаях я гораздо длиннее!</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=15">Обсуждение статьи</a> на форуме.</p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./14.Конвертер «38 попугаев»_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;"></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./14.Конвертер «38 попугаев»_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1469622468372" name="I0_1469622468372" src="./14.Конвертер «38 попугаев»_files/fastbutton.html" data-gapiattached="true"></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true"></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./14.Конвертер «38 попугаев»_files/jquery-1.11.0.min.js"></script>
+	<script src="./14.Конвертер «38 попугаев»_files/jquery-migrate-1.2.1.min.js"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./14.Конвертер «38 попугаев»_files/backtotop.js"></script>
+    <script src="./14.Конвертер «38 попугаев»_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay389045514" id="oauth2relay389045514" src="./14.Конвертер «38 попугаев»_files/postmessageRelay.html" tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div id="gtx-trans" style="position: absolute; left: 352px; top: 263px;"><div class="gtx-trans-icon"></div></div></body></html>
