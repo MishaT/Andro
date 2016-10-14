@@ -30,7 +30,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/dog"/>
     <ImageButton
-        android:id="@+id/imageButtonInsect"
+        android:id="@+id/imageButtonCow"
         android:background="@android:color/transparent"
         android:src="@drawable/cow"/>
 
