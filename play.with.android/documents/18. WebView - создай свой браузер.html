@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://developer.alexanderklimov.ru/android/mybrowser.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: WebView - создай свой браузер</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./18. WebView - создай свой браузер_files/bootstrap.min.css">
+<link rel="stylesheet" href="./18. WebView - создай свой браузер_files/font-awesome.min.css">
+<link rel="stylesheet" href="./18. WebView - создай свой браузер_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./18. WebView - создай свой браузер_files/material.indigo-light_blue.min.css"> 
+<script src="./18. WebView - создай свой браузер_files/cb=gapi.loaded_1" async=""></script><script src="./18. WebView - создай свой браузер_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./18. WebView - создай свой браузер_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./18. WebView - создай свой браузер_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609881233&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=19404199"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.652267127730263"],
+img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609893478&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=91165856"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/;j=false;s=1920*1080;d=24;rand=0.5228171485325694"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsimplepaint.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609911615&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=10447599"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.05797381771465715"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsunrise.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609913600&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=26159412"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.2814448307699229"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./18. WebView - создай свой браузер_files/icon">
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/mybrowser.php#" class="back-to-top" pnxk8u9="" hidden="">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/mybrowser.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./18. WebView - создай свой браузер_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./18. WebView - создай свой браузер_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09221145924186391" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">WebView - создай свой браузер</h1>
+
+<p>Android позволяет создать собственное окно для просмотра веб-страниц или даже создать свой клон браузера при помощи элемента <b>WebView</b>. Сам элемент использует движок WebKit и имеет множество свойств и методов. Мы ограничимся базовым примером создания приложения, с помощью которого сможем просматривать страницы в интернете. В последних версиях используется движок от Chromium, но большой разницы в этом нет для простых задач.</p>
+
+<p>Создадим новый проект <b>MyBrowser</b> и сразу заменим код в файле разметки <b>res/layout/activity_main.xml</b>:</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;WebView
+    android:id="@+id/webView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/&gt;
+</code></pre>
+
+<p>Теперь откроем файл активности <b>MainActivity.java</b> и объявим компонент <b>WebView</b>, а также инициализируем его - включим поддержку JavaScript и укажем страницу для загрузки.</p>
+
+<pre><code class="java">
+private WebView mWebView;
+
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+            
+    mWebView = (WebView) findViewById(R.id.webView);
+	// включаем поддержку JavaScript
+    mWebView.getSettings().setJavaScriptEnabled(true);
+	// указываем страницу загрузки
+    mWebView.loadUrl("http://developer.alexanderklimov.ru/android"); 
+}
+</code></pre>
+
+<p>Так как приложение будет использовать интернет, необходимо установить разрешение на доступ к интернету в файле-манифесте.</p>
+
+<pre><code class="xml">
+&lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+</code></pre>
+
+<p>Там же в манифесте модифицируем строчку для экрана, удалив заголовок из нашего приложения (выделено жирным):</p>
+
+<pre><code class="xml">
+&lt;activity android:name=".HelloWebViewActivity"
+    android:label="@string/app_name"
+    <b>android:theme="@style/Theme.AppCompat.NoActionBar"</b>&gt;
+</code></pre>
+
+<p>Запустим приложение. В нашем распоряжении появился простейший вьювер веб-страниц, но с одним недостатком. Если вы щёлкнете на любой ссылке, то у вас автоматически запустится браузер по умолчанию и новая страница отобразится уже там.</p>
+
+<p><img src="./18. WebView - создай свой браузер_files/webview.png" alt="Страница в браузере"></p>
+
+<p>Upd. Сейчас я обнаружил, что теперь даже при запуске приложения сразу открывается браузер. Раньше такого не было.</p>
+
+<p>Чтобы решить данную проблему и открывать ссылки в своей программе, нужно переопределить класс <b>WebViewClient</b> и позволить нашему приложению обрабатывать ссылки. Добавим в коде вложенный класс:</p>
+
+<pre><class="java">
+private class MyWebViewClient extends WebViewClient 
+{
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) 
+    {
+        view.loadUrl(url);
+        return true;
+    }
+}
+</class="java"></pre>
+
+<p>Затем в методе <b>onCreate()</b> определим экземпляр <b>MyWebViewClient</b>. Он может находиться в любом месте после инициализации объекта <b>WebView</b>:</p>
+
+<pre><code class="java">
+mWebView.setWebViewClient(new MyWebViewClient());
+</code></pre>
+
+<p>Теперь в нашем приложении создан <b>WebViewClient</b>, который позволяет загружать любой указанный URL, выбранный в <b>WebView</b>, в сам контейнер <b>WebView</b>, а не запускать браузер. За данную функциональность отвечает метод <b>shouldOverrideUrlLoading(WebView, String)</b>, в котором мы указываем текущий <b>WebView</b> и нужный URL. Возвращаемое значение <i>true</i> говорит о том, что мы не нуждаемся в запуске стороннего браузера, а самостоятельно загрузим контент по ссылке.</p>
+
+<p>Повторно запустите программу и убедитесь, что ссылки загружаются теперь в самом приложении. Но теперь возникла ещё одна проблема. Мы не можем вернуться к предыдущей странице. Если мы нажмём на кнопку BACK (Назад) на своем устройстве, то просто закроем свое приложение. Для решения новой проблемы нам необходимо обрабатывать нажатие кнопки BACK. Добавляем новый метод:</p>
+
+<pre><code class="java">
+@Override
+public void onBackPressed() {
+    if(mWebView.canGoBack()) {
+        mWebView.goBack();
+    } else {
+        super.onBackPressed();
+    }
+}
+</code></pre>
+
+<p>Мы должны проверить, что <b>WebView</b> поддерживает навигацию на предыдущую страницу. Если условие верно, тогда вызывается метод <b>goBack()</b>, который возвращает нас на предыдущую страницу на один шаг назад. Если таких страниц набралось несколько, то мы можем последовательно вернуться к самой первой странице. При этом метод всегда будет возвращать значение <i>true</i>. Когда мы вернёмся на самую первую страницу, с которой начали путешествие по интернету, то вернётся значение <i>false</i> и обработкой нажатия кнопки BACK займётся уже сама система, которая закроет экран приложения.</p>
+
+<p>Запустите приложение ещё раз. У вас появился свой собственный веб-браузер, позволяющий ходить по ссылкам и возвращаться на предыдущую страницу. Изучив документацию, вы можете оснастить приложение и другим вкусными плюшками для своего браузера.</p>
+
+<p><img src="./18. WebView - создай свой браузер_files/webview2.png" alt="WebView"></p>
+
+<p>Если вам нужно часть ссылок, ведущих на ваш сайт открывать в браузере, а локальные ссылки открывать в приложении, то применяйте условие с разными возвращаемыми значениями.</p>
+
+<pre><code class="java">
+public class MyWebViewClient extends WebViewClient {
+    
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        if(Uri.parse(url).getHost().endsWith("developer.alexanderklimov.ru")) {
+            return false;
+        }
+         
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        view.getContext().startActivity(intent);
+        return true;
+    }
+}
+</code></pre>
+
+<p>Универсальный метод, который все локальные ссылки откроет в приложении, остальные в браузере (меняем одну строчку):</p>
+
+<pre><code class="java">
+public class MyAppWebViewClient extends WebViewClient {
+    @Override
+    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+        <b>if(Uri.parse(url).getHost().length() == 0)</b> {
+            return false;
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        view.getContext().startActivity(intent);
+        return true;
+    }
+
+}
+</code></pre>
+
+<p>А сейчас немного усложним пример, чтобы у пользователя появилась альтернатива стандартным браузерам.</p>
+
+<p>Чтобы было понятнее, переделаем пример следующим образом. Создайте две активности. На первой активности разместите кнопку для перехода на вторую активность, а на второй активности разместите компонент <b>WebView</b>.</p>
+
+<p>В манифесте прописываем у второй активности фильтр.</p>
+
+<pre><code class="xml">
+&lt;activity
+    android:name=".SecondActivity"
+    android:label="@string/title_activity_second" &gt;
+<b>    &lt;intent-filter&gt;
+        &lt;action android:name="android.intent.action.VIEW" /&gt;
+        &lt;action android:name="ru.alexanderklimov.Browser" /&gt;
+        &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+        &lt;data android:scheme="http" /&gt;
+    &lt;/intent-filter&gt;</b>
+&lt;/activity&gt;
+</code></pre>
+
+<p>Код для кнопки для перехода на вторую активность.</p>
+
+<pre><code class="java">
+public void onClick(View view) {
+    Intent intent = new
+            Intent("ru.alexanderklimov.Browser");
+    intent.setData(Uri.parse("http://developer.alexanderklimov.ru/android/"));
+    startActivity(intent);
+}
+</code></pre>
+
+<p>Мы создали собственное намерение с указанием фильтра и предоставили данные - адрес сайта.</p>
+
+<p>Вторая активность должна принять данные:</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+
+        <b>Uri url = getIntent().getData();</b>
+        WebView webView = (WebView) findViewById(R.id.webView);
+        webView.setWebViewClient(new Callback());
+        webView.loadUrl(url.toString());
+    }
+
+    private class Callback extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading
+                (WebView view, String url) {
+            return(false);
+        }
+    }
+}
+</code></pre>
+
+<p>В фильтре для второй активность мы указали два действия.</p>
+
+<pre><code class="xml">
+&lt;action android:name="android.intent.action.VIEW" /&gt;
+&lt;action android:name="ru.alexanderklimov.Browser" /&gt;
+</code></pre>
+
+<p>Это означает, что любые активности (читай, приложения) могут вызвать вашу активность с мини-браузером по такому же принципу. Запустите в студии в отдельном окне любой старый проект или создайте новый и добавьте в него кнопку и пропишите тот же код, который мы использовали для щелчка кнопки.</p>
+
+<p>Запустите второе приложение (первое приложение можно закрыть) и нажмите на кнопку. У вас запустится не первое приложение с начальным экраном, а сразу вторая активность с мини-браузером. Таким образом, любое приложение может запустить браузер, не зная имени класса вашей активности, а используя только строку <b>"ru.alexanderklimov.Browser"</b>, передаваемую в <b>Intent</b>. При этом ваша активность с браузером должна иметь категорию по умолчанию и данные. Напомню:</p>
+
+<pre><code class="xml">
+&lt;category android:name="android.intent.category.DEFAULT" /&gt;
+&lt;data android:scheme="http" /&gt;
+</code></pre>
+
+<p>Вы можете представить свою строку в виде строковой константы и сообщить всем потенциальным пользователям вашего браузера, как они могут запустить его у себя. Но в Android уже есть такая готовая константа <b>ACTION_VIEW</b>, которая по справке документации представляет собой следующее:</p>
+
+<pre><code class="java">
+public static final java.lang.String ACTION_VIEW = "android.intent.action.VIEW";
+</code></pre>
+
+<p>Перепишем код для кнопки у второго приложения</p>
+
+<pre><code class="java">
+Intent(android.content.Intent.ACTION_VIEW,
+Uri.parse("http://developer.alexanderklimov.ru/android/"));
+startActivity(intent);
+</code></pre>
+
+<p>Что произойдёт на этот раз? Мы помним, что у нас прописано два действия, включая и <b>android.intent.action.VIEW</b>. А значит наше первое приложение с браузером тоже должно распознавать эту команду, когда какое-то приложение у пользователя использует этот код. На эмуляторе как минимум есть одна такая программа "Browser", и теперь к ней добавилась наша вторая активность из первого приложения. На экране появится выбор из двух приложений.</p>
+
+<p><img src="./18. WebView - создай свой браузер_files/webview4.png"></p>
+
+<p>А если удалить все альтернативные браузеры и оставить только вашу программу, то и выбора не будет. Ваш браузер станет основным. И если какое-то приложение захочет запустить веб-страницу указанным способом, то откроется ваша программа.</p>
+
+<p>Небольшое замечание. Если заменить последнюю строчку на такую:</p>
+
+<pre><code class="java">
+startActivity(Intent.createChooser(intent, "Мяу..."));
+</code></pre>
+
+<p>То в окне выбора программы вместо верхней строки "Open with" или её локального перевода появится ваша строка. Но не это главное. Если по каким-то причинам на устройстве не окажется ни одного браузера, то данный вариант кода не вызовет краха приложения, в отличие от первоначального варианта. Поэтому используйте предложенный вариант ради надёжности.</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://developer.alexanderklimov.ru/android/views/webview.php">WebView</a></p>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=19">Обсуждение статьи</a> на форуме.</p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./18. WebView - создай свой браузер_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" pnxk8u9=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./18. WebView - создай свой браузер_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476609915130" name="I0_1476609915130" src="./18. WebView - создай свой браузер_files/fastbutton.html" data-gapiattached="true" hidden=""></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" pnxk8u9="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./18. WebView - создай свой браузер_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./18. WebView - создай свой браузер_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./18. WebView - создай свой браузер_files/backtotop.js.Без названия"></script>
+    <script src="./18. WebView - создай свой браузер_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay353213340" id="oauth2relay353213340" src="./18. WebView - создай свой браузер_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

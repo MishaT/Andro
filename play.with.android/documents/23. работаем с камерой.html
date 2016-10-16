@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)http://developer.alexanderklimov.ru/android/photocamera.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: У нас есть фотик и котик - работаем с камерой</title>
+   
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./23. работаем с камерой_files/bootstrap.min.css">
+<link rel="stylesheet" href="./23. работаем с камерой_files/font-awesome.min.css">
+<link rel="stylesheet" href="./23. работаем с камерой_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./23. работаем с камерой_files/material.indigo-light_blue.min.css"> 
+<script src="./23. работаем с камерой_files/cb=gapi.loaded_1" async=""></script><script src="./23. работаем с камерой_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./23. работаем с камерой_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./23. работаем с камерой_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609881233&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=19404199"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.652267127730263"],
+img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609893478&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=91165856"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/;j=false;s=1920*1080;d=24;rand=0.5228171485325694"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsimplepaint.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609911615&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=10447599"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.05797381771465715"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsunrise.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609913600&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=26159412"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.2814448307699229"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09221145924186391"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.34519250188156203"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flocale.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609919061&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34784785"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.7996494372296932"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flistactivity.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609920118&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=14774654"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09536112298197907"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmanual.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609923696&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=37396538"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5162908144060987"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./23. работаем с камерой_files/icon">   
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/photocamera.php#" class="back-to-top" xktjr8v="" hidden="">Back to Top</a>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/photocamera.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./23. работаем с камерой_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./23. работаем с камерой_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>	
+<div class="clearfix"></div>
+	
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.549538733559829" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+	<div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>
+<h1 class="text-warning">У нас есть фотик и котик - работаем с камерой</h1>
+
+<p><img src="./23. работаем с камерой_files/camera2.jpg" alt="Котик и фотик" class="img-polaroid"></p>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/photocamera.php#sysapp">Программное включение приложения Камера</a><br>
+<a href="http://developer.alexanderklimov.ru/android/photocamera.php#cameraresult">Делаем фотографии и сохраняем результат. Простой пример</a><br>
+<a href="http://developer.alexanderklimov.ru/android/photocamera.php#sample2">Делаем фотографии или видео и сохраняем результат. Улучшенный пример</a><br>
+<a href="http://developer.alexanderklimov.ru/android/photocamera.php#crop">Снимаем и кадрируем</a><br>
+</p>
+
+<p>Практически все современные телефоны и планшеты снабжаются камерами, что позволяет фотографировать любимых котиков.</p>
+
+<h2 class="text-warning" id="sysapp">Программное включение приложения Камера</h2>
+
+<p>Вы можете программно запустить из своей программы системное приложение "Камера" (в этом случае вам не понадобятся дополнительные разрешения) через намерение.</p>
+
+<pre><code class="java">
+Intent intent = new Intent();
+intent.setAction(Intent.ACTION_CAMERA_BUTTON);
+intent.putExtra(Intent.EXTRA_KEY_EVENT, new KeyEvent(KeyEvent.ACTION_DOWN,
+		KeyEvent.KEYCODE_CAMERA));
+sendOrderedBroadcast(intent, null);
+</code></pre>
+
+<p>А вообще у пользователя могут стоять разные приложения, способные фотографировать. Тогда у вас будет появляться диалоговое окно с выбором нужного приложения. Они все имеют в своём составе такую запись в манифесте (для общего развития):</p>
+
+<pre><code class="xml">
+&lt;action android:name="android.media.action.IMAGE_CAPTURE"/&gt;
+&lt;category android:name="android.intent.category.DEFAULT"/&gt;
+</code></pre>
+
+<p>У Гугла есть своя программа <a href="https://play.google.com/store/apps/details?id=com.google.android.GoogleCamera&amp;hl=ru">Google Камера</a>. Запустим её.</p>
+
+<pre><code class="java">
+Intent intent = getIntent();
+
+intent.setComponent(null);
+intent.setPackage("com.google.android.GoogleCamera");
+intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+startActivity(intent);
+</code></pre>
+
+<p>При вызове метода <b>getIntent()</b> вместо <b>new Intent()</b> приложение запускалось сразу, иначе - выводилось диалоговое окно выбора программы из списка. Также нужно быть уверенным, что программа установлена, в примере нет кода проверки.</p>
+
+<h2 class="text-warning" id="cameraresult">Делаем фотографии и сохраняем результат. Простой пример</h2>
+
+<p>Просто включить камеру не слишком интересно. Рассмотрим практичный пример, когда мы программно запустим приложение "Камера", а полученную фотографию сохраним в папке. Для начала сфокусируемся на основной задаче, а потом напишем более сложное приложение.</p>
+
+<p>Используйте статическую константу <b>ACTION_IMAGE_CAPTURE</b> из объекта <b>MediaStore</b> для создания намерения, которое потом нужно передать методу <b>startActivityForResult()</b>. Разместите на форме кнопку и <b>ImageView</b>, в который будем помещать полученный снимок. Этот код запускает стандартное приложение камеры. Полученное с камеры изображение можно обработать в методе <b>onActivityResult()</b>:</p>
+
+<pre><code class="java">
+private final int CAMERA_RESULT = 0;
+private ImageView mImageView;
+
+// onCreate() method
+mImageView = (ImageView) findViewById(R.id.imageView);
+
+// Щелчок кнопки
+public void onClick(View v) {
+    Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    startActivityForResult(cameraIntent, CAMERA_RESULT);
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == CAMERA_RESULT) {
+        Bitmap thumbnailBitmap = (Bitmap) data.getExtras().get("data");
+        mImageView.setImageBitmap(thumbnailBitmap);
+    }
+}
+</code></pre>
+
+<p>Данный код запустит активность для управления камерой, позволяя пользователю поменять настройки изображения, что освобождает вас от необходимости создавать своё собственное приложение для этих нужд.</p>
+
+<p>При тестировании примера на своём телефоне я обнаружил небольшую проблему - когда снимок передавался обратно на моё приложение, то оно находилось в альбомном режиме, а потом возвращалось в портретный режим. При этом полученный снимок терялся. Поэтому перед нажатием кнопки я поворачивал телефон в альбомный режим, чтобы пример работал корректно. Поэтому вам надо предусмотреть подобное поведение, например, запретить приложению реагировать на поворот и таким образом избежать перезапуска <b>Activity</b>. У некоторых телефонов такой проблемы нет.</p>
+
+<p>По умолчанию фотография возвращается в виде объекта <b>Bitmap</b>, содержащего миниатюру. Этот объект находится в параметре <b>data</b>, передаваемом в метод <b>onActivityResult()</b>. Чтобы получить миниатюру в виде объекта <b>Bitmap</b>, нужно вызвать метод <b>getParcelableExtra()</b> из намерения, передав ему строковое значение <b>data</b>.</p>
+
+<p>Если вы укажете исходящий путь <b>URI</b> с помощью параметра <b>MediaStore.EXTRA_OUTPUT</b> в запущенном намерении, полноразмерное изображение, снятое камерой, сохранится в заданном месте. В таком случае в метод <b>onActivityResult()</b> не будет передана миниатюра, а итоговое намерение продемонстрирует значение <b>null</b>.</p>
+
+<p>В следующем примере  показано, как при создании снимка получать миниатюру или полноценное изображение, используя намерение.</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.photocamera;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+
+import java.io.File;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView mImageView;
+
+    private static int TAKE_PICTURE = 1;
+    private Uri mOutputFileUri;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        mImageView = (ImageView) findViewById(R.id.imageView);
+    }
+
+    public void onClick(View view) {
+        //getThumbnailPicture();
+        saveFullImage();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == TAKE_PICTURE) {
+            // Проверяем, содержит ли результат маленькую картинку
+            if (data != null) {
+                if (data.hasExtra("data")) {
+                    Bitmap thumbnailBitmap = data.getParcelableExtra("data");
+                    // TODO Какие-то действия с миниатюрой
+                    mImageView.setImageBitmap(thumbnailBitmap);
+                }
+            } else {
+                // TODO Какие-то действия с полноценным изображением,
+                // сохраненным по адресу mOutputFileUri
+                mImageView.setImageURI(mOutputFileUri);
+            }
+        }
+    }
+
+    private void getThumbnailPicture() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, TAKE_PICTURE);
+    }
+
+    private void saveFullImage() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        File file = new File(Environment.getExternalStorageDirectory(),
+                "test.jpg");
+        mOutputFileUri = Uri.fromFile(file);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mOutputFileUri);
+        startActivityForResult(intent, TAKE_PICTURE);
+    }
+}
+</code></pre>
+
+<p>В Android 6.0 Marshmallow пример перестал работать из-за новых правил с разрешениями. Новый вариант представлен в <a href="http://developer.alexanderklimov.ru/android/marshmallow-permissions.php#camera">соответствующей статье</a>.</p>
+
+<h2 class="text-warning" id="sample2">Делаем фотографии или видео и сохраняем результат. Улучшенный пример</h2>
+
+<div class="alert alert-info">
+Второй пример основан на тренировочном примере из документации Google (http://developer.android.com/intl/ru/training/camera/photobasics.html). Там же вы можете скачать исходный пример. Здесь я только своими словами пытаюсь объяснить код приложения
+</div>
+
+<p>Поняв основы, можно усложнить пример.</p>
+
+<p>Предположим, вы создали специальную службу, которая отслеживает бездомных котов и сотрудники вашей организации привозят им подарки, а также гладят их. Пользователи, которые скачали ваше приложение, должны сфотографировать кота, а затем информация о месте съёмки и другие параметры попадают к вам в центр для обработки. Фотографирование котов - это часть вашего приложения. Не обязательно придумывать велосипед и работать напрямую с функциями камеры. У вас уже есть системное приложение Камера, с помощью которого можно быстро сделать фотографию и получить результат обратно в приложение.</p>
+
+<p>Сначала сделаем небольшие приготовления. Есть класс устройств, у которых нет камер, например, электронные ридеры. Чтобы пользователи этих устройств не скачивали зря ваше приложение, которое окажется для них бесполезным, пропишем в манифесте требование наличия камеры.</p>
+
+<pre><code class="java">
+&lt;uses-feature android:name="android.hardware.camera" android:required="true" /&gt;
+</code></pre>
+
+<p>Оформим отдельную функцию для запуска намерения.</p>
+
+<pre><code class="java">
+private void dispatchTakePictureIntent(int actionCode) {
+    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    startActivityForResult(takePictureIntent, actionCode);
+}
+</code></pre>
+
+<p>Этот код запускает стандартное приложение камеры. Полученное с камеры изображение можно обработать в методе <b>onActivityResult()</b>.</p>
+
+<p>На всякий случай напишем функцию для проверки возможности приложением обрабатывать ваше намерение:</p>
+
+<pre><code class="java">
+public static boolean isIntentAvailable(Context context, String action) {
+    final PackageManager packageManager = context.getPackageManager();
+    final Intent intent = new Intent(action);
+    List&lt;ResolveInfo&gt; list =
+            packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+    return list.size() &gt; 0;
+}
+</code></pre>
+
+<p>Данная функция поможет нам во время загрузки приложения проверить наличие подходящего намерения. Если подходящего приложения не найдётся, то мы можем сделать кнопку для съёмки недоступной.</p>
+
+<p>Системное приложение <b>Камера</b> кодирует фото в возвращаемом намерении, которое поступает в метод <b>onActivityResult()</b> в виде небольшого <b>Bitmap</b> в ключе <b>data</b>. Следующий код получает изображение и выводит его в ImageView.</p>
+
+<pre><code class="java">
+private void handleSmallCameraPhoto(Intent intent) {
+    Bundle extras = intent.getExtras();
+    mImageBitmap = (Bitmap) extras.get("data");
+    mImageView.setImageBitmap(mImageBitmap);
+}
+</code></pre>
+
+<p>Полученное миниатюрное изображение из "data" вполне годится для использования в качестве аватара в контактах. Если мы хотим получить полноразмерное изображение, то напишем дополнительный код для другой кнопки.</p>
+
+<p>Чтобы приложение <b>Камера</b> сохраняло полноразмерные фотографии, нам нужно сообщить ему имя файла для сохранения и его полный путь.</p>
+
+<p>В Android 2.2 и выше (API 8) есть специальный метод, чтобы получить стандартный путь для фотографий:</p>
+
+<pre><code class="java">
+storageDir = new File(
+    Environment.getExternalStoragePublicDirectory(
+        Environment.DIRECTORY_PICTURES
+    ), 
+    getAlbumName()
+);
+</code></pre>
+
+<p>Для более ранних версий Android, вы должны ввести имя директории фото самостоятельно:</p>
+
+<pre><code class="java">
+storageDir = new File (
+    Environment.getExternalStorageDirectory()
+        + PICTURES_DIR
+        + getAlbumName()
+);
+</code></pre>
+
+<div class="alert alert-info">
+Свойство PICTURES_DIR – это просто папка Pictures/ - стандартное расположение для общих фотографии на внешнем/общем хранилище.
+</div>
+
+<p>Необходимо позаботиться об уникальности имени файла, чтобы избежать конфликтов:</p>
+
+<pre><code class="java">
+private File createImageFile() throws IOException {
+    // Create an image file name
+    String timeStamp = 
+        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+    String imageFileName = JPEG_FILE_PREFIX + timeStamp + "_";
+    File image = File.createTempFile(
+        imageFileName, 
+        JPEG_FILE_SUFFIX, 
+        getAlbumDir()
+    );
+    mCurrentPhotoPath = image.getAbsolutePath();
+    return image;
+}
+</code></pre>
+
+<p>В нашем примере имя файла формируется из даты, что позволяет не бояться создания дубликатов.</p>
+
+<p>Если у нас есть место для сохранения изображения, то сообщите путь приложению камеры через намерение:</p>
+
+<pre><code class="java">
+File f = createImageFile();
+takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+</code></pre>
+
+<h3 class="text-warning">Добавляем фото в приложение Галерея</h3>
+
+<p>При создании фото через намерение вы должны знать, где будет расположено ваше изображение, потому что вам нужно указать, куда его сохранять. Можно пойти другим путём - сделать фотографию доступной для системы при помощи Media Provider.</p>
+
+<p>Следующий пример демонстрирует метод вызова системного медиа-сканера, чтобы добавить вашу фотографию в базу данных Media Provider, что сделает её видимой в приложении <b>Галерея</b> и других приложениях.</p>
+
+<pre><code class="java">
+private void galleryAddPic() {
+    Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+    File f = new File(mCurrentPhotoPath);
+    Uri contentUri = Uri.fromFile(f);
+    mediaScanIntent.setData(contentUri);
+    this.sendBroadcast(mediaScanIntent);
+}
+</code></pre>
+
+<h3 class="text-warning">Декодирование масштабированого изображения</h3>
+
+<p>Работа с большими изображениями может вызвать проблемы на устройстве с ограниченным объемом памяти. Если ваше приложение вызывает нехватку памяти после вывода нескольких изображений, вы можете значительно уменьшить объем занимаемой памяти, использовав во время распаковки JPEG-файлов в память масштабирование, которое учитывает размеры вашего View для просмотра картинок:</p>
+
+<pre><code class="java">
+private void setPic() {
+    // Get the dimensions of the View
+    int targetW = mImageView.getWidth();
+    int targetH = mImageView.getHeight();
+ 
+    // Get the dimensions of the bitmap
+    BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+    bmOptions.inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+    int photoW = bmOptions.outWidth;
+    int photoH = bmOptions.outHeight;
+ 
+    // Determine how much to scale down the image
+    int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+ 
+    // Decode the image file into a Bitmap sized to fill the View
+    bmOptions.inJustDecodeBounds = false;
+    bmOptions.inSampleSize = scaleFactor;
+    bmOptions.inPurgeable = true;
+ 
+    Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+    mImageView.setImageBitmap(bitmap);
+}
+</code></pre>
+
+<p>Кроме того, в учебном примере рассматривается вывод видео в элемент VideoView. Изучайте код самостоятельно.</p>
+
+<h2 class="text-warning" id="crop">Снимаем и кадрируем</h2>
+
+<p>Рассмотрим ещё один пример, когда мы запустим приложение Камера, а также включим режим кадрирования. Обратите внимание, что основная часть кода остаётся прежней. Я специально даю разные примеры с незначительными изменениями, чтобы вы могли выбрать подходящие приёмы для вашей задачи. Также рекомендую проверять работу с камерой на реальных устройствах, так как многие производители заменяют стандартные методы съёмки своими прошивками и драйверами. В частности, намерение с кадрированием является проблемной, и в интернете многие жалуются на отсутствие поддержки этого способа.</p>
+
+<p>Создадим простенький макет из кнопки для запуска камеры и ImageView для вывода кадрированного изображения.</p>
+
+<pre><code class="xml">
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" &gt;
+
+    &lt;Button
+        android:id="@+id/buttonCapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="onClick"
+        android:text="Запустить камеру" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/background" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Для большей красоты сделаем задний фон у ImageView с закруглёнными углами и обводкой. Для этого в атрибуте <b>android:background</b> мы прописали специальный стиль. Создайте папку <b>res/drawable</b>, а в ней файл <b>background.xml</b> следующего содержания:</p>
+
+<pre><code class="xml">
+&lt;shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:dither="true" &gt;
+
+    &lt;gradient
+        android:angle="90"
+        android:centerColor="#00000000"
+        android:endColor="#99ffffff"
+        android:startColor="#99ffffff" /&gt;
+
+    &lt;padding
+        android:bottom="10dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:top="10dp" /&gt;
+
+    &lt;corners android:radius="5dp" /&gt;
+
+    &lt;stroke
+        android:width="2dp"
+        android:color="#ccffffff" /&gt;
+
+&lt;/shape&gt;
+</code></pre>
+
+<p>Этот шаг не является обязательным и его можно пропустить.</p>
+
+<p>При нажатии кнопки запускаем приложение Камера и ожидаем результата.</p>
+
+<pre><code class="java">
+public void onClick(View v) {
+	try {
+		// Намерение для запуска камеры
+		Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+		startActivityForResult(captureIntent, CAMERA_CAPTURE);
+	} catch (ActivityNotFoundException e) {
+		// Выводим сообщение об ошибке
+		String errorMessage = "Ваше устройство не поддерживает съемку";
+		Toast toast = Toast
+				.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+		toast.show();
+	}
+}
+</code></pre>
+
+<p>После того, как пользователь сделал нужный кадр, программа Камера возвращает результат обратно в наше приложение. Результат обрабатывается в методе <b>onActivityResult()</b>:</p>
+
+<pre><code class="java">
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	if (resultCode == RESULT_OK) {
+		// Вернулись от приложения Камера
+		if (requestCode == CAMERA_CAPTURE) {
+			// Получим Uri снимка
+			picUri = data.getData();
+			// кадрируем его
+			performCrop();
+		}
+		// Вернулись из операции кадрирования
+		else if(requestCode == PIC_CROP){
+			Bundle extras = data.getExtras();
+			// Получим кадрированное изображение
+			Bitmap thePic = extras.getParcelable("data");
+			// передаём его в ImageView
+			ImageView picView = (ImageView)findViewById(R.id.picture);
+			picView.setImageBitmap(thePic);
+		}
+	}
+}
+</code></pre>
+
+<p>Получив полноразмерное изображение, мы пытаемся откадрировать его. Для этого создадим метод <b>performCrop()</b>, который запускает специальное намерение, предназначенное для этих целей. В успешном случае результат снова возвращается в наше приложение, но уже с другим кодом <b>PIC_CROP</b>. Теперь мы имеем нужное изображение, которое можно вывести на экран.</p>
+
+<p>При кадрировании мы указываем желаемые размеры (код метода ниже). Если указать слишком больше размеры (больше 400), то результат не возвращается. Попробуйте добавить ещё два параметра:</p>
+
+<pre><code class="java">
+//куда сохраняем
+intent.putExtra("output", picUri); 
+intent.putExtra("outputFormat", "JPEG");
+</code></pre>
+
+<p>Результат работы приложения, когда запускается намерение кадрирования и итоговый результат. Желательно тренироваться на кошках.</p>
+
+<p><img src="./23. работаем с камерой_files/photocamera1.png" alt="Crop" width="400" height="240"></p>
+
+<p><img src="./23. работаем с камерой_files/photocamera2.png" alt="Итоговый результат" width="400" height="240"></p>
+
+<p>Исходник полностью.</p>
+
+<details>
+    <summary>Показать код (щелкните мышкой)</summary>
+
+<pre><code class="java">
+package ru.alexanderklimov.test;
+
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.graphics.Bitmap;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+	final int CAMERA_CAPTURE = 1;
+	final int PIC_CROP = 2;
+	private Uri picUri;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_main);
+		setTitle("Съёмка и Кадрирование");
+
+	}
+
+	public void onClick(View v) {
+		try {
+			// Намерение для запуска камеры
+			Intent captureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+			startActivityForResult(captureIntent, CAMERA_CAPTURE);
+		} catch (ActivityNotFoundException e) {
+			// Выводим сообщение об ошибке
+			String errorMessage = "Ваше устройство не поддерживает съемку";
+			Toast toast = Toast
+					.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+			toast.show();
+		}
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			// Вернулись от приложения Камера
+			if (requestCode == CAMERA_CAPTURE) {
+				// Получим Uri снимка
+				picUri = data.getData();
+				// кадрируем его
+				performCrop();
+			}
+			// Вернулись из операции кадрирования
+			else if(requestCode == PIC_CROP){
+				Bundle extras = data.getExtras();
+				// Получим кадрированное изображение
+				Bitmap thePic = extras.getParcelable("data");
+				// передаём его в ImageView
+				ImageView picView = (ImageView)findViewById(R.id.picture);
+				picView.setImageBitmap(thePic);
+			}
+		}
+	}
+	
+	private void performCrop(){
+		try {
+			// Намерение для кадрирования. Не все устройства поддерживают его
+			Intent cropIntent = new Intent("com.android.camera.action.CROP");
+			cropIntent.setDataAndType(picUri, "image/*");
+			cropIntent.putExtra("crop", "true");
+			cropIntent.putExtra("aspectX", 1);
+			cropIntent.putExtra("aspectY", 1);
+			cropIntent.putExtra("outputX", 256);
+			cropIntent.putExtra("outputY", 256);
+			cropIntent.putExtra("return-data", true);
+			startActivityForResult(cropIntent, PIC_CROP);
+		}
+		catch(ActivityNotFoundException anfe){
+		    String errorMessage = "Извините, но ваше устройство не поддерживает кадрирование";
+		    Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+		    toast.show();
+		}
+	}
+}
+</code></pre>
+</details>
+
+<p>Написано на основе <a href="http://mobile.tutsplus.com/tutorials/android/capture-and-crop-an-image-with-the-device-camera/">этого примера</a>.</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=26">Обсуждение урока на форуме</a></p>
+
+<p><a href="http://developer.alexanderklimov.ru/android/camera.php">Работаем с Camera API</a></p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./23. работаем с камерой_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" xktjr8v=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./23. работаем с камерой_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476609924544" name="I0_1476609924544" src="./23. работаем с камерой_files/fastbutton.html" data-gapiattached="true" hidden=""></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" xktjr8v="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./23. работаем с камерой_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./23. работаем с камерой_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./23. работаем с камерой_files/backtotop.js.Без названия"></script>
+    <script src="./23. работаем с камерой_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay427088415" id="oauth2relay427088415" src="./23. работаем с камерой_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

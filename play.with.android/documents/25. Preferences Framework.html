@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)http://developer.alexanderklimov.ru/android/preferences_framework.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: Preferences Framework</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./25. Preferences Framework_files/bootstrap.min.css">
+<link rel="stylesheet" href="./25. Preferences Framework_files/font-awesome.min.css">
+<link rel="stylesheet" href="./25. Preferences Framework_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./25. Preferences Framework_files/material.indigo-light_blue.min.css"> 
+<script src="./25. Preferences Framework_files/cb=gapi.loaded_1" async=""></script><script src="./25. Preferences Framework_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./25. Preferences Framework_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./25. Preferences Framework_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609881233&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=19404199"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.652267127730263"],
+img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609893478&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=91165856"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/;j=false;s=1920*1080;d=24;rand=0.5228171485325694"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsimplepaint.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609911615&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=10447599"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.05797381771465715"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsunrise.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609913600&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=26159412"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.2814448307699229"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09221145924186391"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.34519250188156203"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flocale.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609919061&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34784785"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.7996494372296932"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flistactivity.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609920118&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=14774654"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09536112298197907"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmanual.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609923696&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=37396538"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5162908144060987"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.549538733559829"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreference.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609925712&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=66352315"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8636045283871643"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmybrowser.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609915130&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=39351780"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fkeyboard.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609918063&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34611376"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fphotocamera.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609924544&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=38449442"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./25. Preferences Framework_files/icon">   
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#" class="back-to-top" biqr2al="" hidden="">Back to Top</a>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/preferences_framework.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./25. Preferences Framework_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./25. Preferences Framework_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>	
+<div class="clearfix"></div>
+	
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8968678208909526" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+	<div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">Preferences Framework</h1>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#checkboxpreference">CheckBoxPreference</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#edittextpreference">EditTextPreference</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#listpreference">ListPreference</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#switchpreference">SwitchPreference</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#ringtonepreference">RingtonePreference</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#preferencecategory">PreferenceCategory</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#preferencescreen">PreferenceScreen</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#import">Импорт системных настроек</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#dependency">Настройки с зависимостями</a><br>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#onsharedpreferencechangelistener">Отслеживание изменений в Общих настройках</a><br>
+</p>
+
+<p>Настройки могут быть скрытыми или открытыми. Например, мы можем подсчитывать, сколько раз пользователь запускал нашу программу и при сотом запуске подарить ему бонус. Счётчик запуска приложения мы храним в файле настроек, но пользователь ничего не знает об этом. Но бывает так, что нам необходимо дать пользователю настроить функциональность приложения под свои вкусы. Например, сделать настройку "Напоминать о дне рождения котика". Если пользователь установит флажок у этой настройки (пусть только попробует не установить), то программа напомнит ему в нужный день о необходимости купить тортик.</p>
+
+<p>Часто для этих целей в приложениях используют отдельный экран с настройками. Безусловно вы можете создать собственный xml-файл разметки и разместить там нужные элементы управления. Но Android для этих целей предоставляет собственный <b>Preferences Framework</b>, с помощью которого можно создавать индивидуальный набор предпочтений и встраивать их в приложения. Главное преимущество использования фреймворка состоит в том, что экран настроек выглядит стандартно во всех приложениях и позволяет пользователю быстрее разобраться в работе.</p>
+
+<p>Кроме того фреймворк настроек позволяет прослушивать изменения в Общих настройках через реализацию метода <a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#onsharedpreferencechangelistener">onSharedPreferenceChangeListener()</a>.</p>
+
+<p>Использование фреймворка позволяет быстро создать экран настроек практически без написания кода. Предпочтения — это отдельная активность в приложении, вызываемая из вашей активности. Сама активность настроек расширяется от класса <b>PreferenceActivity</b>, а не от стандартного класса <b>Activity</b>. Предпочтения определяются в отдельном XML-файле, где корневым элементом является элемент &lt;PreferenceScreen&gt;, который представляет собой контейнер для предпочтений и может содержать дочерние элементы &lt;PreferenceScreen&gt;. Элемент &lt;PreferenceCategory&gt; также является контейнерным элементом и предназначен для объединения предпочтений в группы.</p>
+
+<p>Сама настройка внешнего вида разметки создаётся не в папке <b>res/layout</b>,  а в папке <b>res/xml</b>. Если такой папки нет, то создайте её самостоятельно. Для начала необходимо создать в папке <b>res/xml</b> XML-файл ресурсов, например, <b>settings.xml</b>. В результате получим простейшую заготовку.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Вам нужно построить свой экран настроек, используя готовые компоненты.</p>
+
+<p>Для сохранения предпочтений используются различные классы:</p>
+<ul>
+<li><a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#checkboxpreference">CheckBoxPreference</a></li>
+<li><a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#edittextpreference">EditTextPreference</a></li>
+<li><a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#listpreference">ListPreference</a></li>
+<li>MultiSelectListPreference - появился в Android 3.0 (API 11)</li>
+<li><a href="http://developer.alexanderklimov.ru/android/preferences_framework.php#ringtonepreference">RingtonePreference</a> и др.</li>
+</ul>
+
+<p>У элементов кроме своих собственных атрибутов есть обязательные атрибуты:</p>
+
+<ul>
+<li>android:key - ключ, по которому можно определять значение</li>
+<li>android:title - краткий текст настройки</li>
+<li>android:summary - длинное описание настройки. Отражается под кратким текстом более мелким шрифтом</li>
+<li>android:defaultValue - значение по умолчанию, которое будет использовано, если ничего не было выбрано</li>
+</ul>
+
+<h2 class="text-warning" id="checkboxpreference">CheckBoxPreference</h2>
+
+<p>В созданном файле устанавливаем настройки. Начнём с <b>CheckBoxPreference</b>.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;CheckBoxPreference
+        android:defaultValue="true"
+        android:key="wifi"
+        android:summary="@string/wifi_summary"
+        android:title="@string/wifi_title"/&gt;
+    &lt;CheckBoxPreference
+        android:defaultValue="true"
+        android:key="hints"
+        android:summary="@string/hints_summary"
+        android:title="@string/hints_title"/&gt;
+
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Мы определили две настройки для программы:</p>
+
+<ol>
+<li>включение и выключение Wi-Fi</li>
+<li>показ подсказок</li>
+</ol>
+
+<p>В нашем случае мы выводим флажки (элемент <b>CheckBoxPreference</b>), которые по умолчанию будут отмечены (атрибут <b>android:defaultValue</b>).</p>
+
+<p>Не забываем добавить новые строковые ресурсы в файл <b>res/values/strings.xml</b>:</p>
+
+<pre><code class="xml">
+&lt;string name="wifi_title"&gt;Wi-Fi&lt;/string&gt;
+&lt;string name="wifi_summary"&gt;Вкл. или выкл. сеть WiFi&lt;/string&gt;
+&lt;string name="hints_title"&gt;Подсказки&lt;/string&gt;
+&lt;string name="hints_summary"&gt;Показывать подсказки&lt;/string&gt;
+</code></pre>
+
+<p>Далее создаём новый класс <b>MyPreferenceActivity</b>, который будет наследоваться от класса <b>PreferenceActivity</b>. Добавим знакомый метод <b>onCreate()</b>, только вместо <b>setContentView()</b> вызовем метод <b>addPreferencesFromResource</b>, который по сути делает такую же работу - берёт данные из XML-файла и строит внешний вид экрана активности:</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.preferencedemo
+
+import android.os.Bundle;
+import android.preference.PreferenceActivity;
+
+public class MyPreferenceActivity extends PreferenceActivity 
+{
+	@Override
+	protected void onCreate(Bundle savedInstanceState) 
+	{
+	    super.onCreate(savedInstanceState);
+	    addPreferencesFromResource(R.xml.settings);
+	}
+}
+</code></pre>
+
+<p>Метод <b>addPreferencesFromResource()</b> считывает установленные настройки из XML-файла, где хранятся наши ресурсы, и делает их доступными для программы. В результате мы должны увидеть настройки на экране. Не забываем зарегистрировать новую активность в манифесте:</p>
+
+<pre><code class="xml">
+&lt;activity 
+    android:name=".MyPreferenceActivity"
+    android:label="@string/settings_title"&gt;
+&lt;/activity&gt;
+</code></pre>
+
+<p>Ресурс <b>settings_title</b> подготовьте самостоятельно.</p>
+
+<p>Напишем метод для вывода окна настроек, который можно повесить на щелчок мыши или пункта меню:</p>
+
+<pre><code class="java">
+public void showSettings()
+{
+	Intent intent = new Intent(this, MyPreferenceActivity.class);
+	startActivity(intent);
+}
+</code></pre>
+
+<p>Запустите программу и вызовите окно настроек. Попробуйте снять или установить флажки в разных сочетаниях. Затем закройте приложение и снова запустите его. Если вы откроете окно настроек, то увидите, что сделанные вами изменения сохранены. Система сама делает за нас всю работу и запоминает установленные настройки.</p>
+
+<p><img src="./25. Preferences Framework_files/preference5.png" alt="CheckBoxPreference"></p>
+
+<p>Наверное, вы обратили внимание, что метод <b>addPreferencesFromResource()</b> был зачёркнут и помечен, как устаревший. В новых версиях Android следует использовать фрагмент <b>PreferenceFragment</b>, о котором поговорим в другой раз.</p>
+
+<h2 class="text-warning" id="edittextpreference">EditTextPreference</h2>
+
+<p>Мы научились сохранять настройки при помощи флажков. Существует также возможность сохранения настроек в текстовом виде при помощи <b>EditTextPreference</b>. Подобный способ настройки позволяет сохранять текст, вводимый пользователем. Давайте  добавим возможность устанавливать размер шрифта для текста. Откроем снова файл <b>settings.xml</b> и добавим новый элемент <b>EditTextPreference</b>:</p>
+
+<pre><code class="xml">
+&lt;EditTextPreference
+    android:key="test_size"
+    android:title="Размер шрифта"
+    android:summary="Устанавливает новый размер шрифта"
+    android:defaultValue="14"
+    android:dialogTitle="Введите размер шрифта (от 10 до 32)" /&gt;
+</code></pre>
+
+<p>Для удобства я буду сразу выводить строковые значения без использования строковых ресурсов. В своих рабочих проектах вам нужно использовать ресурсы обязательно.</p>
+
+<p>Запустите проект и вызовите окно настроек. Теперь у нас появилась опция установки размера шрифта. Если щёлкнуть на созданном элементе, то откроется новое диалоговое окно с текстовым полем ввода.</p>
+
+<p><img src="./25. Preferences Framework_files/preference6.png" alt=""> <img src="./25. Preferences Framework_files/preference7.png" alt=""></p>
+
+<p>В <a href="http://developer.alexanderklimov.ru/android/texteditor.php">следующем уроке</a> мы разберём, как считывать установленные значения размера шрифта.</p>
+
+<h2 class="text-warning" id="listpreference">ListPreference</h2>
+
+<p>Также можно использовать списки для хранения настроек. Для этой цели используется диалоговое окно <b>ListPreference</b>. Необходимо заранее подготовить строковый ресурс для заголовка и массив строк для самого списка значений. Индекс выбранной строки списка будет задавать нужное значение для сохранения в <b>SharedPreferences</b>.</p>
+
+<p>Добавим список для выбора стиля текста. В списке будет четыре опции: Обычный, Полужирный, Курсив, Полужирный+Курсив.</p>
+
+<p>Подготовим массив строк и сохраним его в файле <b>arrays.xml</b>, который необходимо поместить в каталог <b>res/values/</b>.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+	&lt;string-array name="text_style"&gt;
+		&lt;item&gt;Обычный&lt;/item&gt;
+		&lt;item&gt;Полужирный&lt;/item&gt;
+		&lt;item&gt;Курсив&lt;/item&gt;
+		&lt;item&gt;Полужирный+Курсив&lt;/item&gt;
+	&lt;/string-array&gt;
+&lt;/resources&gt;
+</code></pre>
+
+<p>В файл настроек <b>settings.xml</b> добавим дополнительный элемент &lt;ListPreference&gt;, в котором определим атрибуты заголовка окна, привязку к массиву значений и значение по умолчанию:</p>
+
+<pre><code class="xml">
+&lt;ListPreference
+	android:key="test_style"
+	android:title="Стиль для шрифта"
+	android:summary="Устанавливает стиль для шрифта"
+	android:defaultValue="1"
+	android:entries="@array/text_style"
+	android:entryValues="@array/text_style"
+	android:dialogTitle="Выберите стиль для шрифта" /&gt;
+</code></pre>
+
+<p>Код для чтения настроек из списка рассматривается в  <a href="http://developer.alexanderklimov.ru/android/texteditor.php">следующем уроке</a>.</p>
+
+<p>Запустив проект, вы теперь увидите новую настройку <b>Стиль для шрифта</b>, которая открывает диалоговое окно для выбора стиля из списка. Обратите внимание, что в диалоговом окне нет кнопки сохранения, только <b>Отмена</b>. Изменения сохраняются сразу при выборе опции списка.</p>
+
+<p><img src="./25. Preferences Framework_files/preference8.png" alt="Настройки"> <img src="./25. Preferences Framework_files/preference9.png" alt="Настройки"></p>
+
+<h2 class="text-warning" id="switchpreference">SwitchPreference</h2>
+
+<p>Поняв общий принцип, вы можете сами разобраться с другими элементами настроек. Рассмотрим ещё один элемент - <b>SwitchPreference</b>, который является заменой для <b>CheckBoxPreference</b> и позволяет включать или выключать настройку.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto" &gt;
+
+    &lt;CheckBoxPreference
+        android:defaultValue="true"
+        android:key="wifi"
+        android:summary="@string/wifi_summary"
+        android:title="@string/wifi_title" /&gt;
+    &lt;CheckBoxPreference
+        android:defaultValue="true"
+        android:key="hints"
+        android:summary="@string/hints_summary"
+        android:title="@string/hints_title" /&gt;
+
+    &lt;SwitchPreference
+        android:key="glad"
+        android:summaryOff="Вы уверены, что не будете гладить кота?"
+        android:summaryOn="Гладить кота?"
+        android:switchTextOff="Нет"
+        android:switchTextOn="Да" /&gt;
+
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>В результате получим:</p>
+
+<p><img src="./25. Preferences Framework_files/preference14.png" alt="SwitchPreference"></p>
+
+<p>В зависимости от выбранного варианта мы можем менять текст настройки через атрибуты <b>summaryOn/summaryOff</b>.</p>
+
+<h2 class="text-warning" id="ringtonepreference">RingtonePreference</h2>
+
+<p>Рассмотрим работу с настройкой, связанной с установкой мелодии для звонка. Предпочтение <b>&lt;RingtonePreference&gt;</b> предоставляет диалоговое окно выбора мелодии звонка со списком опций. Список в диалоговом окне отображает мелодии для звонка, уведомлений, тонового набора, доступные на мобильном устройстве. Также предусмотрена возможность добавления дополнительной опции "Silent" (Тихий режим) - добавьте атрибут <b>android:showSilent="true"</b>.</p>
+
+<p>Создадим новый файл настроек <b>res/xml/ringtone_preference.xml</b>:</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;RingtonePreference
+        android:key="setting_ringtone"
+        android:showDefault="true"
+        android:showSilent="true"
+        android:summary="Устанавливает мелодию для звонка (вкл. или выкл.)"
+        android:title="Настройки рингтонов"/&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Создадим новую активность настроек для рингтонов <b>RingtonePreferenceActivity</b>, повторив шаги из предыдущего примера. Запустим созданную активность.</p>
+
+<pre><code class="java">
+Intent intent = new Intent(this, RingtonePreferenceActivity.class);
+startActivity(intent);
+</code></pre>
+
+<p><img src="./25. Preferences Framework_files/preference21.png" alt="Настройки"></p>
+
+<p><img src="./25. Preferences Framework_files/preference22.png" alt="Настройки"></p>
+
+<h2 class="text-warning" id="preferencecategory">PreferenceCategory</h2>
+
+<p>Если в приложении используется слишком много настроек разного типа, то можно сгруппировать их по категориям, чтобы улучшить внешний вид окна настроек. Для этого в Preferences Framework есть специальный элемент <b>PreferenceCategory</b>.</p>
+
+<p>Еще раз вернёмся к статье <a href="http://developer.alexanderklimov.ru/android/texteditor.php">Создание простого текстового редактора</a>, где использовались настройки для открытия файла и для работы с текстом (Размер шрифта и стиль шрифта). Почему бы нам не разбить настройки на две категории: к первой категории мы отнесем настройку открытия файла, а ко второй две настройки, связанные с шрифтами.</p>
+
+<p>Категории добавляются через элемент <b>&lt;PreferenceCategory&gt;</b>  под корневым элементом <b>&lt;PreferenceScreen&gt;</b>, и в него уже помещаются нужные настройки:</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;PreferenceCategory
+        android:title="Работа с файлами"&gt;
+        &lt;CheckBoxPreference
+            android:key="pref_openmode"
+            android:title="Открыть файл"
+            android:summary="Открывать файл при запуске приложения" /&gt;
+    &lt;/PreferenceCategory&gt;
+
+    &lt;PreferenceCategory
+        android:title="Настройки шрифта"&gt;
+        &lt;EditTextPreference
+            android:key="text_size"
+            android:title="Размер шрифта"
+            android:summary="Устанавливает новый размер шрифта"
+            android:defaultValue="14"
+            android:dialogTitle="Введите размер шрифта (от 10 до 32)" /&gt;
+
+        &lt;ListPreference
+            android:key="text_style"
+            android:title="Стиль для шрифта"
+            android:summary="Устанавливает стиль для шрифта"
+            android:defaultValue="1"
+            android:entries="@array/text_style"
+            android:entryValues="@array/text_style"
+            android:dialogTitle="Выберите стиль для шрифта" /&gt;
+    &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Если вы посмотрите на экран настроек, то увидите дополнительную полоску с текстом "Настройки шрифта".</p>
+
+<p><img src="./25. Preferences Framework_files/preference23.png" alt=""></p>
+
+<h2 class="text-warning" id="preferencescreen">PreferenceScreen</h2>
+
+<p>Кроме корневого элемента <b>&lt;PreferenceScreen&gt;</b> в файле настроек можно использовать вложенные дочерние элементы &lt;PreferenceScreen&gt;, которые будут отображаться в отдельном окне. Родительский экран <b>&lt;PreferenceScreen&gt;</b> в этом случае будет отображать вход для запуска дочернего экрана настроек. Продолжим опыты и добавим ещё одну настройку, управляющую цветом (выделено жирным).</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;PreferenceCategory
+        android:title="Работа с файлами"&gt;
+        &lt;CheckBoxPreference
+            android:key="pref_openmode"
+            android:title="Открыть файл"
+            android:summary="Открывать файл при запуске приложения" /&gt;
+    &lt;/PreferenceCategory&gt;
+
+    &lt;PreferenceCategory
+        android:title="Настройки шрифта"&gt;
+        &lt;EditTextPreference
+            android:key="text_size"
+            android:title="Размер шрифта"
+            android:summary="Устанавливает новый размер шрифта"
+            android:defaultValue="14"
+            android:dialogTitle="Введите размер шрифта (от 10 до 32)" /&gt;
+
+        &lt;ListPreference
+            android:key="text_style"
+            android:title="Стиль для шрифта"
+            android:summary="Устанавливает стиль для шрифта"
+            android:defaultValue="1"
+            android:entries="@array/text_style"
+            android:entryValues="@array/text_style"
+            android:dialogTitle="Выберите стиль для шрифта" /&gt;
+<b>
+        &lt;PreferenceScreen
+            android:key="text_color"
+            android:title="Цвет текста"
+            android:summary="Устанавливает цвет для текста"&gt;
+
+            &lt;CheckBoxPreference
+                android:key="text_color_black"
+                android:title="Черный"
+                android:defaultValue="true"
+                android:summary="Устанавливает черный цвет" /&gt;
+            &lt;CheckBoxPreference
+                android:key="text_color_red"
+                android:title="Красный"
+                android:summary="Устанавливает красный цвет" /&gt;
+            &lt;CheckBoxPreference
+                android:key="text_color_green"
+                android:title="Зеленый"
+                android:summary="Устанавливает зеленый цвет" /&gt;
+            &lt;CheckBoxPreference
+                android:key="text_color_blue"
+                android:title="Синий"
+                android:summary="Устанавливает синий цвет" /&gt;
+        &lt;/PreferenceScreen&gt;
+</b>
+    &lt;/PreferenceCategory&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre> 
+
+<p>Запустив приложение, вы увидите новую настройку <b>Цвет текста</b>, которая открывает новое окно для выбора цвета текста.</p>
+
+<p>
+<img src="./25. Preferences Framework_files/preference24.png" alt=""> <img src="./25. Preferences Framework_files/preference25.png" alt="">
+</p>
+
+<p>Вам остается только написать код для обработки выбора пользователя, чтобы вывести текст в текстовом редакторе в нужном цвете. Обратите внимание, что в нашем примере используются флажки, которые позволяют создавать комбинации различных цветов. Например, сочетание красного и синего цвета дают красивый цвет, который понравится известному дизайнеру Артемию Лебедеву.</p>
+
+<p><img src="./25. Preferences Framework_files/preference3.png" alt=""></p>
+
+<p>Исходный код для текстового редактора смотрите <a href="http://rusproject.narod.ru/android/texteditor.htm">здесь</a>
+
+</p><h2 class="text-warning" id="import">Импорт системных настроек</h2>
+
+<p>У фреймворка настроек есть интересная особенность - можно внедрить в экран настроек вашего приложения вызов системных настроек. Делается это следующим образом. В файл настроек добавляем новых блок, например, такой:</p>
+
+<pre><code class="xml">
+&lt;PreferenceScreen
+    android:summary="Импортированная системная настройка"
+    android:title="Настройка через намерение" &gt;
+    &lt;intent android:action="android.settings.AIRPLANE_MODE_SETTINGS" /&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Класс <b>android.provider.Settings</b> включает множество констант типа <b>android.settings.*</b>, которые можно использовать для вызова экранов системных настроек. Я выбрал настройку Автономного режима, также можно было вызвать настройку Экрана (<b>android.settings.DISPLAY_SETTINGS</b>). Далее нужно добавить фильтр намерений в запись манифеста:</p>
+
+<pre><code class="xml">
+&lt;activity android:name="Prefs" &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="ru.alexanderklimov.preferences.ACTION_USER_PREFERENCE" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre>
+
+<p>При использовании данного способа система интерпретирует это как запрос на вызов метода <b>startActivity()</b> с указанным действием. Это очень удобно, когда из вашего экрана настроек нужно вызвать стандартную системную настройку.</p>
+
+<h2 class="text-warning" id="dependency">Настройки с зависимостями</h2>
+
+<p>Иногда требуется, чтобы часть настроек была связана с определённой родительской настройкой. И если родительская настройка заблокирована, то есть смысл автоматически заблокировать и дочерние настройки. Для этой цели применяется атрибут <b>android:dependency</b>.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;CheckBoxPreference
+        android:key="cat_key"
+        android:title="У вас есть кот?"
+        android:summary="Доступно для владельцев котов"
+        android:defaultValue="true" /&gt;
+  &lt;EditTextPreference
+        android:key="catfood"
+        android:title="Подарки для кота"
+        android:summary="Угости кота"
+        android:dependency="cat_key" /&gt;
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Мы указали, что текстовое поле зависит от родительского флажка. Запустим и сравним поведение в двух разных случаях.</p>
+
+<p><img src="./25. Preferences Framework_files/preference10.png" alt="Зависимости в настройках"> <img src="./25. Preferences Framework_files/preference11.png" alt="Зависимости в настройках"></p>
+
+<h2 class="text-warning" id="onsharedpreferencechangelistener">Отслеживание изменений в Общих настройках</h2>
+
+<p>Как уже упоминалось, класс <b>onSharedPreferenceChangeListener</b> позволяет вызвать callback-метод в момент добавления, удаления или изменения конкретной Общей настройки. Используя этот обработчик, компоненты вашего приложения могут следить за изменениями в настройках, установленных пользователем, и обновлять пользовательский интерфейс или корректировать поведение программы.</p>
+
+<p>Зарегистрируйте обработчик <b>OnSharedPreferenceChangeListener</b>, применив Общие настройки, за которыми вы хотите следить. Реализация <b>onSharedPreferenceChanged()</b> показана ниже (каркас):</p>
+
+<pre><code class="java">
+public class MyActivity extends Activity implements OnSharedPreferenceChangeListener {
+    @Override
+    public void onCreate(Bundle SavedInstanceState) {
+        // Регистрируем этот OnSharedPreferenceChangeListener
+        Context context = getApplicationContext();
+        SharedPreferences prefs =
+            PreferenceManager.getDefaultSharedPreferences(context);
+        prefs.registerOnSharedPreferenceChangeListener(this);
+    }
+    
+	public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+        // TODO Проверять общие настройки, ключевые параметры и изменять UI 
+        // или поведение приложения, если потребуется.
+    }
+}
+</code></pre>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=28">Обсуждение урока на форуме</a></p>
+
+<p><a href="http://developer.alexanderklimov.ru/android/preferencefragment.php">PreferenceFragment</a></p>
+<a href="http://developer.alexanderklimov.ru/android/preferences_framework_advanced.php">Продвинутые приёмы с Preferences Framework</a>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./25. Preferences Framework_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" biqr2al=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./25. Preferences Framework_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476610245136" name="I0_1476610245136" src="./25. Preferences Framework_files/fastbutton.html" hidden="" data-gapiattached="true"></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" biqr2al="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./25. Preferences Framework_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./25. Preferences Framework_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./25. Preferences Framework_files/backtotop.js.Без названия"></script>
+    <script src="./25. Preferences Framework_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay340828336" id="oauth2relay340828336" src="./25. Preferences Framework_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

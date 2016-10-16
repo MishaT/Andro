@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: Диалоговые окна с AlertDialog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./30. Диалоговые окна с AlertDialog_files/bootstrap.min.css">
+<link rel="stylesheet" href="./30. Диалоговые окна с AlertDialog_files/font-awesome.min.css">
+<link rel="stylesheet" href="./30. Диалоговые окна с AlertDialog_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./30. Диалоговые окна с AlertDialog_files/material.indigo-light_blue.min.css"> 
+<script src="./30. Диалоговые окна с AlertDialog_files/cb=gapi.loaded_1" async=""></script><script src="./30. Диалоговые окна с AlertDialog_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./30. Диалоговые окна с AlertDialog_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./30. Диалоговые окна с AlertDialog_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmanual.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609923696&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=37396538"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.549538733559829"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreference.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609925712&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=66352315"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8636045283871643"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmybrowser.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609915130&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=39351780"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fkeyboard.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609918063&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34611376"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fphotocamera.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609924544&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=38449442"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreferences_framework.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245136&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=33320998"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8968678208909526"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Ftexteditor.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245913&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=29312210"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8235180848242223"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmapintent.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610247545&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=35891489"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5367906840651004"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fbroadcast.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610250333&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=33067180"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.22161993105217426"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Ffragment.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610251365&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=22132524"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.25120505686816297"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./30. Диалоговые окна с AlertDialog_files/icon">
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#" class="back-to-top" wuevp7b="" hidden="">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./30. Диалоговые окна с AlertDialog_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./30. Диалоговые окна с AlertDialog_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.017512425951218047" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">Диалоговые окна с AlertDialog</h1>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#alertdialog">AlertDialog</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#onebutton">Диалог с одной кнопкой</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#basesample">Нелёгкий выбор - пример с двумя кнопками</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#three">Три кнопки</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#alertlist">AlertDialog со списком</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#alertradio">AlertDialog с переключателями</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#alertcheck">AlertDialog с флажками</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#callback">Передать данные в активность</a><br>
+<a href="http://developer.alexanderklimov.ru/android/dialogfragment_alertdialog.php#custom_layout">AlertDialog с собственной разметкой</a><br>
+</p>
+
+<p>В Android 3.0 (API 11) появилась новинка - класс <b>android.app.DialogFragment</b> и его аналог <b>android.support.v4.app.DialogFragment</b> из библиотеки совместимости, позволяющие выводить диалоговое окно поверх своей активности. Это рекомендуемый стандарт для вывода диалоговых окон в новых проектах. Раньше использовался класс <b>Dialog</b> и его производные, например, <b>AlertDialog</b>. Они никуда не делись, только теперь их нужно встраивать в фрагмент, который выступает в качестве контейнера. Поэтому условно разговор о диалоговых окнах можно разбить на две части - как использовать <b>DialogFragment</b> и как пользоваться классами <b>Dialog</b>, <b>AlertDialog</b> и другими диалоговыми окнами.</p>
+
+<p>Использование фрагментов для диалоговых окон в силу своей архитектуры является удобным вариантом в приложениях, который лучше справляется с поворотами устройства, нажатием кнопки Назад, лучше масштабируется под разные экраны и т.д.</p>
+
+<p>Если вам будут попадаться старые примеры, то займитесь их переделкой. Это не сложно. Тем более, что среда разработки будет всячески ругаться на использование устаревших классов и методов.</p> 
+
+<p>Для начала немного теории. Для создания диалога следует наследоваться от класса <b>DialogFragment</b>. Создадим новый класс <b>MyDialogFragment</b>:</p>
+
+<pre><code class="java">
+import android.support.v4.app.DialogFragment;
+
+public class MyDialogFragment extends DialogFragment {
+}
+</code></pre>
+
+<p>Допустим у нас есть кнопка на экране активности. Вызвать диалоговое окно можно через метод <b>show()</b>.</p>
+
+<pre><code class="java">
+public void onClick(View view) {
+    FragmentManager manager = getSupportFragmentManager();
+    MyDialogFragment myDialogFragment = new MyDialogFragment();
+    myDialogFragment.show(manager, "dialog");
+}
+</code></pre>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/dialogfragment3.png" alt="DialogFragment"></p>
+
+<p>Скорее всего вы увидите пустой прямоугольник или квадрат.</p>
+
+<p>Так как это обычный фрагмент, то нам нужно позвать менеджера фрагментов и попросить его показать фрагмент.</p>
+
+<p>Для вызова диалога мы создаём экземпляр класса <b>MyDialogFragment</b> и вызываем метод <b>show()</b> класса <b>DialogFragment</b>. Метод принимает два параметра: объект класса <b>FragmentManager</b>, получаемый через метод <b>getFragmentManager()</b>, и тег - идентификатор диалога в виде строковой константы, по которому можно идентифицировать диалоговое окно, если их будет много в нашем проекте.</p>
+
+<p>Существует и альтернативный вариант показа окна через транзакцию.</p>
+
+<pre><code class="java">
+public void onClick(View view) {
+    MyDialogFragment myDialogFragment = new MyDialogFragment();
+    FragmentManager manager = getSupportFragmentManager();
+    //myDialogFragment.show(manager, "dialog");
+
+    FragmentTransaction transaction = manager.beginTransaction();
+    myDialogFragment.show(transaction, "dialog");
+}
+</code></pre>
+
+<p>Мы получили пустой бесполезный фрагмент. Следует заняться его конструированием. В созданном классе нужно переопределить метод <b>onCreateDialog()</b>. Если используется разметка, то также используется метод <b>onCreateView()</b>, как и у обычных фрагментов. Скорее всего вы не будете заново изобретать велосипед, а будете использовать готовые варианты диалоговых окон.</p>
+
+<h2 class="text-warning" id="alertdialog">AlertDialog</h2>
+
+<p>Самый распространённый вариант диалогового окна - это <b>AlertDialog</b>. С него и начнём.</p>
+
+<p>Диалоговое окно <b>AlertDialog</b> является расширением класса <b>Dialog</b>, и это наиболее используемое диалоговое окно в практике программиста. Очень часто требуется показать диалог с кнопками <b>Да</b> и <b>Нет</b>. В создаваемых диалоговых окнах можно задавать следующие элементы:</p>
+
+<ul>
+<li>заголовок</li>
+<li>текстовое сообщение</li>
+<li>кнопки: от одной до трех</li>
+<li>список</li>
+<li>флажки</li>
+<li>переключатели</li>
+</ul>
+
+<p>Существуют два вида класса - стандартный и из библиотеки совместимости. На данный момент лучше использовать <b>android.support.v7.app.AlertDialog</b> при работе с стандартными проектами студии.</p>
+
+<h2 class="text-warning" id="onebutton">Диалог с одной кнопкой</h2>
+
+<p>Начнём с простого примера - покажем на экране диалоговое окно с одной кнопкой.</p>
+
+<pre><code class="java">
+@NonNull
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setTitle("Важное сообщение!")
+            .setMessage("Покормите кота!")
+            .setIcon(R.drawable.ic_launcher_cat)
+            .setPositiveButton("ОК, иду на кухню", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // Закрываем окно
+                    dialog.cancel();
+                }
+            });
+    return builder.create();
+}
+</code></pre>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertdialog9.png" alt="AlertDialog с одной кнопкой"></p>
+
+<p>Сначала мы создаём объект класса <b>AlertDialog.Builder</b>, передав в качестве параметра ссылку на активность. Затем, используя методы класса <b>Builder</b>, задаём для создаваемого диалога заголовок (метод <b>setTitle()</b>), текстовое сообщение в теле диалога (метод <b>setMessage()</b>), значок (метод <b>setIcon()</b>), а также кнопку через метод под странным названием <b>setPositiveButton()</b>.</p>
+
+<p>Сама обработка нажатия кнопки внутри диалогового окна задаётся внутри метода <b>setPositiveButton()</b>. В нашём случае мы просто закрываем окно диалога через метод <b>cancel()</b>.</p>
+
+<p>Обратите внимание на не совсем обычный способ вызова череды методов цепочкой через точку <b>.setMessage("Покормите кота!").setIcon(R.drawable.ic_android_cat)</b> и т.д. Такой синтаксис можно часто увидеть в jQuery. При таком способе не нужно использовать точку с запятой в конце каждого метода, вы просто склеиваете все вызовы. Но можете использовать и обычный синтаксис.</p>
+
+<h2 class="text-warning" id="basesample">Нелёгкий выбор - пример с двумя кнопками</h2>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertcat.jpg" alt="Нелёгкий выбор"></p>
+
+<p>Теперь рассмотрим пример создания диалогового окна с двумя кнопками на основе иллюстрации.</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.dialog;
+
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
+import android.widget.Toast;
+
+public class MyDialogFragment extends DialogFragment {
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        String title = "Выбор есть всегда";
+        String message = "Выбери пищу";
+        String button1String = "Вкусная пища";
+        String button2String = "Здоровая пища";
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(title);  // заголовок
+        builder.setMessage(message); // сообщение
+        builder.setPositiveButton(button1String, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Toast.makeText(getActivity(), "Вы сделали правильный выбор",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+        builder.setNegativeButton(button2String, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Toast.makeText(getActivity(), "Возможно вы правы", Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
+        builder.setCancelable(true);
+
+        return builder.create();
+    }
+}
+</code></pre>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertdialog1.png" alt="AlertDialog с кнопками"></p>
+
+<p>Общая часть кода осталась прежней - объект класса <b>AlertDialog.Builder</b>, методы для настройки окна, а также кнопки диалога и обработку событий на них. В <b>AlertDialog</b> можно добавить только по одной кнопке каждого типа: <b>Positive</b>, <b>Neutral</b> и <b>Negative</b>, т. е. максимально возможное количество кнопок в диалоге — три. На названия кнопок не обращайте внимания, они не несут смысловой нагрузки, а только определяют порядок вывода. Причём в разных версиях Android порядок менялся. Поэтому на старых устройствах кнопка "Да" может быть первой, а на новых - последней. Для каждой кнопки используется один из методов с префиксом <b>set...Button</b>, которые принимают в качестве параметров надпись для кнопки и интерфейс <b>DialogInterface.OnClickListener</b>, определяющий действие при нажатии. Чтобы пользователь не мог закрыть диалог нажатием в любой точке экрана, вызывается метод <b>setCancelable()</b> с значением <i>true</i>.</p>
+
+<h2 class="text-warning" id="three">Три кнопки</h2>
+
+<p>Рассмотрим пример с тремя кнопками. Разницы практически нет. Повторяем все предыдущие шаги, для отображения диалогового окна вызывается метод <b>builder.create()</b>. Например, для создания диалога с кнопками <i>Мяу, Гав, Сам дурак!</i> код будет выглядеть приблизительно так:</p>
+
+<pre><code class="java">
+@NonNull
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setMessage("Выберите правильный ответ")
+            .setCancelable(true)
+            .setPositiveButton("Мяу",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    })
+            .setNeutralButton("Гав",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    })
+            .setNegativeButton("Сам дурак!",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+    return builder.create();
+}
+</code></pre>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertdialog2.png" alt="AlertDialog в onCreateDialog"></p>
+
+<h2 class="text-warning" id="alertlist">AlertDialog со списком</h2>
+
+<p>Если вам нужно диалоговое окно со списком выбираемых пунктов вместо кнопок, то используйте метод <b>setItems()</b>, где нужно указать массив данных для отображения в списке диалога. Данный метод нельзя использовать вместе с методом <b>setMessage()</b>, так они выводят содержимое в основной части окна.</p>
+
+<pre><code class="java">
+@NonNull
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+    final String[] catNamesArray = {"Васька", "Рыжик", "Мурзик"};
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setTitle("Выберите кота")
+            .setItems(catNamesArray, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getActivity(),
+                            "Выбранный кот: " + catNamesArray[which],
+                            Toast.LENGTH_SHORT).show();
+                }
+            });
+
+    return builder.create();
+}
+</code></pre>
+
+<p>Выбранный элемент содержится в параметре <b>which</b>. При выборе одного из пунктов меню появится всплывающее уведомление, показывающее выбранного кота.</p>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertdialog3.png" alt="AlertDialog со списком"></p>
+
+<h2 class="text-warning" id="alertradio">AlertDialog с переключателями</h2>
+
+<p>Для создания диалогового окна с переключателями применяется метод <b>setSingleChoiceitems()</b> вместо метода <b>setItems()</b>. Если диалоговое окно создается внутри <b>onCreateDialog()</b>, система Android управляет состоянием списка с переключателями. Пока текущая деятельность активна, диалоговое окно при последующих вызовах запоминает ранее выбранные пункты.</p>
+
+<pre><code class="java">
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+    final String[] catNamesArray = {"Васька", "Рыжик", "Мурзик"};
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setTitle("Выберите любимое имя кота")
+            // добавляем переключатели
+            .setSingleChoiceItems(catNamesArray, -1,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                            int item) {
+                            Toast.makeText(
+                                    getActivity(),
+                                    "Любимое имя кота: "
+                                            + catNamesArray[item],
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    })
+            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    // User clicked OK, so save the mSelectedItems results somewhere
+                    // or return them to the component that opened the dialog
+
+                }
+            })
+            .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+
+                }
+            });
+
+    return builder.create();
+}
+</code></pre> 
+
+<p>Обратите внимание на следующие детали. При выборе переключателя диалоговое окно закрываться не будет. Поэтому необходимо предусмотреть механизм закрытия окна, например, добавить кнопку. Второй момент - в методе <b>setSingleChoiceitems</b> для первого параметра используется массив значений для переключателей, а для второго параметра используется целочисленное значение индекса переключателя, который будет включен по умолчанию при вызове диалогового окна. Если вы хотите, чтобы все переключатели при запуске были в выключенном состоянии, то используйте значение -1.</p>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertdialog4.png" alt="AlertDialog с переключателями"></p>
+
+<h2 class="text-warning" id="alertcheck">AlertDialog с флажками</h2>
+
+<p>Если вы хотите использовать вместо переключателей флажки (CheckBox) для множественного выбора, то вам нужен метод <b>setMultiChoiceItems()</b>. Код практически идентичен предыдущему примеру:</p>
+
+<pre><code class="java">
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+    final String[] catNamesArray = {"Васька", "Рыжик", "Мурзик"};
+    final boolean[] checkedItemsArray = {false, true, false};
+
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    builder.setTitle("Выберите котов")
+            .setMultiChoiceItems(catNamesArray, checkedItemsArray,
+                    new DialogInterface.OnMultiChoiceClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                            int which, boolean isChecked) {
+                            checkedItemsArray[which] = isChecked;
+                        }
+                    })
+            .setPositiveButton("Готово",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            StringBuilder state = new StringBuilder();
+                            for (int i = 0; i &lt; catNamesArray.length; i++) {
+                                state.append(catNamesArray[i]);
+                                if (checkedItemsArray[i])
+                                    state.append(" выбран\n");
+                                else
+                                    state.append(" не выбран\n");
+                            }
+                            Toast.makeText(getActivity(),
+                                    state.toString(), Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    })
+
+            .setNegativeButton("Отмена",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog,
+                                            int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+    return builder.create();
+}
+</code></pre>
+
+<p>Первый параметр в методе <b>setMultiChoiceItems()</b> — массив значений для списка с флажками, второй параметр — булевый массив состояний флажков списка по умолчанию при вызове диалога. Например, мы хотим, чтобы второй элемент списка был отмечен флажком, а остальные элементы нужно оставить неотмеченными. В этом случае используем массив из булевых значений:</p>
+
+<pre><code class="java">
+final boolean[] checkedItemsArray = {false, true, false};
+</code></pre>
+
+<p>Как и в предыдущем случае с переключателями, для диалогового окна с флажками необходимо использовать кнопки для закрытия окна.</p>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/alertdialog5.png" alt="AlertDialog с флажками">
+<img src="./30. Диалоговые окна с AlertDialog_files/alertdialog6.png" alt="AlertDialog с флажками"></p>
+
+<h2 class="text-warning" id="callback">Передать данные в активность</h2>
+
+<p>Для обработки щелчков кнопок в диалоговом окне вы пишете код, в котором указываете родительскую активность.</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+
+public class MyDialogFragment extends DialogFragment {
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Вы жертвуете миллион коту")
+                <b>.setIcon(R.drawable.ic_launcher_cat)
+                .setTitle("Важно! Максимальный перепост")</b>
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        <b>((MainActivity) getActivity()).okClicked();</b>
+                    }
+                })
+                .setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        <b>((MainActivity) getActivity()).cancelClicked();</b>
+                    }
+                });
+
+        return builder.create();
+    }
+}
+</code></pre>
+
+<p>В коде каких-то сложностей нет - устанавливаем заголовок, значок, кнопки. При построении диалогового окна указываем родительскую активность и название методов в ней, которые будут отвечать за обработку нажатий кнопок диалога - в нашем случае это методы <b>okClicked()</b> и <b>cancelClicked()</b>. Кстати, имена методов будут подчёркнуты красной линией и среда разработки предложит создать данные методы в классе активности (используйте комбинацию клавиш Alt+Enter).</p>
+
+<p>Возвращаемся в код главной активности и пропишем код для нажатий кнопок диалогового окна:</p>
+
+<pre><code class="java">
+public void okClicked() {
+    Toast.makeText(getApplicationContext(), "Вы выбрали кнопку OK!",
+            Toast.LENGTH_LONG).show();
+}
+
+public void cancelClicked() {
+    Toast.makeText(getApplicationContext(), "Вы выбрали кнопку отмены!",
+            Toast.LENGTH_LONG).show();
+}
+</code></pre>
+
+<p><img src="./30. Диалоговые окна с AlertDialog_files/dialogfragment1.png" alt="DialogFragment"></p>
+
+<p>Пример был написан по принципу - "работает и ладно". На самом деле пример не совсем грамотный, хотя даже в документации он ещё встречается.</p>
+
+<p>Правильный вариант рассматривается во второй части о диалоговых окнах <a href="http://developer.alexanderklimov.ru/android/dialogfragment.php">DialogFragment</a>.</p>
+
+<h2 class="text-warning" id="custom_layout">AlertDialog с собственной разметкой</h2>
+
+<p>Если стандартный вид <b>AlertDialog</b> вас не устраивает, то можете придумать свою разметку и подключить её через метод <b>setView()</b></p>
+
+<pre><code class="java">
+@Override
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    LayoutInflater inflater = getActivity().getLayoutInflater();
+    View view = inflater.inflate(R.layout.fragment_custom, null);
+    builder.setView(view);
+    // Остальной код
+    return builder.create();
+}
+</code></pre>
+
+<p>Вы познакомились с базовыми принципами использования диалоговых окон. Вы можете посмотреть <a href="http://developer.alexanderklimov.ru/android/alertdialog.php">устаревшие примеры с AlertDialog</a> и попытаться переделать их под новые способы с фрагментами. </p>
+
+<p>С появлением нового стиля Material Design в библиотеке совместимости появился класс <b>android.support.v7.app.AlertDialog</b>, который позволит вам сделать диалоговое окно стильным и красивым. Смотрите урок <a href="http://developer.alexanderklimov.ru/android/material2.php">Android: Material Design. Темы и стили</a>.</p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=32">Обсуждение статьи</a> на форуме.</p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./30. Диалоговые окна с AlertDialog_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" wuevp7b=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./30. Диалоговые окна с AlertDialog_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476610252945" name="I0_1476610252945" src="./30. Диалоговые окна с AlertDialog_files/fastbutton.html" data-gapiattached="true" hidden=""></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" wuevp7b="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./30. Диалоговые окна с AlertDialog_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./30. Диалоговые окна с AlertDialog_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./30. Диалоговые окна с AlertDialog_files/backtotop.js.Без названия"></script>
+    <script src="./30. Диалоговые окна с AlertDialog_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay1493248768" id="oauth2relay1493248768" src="./30. Диалоговые окна с AlertDialog_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

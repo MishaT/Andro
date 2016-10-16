@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://developer.alexanderklimov.ru/android/texteditor.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Android: Создаём текстовый редактор</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./26. Создаём текстовый редактор_files/bootstrap.min.css">
+<link rel="stylesheet" href="./26. Создаём текстовый редактор_files/font-awesome.min.css">
+<link rel="stylesheet" href="./26. Создаём текстовый редактор_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./26. Создаём текстовый редактор_files/material.indigo-light_blue.min.css"> 
+<script src="./26. Создаём текстовый редактор_files/cb=gapi.loaded_1" async=""></script><script src="./26. Создаём текстовый редактор_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./26. Создаём текстовый редактор_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./26. Создаём текстовый редактор_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609881233&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=19404199"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.652267127730263"],
+img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609893478&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=91165856"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/;j=false;s=1920*1080;d=24;rand=0.5228171485325694"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsimplepaint.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609911615&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=10447599"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.05797381771465715"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsunrise.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609913600&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=26159412"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.2814448307699229"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09221145924186391"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.34519250188156203"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flocale.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609919061&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34784785"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.7996494372296932"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flistactivity.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609920118&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=14774654"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09536112298197907"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmanual.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609923696&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=37396538"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5162908144060987"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.549538733559829"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreference.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609925712&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=66352315"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8636045283871643"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmybrowser.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609915130&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=39351780"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fkeyboard.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609918063&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34611376"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fphotocamera.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609924544&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=38449442"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreferences_framework.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245136&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=33320998"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8968678208909526"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./26. Создаём текстовый редактор_files/icon">   
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/texteditor.php#" class="back-to-top" ar1r6jh="" hidden="">Back to Top</a>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/texteditor.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./26. Создаём текстовый редактор_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./26. Создаём текстовый редактор_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>	
+<div class="clearfix"></div>
+	
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8235180848242223" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+	<div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">Создаём текстовый редактор</h1>
+
+<p><img src="./26. Создаём текстовый редактор_files/texteditorcat.jpg" alt="Текстовый редактор" width="500"></p>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/texteditor.php#io">Операции с файлами</a><br>
+<a href="http://developer.alexanderklimov.ru/android/texteditor.php#checkboxpreference">Сохранение настроек - Флажки</a><br>
+<a href="http://developer.alexanderklimov.ru/android/texteditor.php#edittextpreference">Сохранение текстовых настроек</a><br>
+<a href="http://developer.alexanderklimov.ru/android/texteditor.php#listpreference">Сохранение настроек - Списки</a><br>
+</p>
+
+<h2 class="text-warning" id="io">Операции с файлами</h2>
+
+<p>Рассмотрим вопросы ввода/вывода, которые являются распространёнными операциями в программировании. В Android можно сохранять файлы непосредственно на самом устройстве или на внешней карте памяти. Для каждой программы на устройстве выделяется собственная папка, в которой приложение может хранить свои файлы. По умолчанию другие приложения не могут обращаться к этим файлам. Если вы сохраняете файлы на внешнем накопителе, то доступ возможен.</p>
+
+<p>Android использует стандартные операции ввода/вывода, принятые в Java. Например, Android реализует файловые потоки с помощью классов из пакета <b>java.io</b>, а также имеет собственные классы для работы с файлами внутри приложения.</p>
+
+<p>Чтобы записать данные в файл, необходимо вызвать метод <b>Context.openFileOutput()</b> и передать в качестве параметра имя файла. Метод возвращает стандартный Java-объект <b>FileOutputStream</b>. Вызов метода для данного файла из другого приложения не будет работать, обратиться вы можете только к своим файлам. Например, чтобы создать файл и записать данные, пишем следующий код:</p>
+
+<pre><code class="java">
+String FILENAME = "hello_file";
+String mystring = "hello world!";
+
+FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+fos.write(mystring.getBytes());
+fos.close();
+</code></pre>
+
+<p>Если имеется статический файл, который надо упаковать с вашим приложением во время компиляции проекта, можно сохранить его в каталоге <b>res/raw/</b>, а затем открыть его при помощи метода <b>Resources.openRawResource()</b>. Он возвращает объект <b>InputStream</b>, который можно использовать для чтения файла. После окончания работы с потоком не забудьте его закрыть, вызвав метод <b>close()</b>.</p> 
+
+<p>Создадим простейший аналог Блокнота, позволяющий записывать и читать данные из файла.</p>
+
+<p>На экране активности разместим компонент <b>EditText</b> и растянем его:</p>
+
+<h3 class="text-success">activity_main.xml</h3>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"&gt;
+
+    &lt;EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top|left"
+        android:inputType="textMultiLine" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Создадим пункты меню <b>Открыть</b> и <b>Сохранить</b> в ресурсах:</p>
+
+<h3 class="text-success">res/menu/menu_main.xml</h3>
+
+<pre><code class="xml">
+&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"&gt;
+
+    &lt;item
+        android:id="@+id/action_open"
+        android:icon="@android:drawable/ic_menu_day"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        android:title="@string/action_open" /&gt;
+    &lt;item
+        android:id="@+id/action_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        android:title="@string/action_save" /&gt;
+&lt;/menu&gt;
+</code></pre>
+
+<div class="alert alert-info">Обратите внимание, что для пунктов меню я использовал системные значки <b>@android:drawable/ic_menu_save</b> и <b>@android:drawable/ic_menu_day</b>, зашитые в систему. На самом деле Google не рекомендует использовать подобный подход. Лучшим решением будет скопировать нужный значок из папки SDK и разместить его в папке ресурсов.</div>
+
+<p>В методах <b>openFile()</b> и <b>saveFile()</b> реализуем операции по открытию и сохранению файла.</p>
+
+<h3 class="text-success">MainActivity.java</h3>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+
+public class MainActivity extends ActionBarActivity {
+    private final static String FILENAME = "sample.txt"; // имя файла
+    private EditText mEditText;
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        mEditText = (EditText) findViewById(R.id.editText);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_open:
+                openFile(FILENAME);
+                return true;
+            case R.id.action_save:
+                saveFile(FILENAME);
+                return true;
+            default:
+                return true;
+        }
+    }
+
+    // Метод для открытия файла
+    private void openFile(String fileName) {
+        try {
+            InputStream inputStream = openFileInput(fileName);
+
+            if (inputStream != null) {
+                InputStreamReader isr = new InputStreamReader(inputStream);
+                BufferedReader reader = new BufferedReader(isr);
+                String line;
+                StringBuilder builder = new StringBuilder();
+
+                while ((line = reader.readLine()) != null) {
+                    builder.append(line + "\n");
+                }
+
+                inputStream.close();
+                mEditText.setText(builder.toString());
+            }
+        } catch (Throwable t) {
+            Toast.makeText(getApplicationContext(),
+                    "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    // Метод для сохранения файла
+    private void saveFile(String fileName) {
+        try {
+            OutputStream outputStream = openFileOutput(fileName, 0);
+            OutputStreamWriter osw = new OutputStreamWriter(outputStream);
+            osw.write(mEditText.getText().toString());
+            osw.close();
+        } catch (Throwable t) {
+            Toast.makeText(getApplicationContext(),
+                    "Exception: " + t.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
+}
+</code></pre>
+
+<p>Мы получили простой блокнотик, позволяющий сохранять записи в одном заданном файле. Вы можете усовершенствовать приложение, добавив возможность создания новых файлов и их удаления.</p>
+
+<p><img src="./26. Создаём текстовый редактор_files/texteditor1.png"></p>
+
+<h2 class="text-warning" id="checkboxpreference">Сохранение настроек - Флажки</h2>
+
+<p>Расширим функциональность блокнота, добавив в него возможность сохранения различных настроек.</p>
+
+<p>Подготовим различные настройки, которые будем хранить в файле строковых ресурсов <b>strings.xml</b>:</p>
+
+<h3 class="text-success">res/values/strings.xml</h3>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string name="app_name"&gt;Notepad&lt;/string&gt;
+    &lt;string name="action_open"&gt;Открыть&lt;/string&gt;
+    &lt;string name="action_save"&gt;Сохранить&lt;/string&gt;
+    &lt;string name="action_settings"&gt;Настройки&lt;/string&gt;
+    &lt;string name="pref_openmode"&gt;Режим открытия&lt;/string&gt;
+    &lt;string name="pref_color"&gt;Цвет&lt;/string&gt;
+    &lt;string name="pref_color_black"&gt;Черный цвет&lt;/string&gt;
+    &lt;string name="pref_color_red"&gt;Красный цвет&lt;/string&gt;
+    &lt;string name="pref_color_green"&gt;Зеленый цвет&lt;/string&gt;
+    &lt;string name="pref_color_blue"&gt;Синий цвет&lt;/string&gt;
+    &lt;string name="pref_size"&gt;Размер&lt;/string&gt;
+    &lt;string name="pref_style"&gt;Стиль&lt;/string&gt;
+    &lt;string name="pref_style_regular"&gt;Нормальный&lt;/string&gt;
+    &lt;string name="pref_style_bold"&gt;Полужирный&lt;/string&gt;
+    &lt;string name="pref_style_italic"&gt;Курсив&lt;/string&gt;
+
+&lt;/resources&gt;
+</code></pre>
+
+<p>Теперь создадим файл настроек <b>preferences.xml</b> (если забыли, то перечитайте статью <a href="http://developer.alexanderklimov.ru/android/preference.php">Сохранение настроек</a>):</p>
+
+<h3 class="text-success">res/xml/preferences.xml</h3>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" &gt;
+
+    &lt;CheckBoxPreference
+        android:key="@string/pref_openmode"
+        android:summary="Открывать файл при запуске приложения"
+        android:title="Открыть" /&gt;
+
+&lt;/PreferenceScreen&gt;
+</code></pre>
+
+<p>Итак, мы определили первую настройку под именем <b>pref_openmode</b>, которая будет или сразу загружать файл в поле редактирования, если установлен флажок, или открывать пустое поле, если флажок не установлен.</p>
+
+<p>Создадим новую активность, которая наследует от класса <b>PreferenceActivity</b>. В классе активности для предпочтений внутри метода обратного вызова <b>onCreate()</b> нужно только вызвать метод <b>addPreferencesFromResource()</b> и загрузить XML-файл <b>preferences.xml</b>, содержащий наши настройки (пока одну):</p>
+
+<h3 class="text-success">SettingsActivity.java</h3>
+
+<pre><code class="java">
+package ru.alexanderklimov.notepad;
+
+import android.os.Bundle;
+import android.preference.PreferenceActivity;
+
+public class SettingsActivity extends PreferenceActivity {
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		// загружаем предпочтения из ресурсов
+		addPreferencesFromResource(R.xml.preferences);
+	}
+}
+</code></pre>
+
+<p>Не забываем добавить объявление активности <b>SettingsActivity</b> в файл манифеста AndroidManifest.xml:</p>
+
+<pre><code class="xml">
+&lt;activity
+    android:name=".SettingsActivity"
+    android:label="@string/app_name"&gt;
+&lt;/activity&gt;
+</code></pre>
+
+<div class="alert">
+Сейчас метод <b>addPreferencesFromResource()</b> считается устаревшим и для Android 4.0 и выше следует использовать другой код. Но ничего страшного.
+</div>
+
+<p>Добавим новый пункт меню <b>Настройки</b> в меню (файл <b>res/menu/main.xml</b>), чтобы открывать подготовленное окно настроек.</p>
+
+<pre><code class="xml">
+&lt;item
+    android:id="@+id/action_settings"
+    android:orderInCategory="100"
+    android:showAsAction="never"
+    android:title="@string/action_settings"/&gt;
+</code></pre>
+
+<p>В методе обратного вызова <b>onOptionsItemSelected()</b> добавим новый блок <b>case</b> для оператора <b>switch</b>:</p>
+
+<pre><code class="java">
+case R.id.action_settings:
+	Intent intent = new Intent(); 
+	intent.setClass(this, SettingsActivity.class); 
+	startActivity(intent); 
+	return true;
+</code></pre>
+
+<p>Запустите приложение и убедитесь, что в меню появился новый пункт, который открывает окно настроек.</p>
+
+<p>Чтение установок предпочтений нужно проводить в методе <b>onResume()</b>, который вызывается системой как во время запуска приложения, так и после закрытия окна настроек и возврата главной активности на передний план:</p>
+
+<pre><code class="java"> 
+@Override
+public void onResume() {
+	super.onResume();
+	SharedPreferences prefs = PreferenceManager
+			.getDefaultSharedPreferences(this);
+	// читаем установленное значение из CheckBoxPreference
+	if (prefs.getBoolean(getString(R.string.pref_openmode), false)) {
+		openFile(FILENAME);
+	}
+}
+</code></pre>
+
+<p>В методе <b>getBoolean()</b> второй параметр <i>false</i> означает значение по умолчанию для возвращаемого значения предпочтения, если запрос на чтение установленного значения закончится неудачей.</p>
+
+<p>Мы создали первую настройку, позволяющую сразу открывать нужный файл для редактирования, если отметить галочкой нужный пункт.</p>
+
+<p><img src="./26. Создаём текстовый редактор_files/texteditor2.png" alt="Настройки"></p>
+
+<h2 class="text-warning" id="edittextpreference">Сохранение текстовых настроек</h2>
+
+<p>Добавим возможность устанавливать размер шрифта для текста. Откроем снова файл <b>preferences.xml</b> и добавим новый элемент <b>EditTextPreference</b>:</p>
+
+<pre><code class="xml">
+&lt;EditTextPreference
+    android:defaultValue="14"
+    android:dialogTitle="Введите размер шрифта (от 10 до 32)"
+    android:key="@string/pref_size"
+    android:summary="Устанавливает новый размер шрифта"
+    android:title="Размер шрифта" /&gt;
+</code></pre>
+
+<p>В метод <b>onResume()</b> добавим новый код для чтения установленного значения размера шрифта:</p>
+
+<pre><code class="java">
+// читаем размер шрифта из EditTextPreference
+float fSize = Float.parseFloat(prefs.getString(
+		getString(R.string.pref_size), "20"));
+// применяем настройки в текстовом поле
+mEditText.setTextSize(fSize);
+</code></pre> 
+
+<p>Запустите проект и вызовите окно настроек. Теперь у нас появилась опция установки размера шрифта. Если щёлкнуть на новом пункте, то откроется диалоговое окно с текстовым полем ввода.</p>
+
+<p><img src="./26. Создаём текстовый редактор_files/texteditor3.png" alt="Настройки">
+
+<img src="./26. Создаём текстовый редактор_files/texteditor4.png" alt="Настройки"></p>
+
+<p>Обращаю ваше внимание, что в нашем примере не проверяется пользовательский ввод, что может привести к ошибкам, если вместо числового значения для размера шрифта пользователь введет слово <b>Кот</b> или любое другое слово из трёх букв. Никогда не доверяйте пользователю!</p>
+
+<h2 class="text-warning" id="listpreference">Сохранение настроек - Списки</h2>
+
+<p>Продолжим работу с текстовым редактором и добавим в него список для выбора стиля текста. В списке будет четыре опции: Обычный, Полужирный, Курсив, Полужирный+Курсив.</p>
+
+<p>Подготовим массив строк и сохраним его в файле <b>arrays.xml</b>, который необходимо поместить в каталог <b>res/values/</b>.</p>
+
+<h3 class="text-success">res/values/arrays.xml</h3>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;string-array name="text_style"&gt;
+        &lt;item&gt;Обычный&lt;/item&gt;
+        &lt;item&gt;Полужирный&lt;/item&gt;
+        &lt;item&gt;Курсив&lt;/item&gt;
+        &lt;item&gt;Полужирный+Курсив&lt;/item&gt;
+    &lt;/string-array&gt;
+
+&lt;/resources&gt;
+</code></pre>
+
+<p>В файл <b>preferences.xml</b> добавим дополнительный элемент &lt;ListPreference&gt;, в котором определим атрибуты заголовка окна, привязку к массиву значений и значение по умолчанию:</p>
+
+<pre><code class="xml">
+&lt;ListPreference
+	android:key="@string/pref_style"
+	android:title="Стиль для шрифта"
+	android:summary="Устанавливает стиль для шрифта"
+	android:defaultValue="1"
+	android:entries="@array/text_style"
+	android:entryValues="@array/text_style"
+	android:dialogTitle="Выберите стиль для шрифта" /&gt;
+</code></pre>
+
+<p>Для чтения настроек из списка добавляем код в метод <b>onResume()</b>:</p>
+
+<pre><code class="java">
+// читаем стили текста из ListPreference 
+String regular = prefs.getString(getString(R.string.pref_style), "");
+int typeface = Typeface.NORMAL; 
+
+if (regular.contains("Полужирный")) 
+    typeface += Typeface.BOLD; 
+
+if (regular.contains("Курсив")) 
+    typeface += Typeface.ITALIC; 
+
+// меняем настройки в EditText 
+mEditText.setTypeface(null, typeface);
+</code></pre>
+
+<p>Запустив проект, вы теперь увидите новую настройку <b>Стиль для шрифта</b>, которая открывает диалоговое окно для выбора стиля из списка. Обратите внимание, что в диалоговом окне нет кнопки сохранения, только <b>Отмена</b>. Изменения сохраняются сразу при выборе опции списка.</p>
+
+<p><img src="./26. Создаём текстовый редактор_files/texteditor5.png" alt="Настройки">
+
+<img src="./26. Создаём текстовый редактор_files/texteditor6.png" alt="Настройки"></p>
+
+<p>В статье <a href="http://developer.alexanderklimov.ru/android/preference.php#preferencecategory">Сохранение настроек</a> можно прочитать дополнительные материалы по улучшению окна настроек. Например, можно добавить новую настройку, связанную с выбором цвета для текста.</p>
+
+<p><img src="./26. Создаём текстовый редактор_files/preference3.png" alt=""></p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=29">Обсуждение урока на форуме</a></p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./26. Создаём текстовый редактор_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" ar1r6jh=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./26. Создаём текстовый редактор_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476610245913" name="I0_1476610245913" src="./26. Создаём текстовый редактор_files/fastbutton.html" hidden="" data-gapiattached="true"></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" ar1r6jh="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./26. Создаём текстовый редактор_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./26. Создаём текстовый редактор_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./26. Создаём текстовый редактор_files/backtotop.js.Без названия"></script>
+    <script src="./26. Создаём текстовый редактор_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay495247002" id="oauth2relay495247002" src="./26. Создаём текстовый редактор_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

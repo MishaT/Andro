@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://developer.alexanderklimov.ru/android/listactivity.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: ListActivity - создаём прокручиваемый список</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./21. ListActivity - создаём прокручиваемый список_files/bootstrap.min.css">
+<link rel="stylesheet" href="./21. ListActivity - создаём прокручиваемый список_files/font-awesome.min.css">
+<link rel="stylesheet" href="./21. ListActivity - создаём прокручиваемый список_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./21. ListActivity - создаём прокручиваемый список_files/material.indigo-light_blue.min.css"> 
+<script src="./21. ListActivity - создаём прокручиваемый список_files/cb=gapi.loaded_1" async=""></script><script src="./21. ListActivity - создаём прокручиваемый список_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./21. ListActivity - создаём прокручиваемый список_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./21. ListActivity - создаём прокручиваемый список_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609881233&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=19404199"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=;j=false;s=1920*1080;d=24;rand=0.652267127730263"],
+img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2F&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609893478&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=91165856"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/;j=false;s=1920*1080;d=24;rand=0.5228171485325694"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsimplepaint.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609911615&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=10447599"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.05797381771465715"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fsunrise.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609913600&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=26159412"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.2814448307699229"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09221145924186391"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.34519250188156203"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flocale.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609919061&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34784785"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.7996494372296932"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./21. ListActivity - создаём прокручиваемый список_files/icon">
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/listactivity.php#" class="back-to-top" oszz6jz="" hidden="">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/listactivity.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./21. ListActivity - создаём прокручиваемый список_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./21. ListActivity - создаём прокручиваемый список_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09536112298197907" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>            
+<h1 class="text-warning">ListActivity - создаём прокручиваемый список</h1>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#quick">Список за пять минут</a><br>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#click">Обработка нажатий</a><br>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#longclick">Долгое нажатие и удаление элемента списка</a><br>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#final">Заключение</a><br>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#source">Исходный код</a><br>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#custom">Своя разметка</a><br>
+<a href="http://developer.alexanderklimov.ru/android/listactivity.php#twolist">Переключаемся между двумя списками</a><br>
+</p>
+
+<h2 class="text-warning" id="quick">Список за пять минут</h2>
+
+<p>Очень часто экран приложения состоит из обычного прокручиваемого списка. Например, это может быть список контактов, дни месяца, ассортимент товара, технические характеристики модели и так далее. Android позволяет создать такой список за пару минут.</p>
+
+<p>В предыдущих примерах мы встречали в коде строчку <b>public class HelloWorld extends Activity</b>, что означало наследование от специального класса <b>Activity</b> или производных классов, например, <b>AppCompatActivity</b>. Существует ещё один специальный класс <b>ListActivity</b>, специально разработанный для списков.</p>
+
+<p>Сейчас данный тип активности устарел, так как не слишком удобен для планшетов. Теперь предпочтительнее использовать <b>ListFragment</b>. Но в основе всё равно лежит компонент <b>ListView</b> и базовые приёмы работы не изменились. Изучив данный пример, вы без труда разберётесь и с другими формами отображения списков.</p>
+
+<h3 class="text-warning">Шаг первый</h3>
+
+<p>Создадим новый стандартный проект. Мы знаем, что в проекте есть файл <b>activity_main.xml</b>, отвечающий за разметку элементов на экране. Класс <b>ListActivity</b> разработан таким образом, что на экране есть только прокручиваемый список и ему не нужна дополнительная разметка. Поэтому набираемся смелости, выбираем в папке <b>res/layout</b> файл <b>activity_main.xml</b> и удаляем его.</p>
+
+<h3 class="text-warning">Шаг второй</h3>
+
+<p>Всё пропало! Теперь ничего не запустится! Don't panic! Открываем java-файл и видим, что студия ругается на строчку <b>setContentView(R.layout.activity_main);</b>, что вполне объяснимо. Мы ведь только что сами удалили файл разметки. Ещё раз набираемся смелости и удаляем эту строчку, она там тоже больше не нужна.</p>
+
+<h3 class="text-warning">Шаг третий</h3>
+
+<p>Теперь нужно поставить Android в известность, что мы собираемся использовать экран со списком, поэтому меняем  в строчке <b>public class ВашеНазваниеActivity extends AppCompatActivity</b> слово <b>AppCompatActivity</b> (или <b>Activity</b>) на <b>ListActivity</b>. Если набирать вручную, то студия автоматически импортирует нужный класс.</p>
+
+<p>В результате в секции <b>import</b> нашего файла появится новая строка. Там же мы увидим строку, которую можно безболезненно удалить:</p>
+
+<pre><code class="java">
+import android.app.ListActivity;
+<del>import android.app.Activity;</del>
+</code></pre>
+
+<h3 class="text-warning">Шаг четвёртый</h3>
+
+<p>Подготовительные работы закончены. Теперь пришло время подготовить данные для списка, чтобы отобразить их на экране. Создадим массив строк:</p>
+
+<pre><code class="java">
+final String[] catNamesArray = new String[] { "Рыжик", "Барсик", "Мурзик",
+		"Мурка", "Васька", "Томасина", "Бобик", "Кристина", "Пушок",
+		"Дымка", "Кузя", "Китти", "Барбос", "Масяня", "Симба" };
+</code></pre>
+
+<p>К слову сказать, вы можете создать массив строк в ресурсах, в этом случае вам будет проще редактировать список, не затрагивая код программы. Когда наберётесь опыта, то сами решите, какой вариант лучше.</p>
+
+<h3 class="text-warning">Шаг пятый</h3>
+
+<p>А теперь начинается самое важное. У нас есть намерение создать экран со списком и сами слова для списка. Необходим некий посредник, который свяжет эти звенья в одно целое. Для подобных целей в Android существует понятие <i>адаптера данных</i> и его определение для работы с массивами строк выглядит так:</p>
+
+<pre><code class="java">
+new ArrayAdapter(Context context, int textViewResourceId, String[] objects)
+</code></pre>
+
+<p>Адаптеру нужно от вас три вещи: <del>явки, пароли, деньги</del>, текущий контекст, идентификатор ресурса с разметкой для каждой строки, массив строк.</p>
+
+<p>Мы можем ему предложить <b>ListActivity</b> в качестве текущего контекста (можно использовать ключевое слово <b>this</b>), готовый системный идентификатор ресурса и созданный массив строк. А выглядеть это будет так:</p>
+
+<pre><code class="java">
+private ArrayAdapter&lt;String&gt; mAdapter;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    mAdapter = new ArrayAdapter&lt;&gt;(this,
+            android.R.layout.simple_list_item_1, catNamesArray);
+}
+</code></pre>
+
+<p>Обратите внимание на строчку <b>android.R.layout.simple_list_item_1</b>. В ней уже содержится необходимая разметка для отдельного элемента списка, которая состоит из одного компонента <b>TextView</b>. Если вас не устраивает системная разметка, то можете создать собственную разметку в xml-файле и подключить её. Об этом в следующий раз.</p>
+
+<h3 class="text-warning">Шаг шестой</h3>
+
+<p>Осталось сделать заключительный штрих - подключить адаптер:</p>
+
+<pre><code class="java">
+setListAdapter(mAdapter);
+</code></pre>
+
+<p>Запускаем проект и любуемся своим списком. Он прекрасно прокручивается и каждый пункт подсвечивается при нажатии.</p>
+
+<p><img src="./21. ListActivity - создаём прокручиваемый список_files/listactivity2.png" alt="ListActivity"></p>
+
+<h2 class="text-warning" id="click">Обработка нажатий</h2>
+
+<p>Но пока приложение никак не реагирует на наши нажатия. Исправим ситуацию. Нам нужно знать, на каком пункте списка осуществляется нажатие. У <b>ListActivity</b> есть специальный метод для таких случаев - <b>onListItemClick()</b>. Начинайте вводить первые символы названия метода и студия предложит вам подходящий вариант. Нажмите Enter на предложенном варианте и у вас появится заготовка.</p>
+
+<pre><code class="java">
+@Override
+protected void onListItemClick(ListView l, View v, int position, long id) {
+    super.onListItemClick(l, v, position, id);
+}
+</code></pre>
+
+<p>У метода четыре параметра. Самым интересным является третий параметр <b>position</b>, который указывает на номер выбранного пункта списка.</p>
+
+<p>Осталось только прописать код для события - давайте выведем всплывающее сообщение, которое будет содержать позицию выбранного элемента списка.</p>
+
+<pre><code class="java">
+@Override
+protected void onListItemClick(ListView l, View v, int position, long id) {
+    super.onListItemClick(l, v, position, id);
+    Toast.makeText(getApplicationContext(),
+            "Вы выбрали " + (position + 1) + " элемент", Toast.LENGTH_SHORT).show();
+}
+</code></pre>
+
+<p>Отсчёт позиций идёт с нуля, поэтому я прибавляю единицу к номеру позиции, чтобы получить информацию в привычном виде.</p>
+
+<p>Замурчательно. Но хочется узнать не номер выбранного пункта, а сам текст. У списка <b>ListView</b> есть специальный метод <b>getItemAtPosition(position)</b>, возвращающий объект для заданной позиции. Перепишем код.</p>
+
+<pre><code class="java">
+Toast.makeText(getApplicationContext(),
+        "Вы выбрали " + l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+</code></pre>
+
+<p>В данном случае мы используем первый параметр <b>l</b>, который отвечает за родительский компонент <b>ListView</b>. Возвращаемый объект нужно преобразовать в строку.</p>
+
+<p>В тех методах, у которых нет в параметрах ссылки на <b>ListView</b>, мы можем получить доступ к списку через метод активности <b>getListView()</b>.</p>
+
+<p>Запускаем программу и начинаем щёлкать по любой позиции списка - мы получим соответствующее сообщение. Вы можете использовать свой код - вызывать новое окно, проигрывать музыку и т.д.</p>
+
+<h2 class="text-warning" id="longclick">Долгое нажатие и удаление элемента списка</h2>
+
+<p>Расширим возможности списка и научимся обрабатывать долгие нажатия, а также удалять некоторые элементы списка.</p>
+
+<p>Для долгого нажатия существует интерфейс <b>OnItemLongClickListener</b> с методом <b>onItemLongClick()</b>, возвращающим значение. Так как мы собираемся обрабатывать долгие нажатия, то строчку <b>return false;</b> необходимо заменить на <b>return true;</b>.</p>
+
+<p>Добавляем интерфейс в активность, вручную вводя текст <b>implements OnItem</b>, студия предложит подсказку и поможет создать нужный метод для данного интерфейса.</p>
+
+<pre><code class="java">
+public class MainActivity extends ListActivity implements AdapterView.OnItemLongClickListener {
+    @Override
+    public boolean onItemLongClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+        return true;
+    }
+}
+</code></pre> 
+
+<p>Далее внесём небольшое изменение в адаптер данных. Сам по себе массив строк является неизменяемым, и чтобы мы могли удалять пункты из списка, необходимо сконвертировать его в специальный объект <b>ArrayList&lt;String&gt;</b>, который является изменяемым, а уже новый объект отдадим адаптеру. Объявим новую переменную.</p>
+
+<pre><code class="java">
+private ArrayList&lt;String&gt; catNamesList = new ArrayList&lt;&gt;(Arrays.asList(catNamesArray));
+</code></pre>
+
+<p>Подключаем к адаптеру.</p>
+
+<pre><code class="java">
+mAdapter = new ArrayAdapter&lt;&gt;(this,
+        android.R.layout.simple_list_item_1, catNamesList); //вместо catNamesArray стало catNamesList
+</code></pre>
+
+<p>Далее прописываем необходимый код для удаления выбранного пункта меню и запускаем программу. Прокручивая список, с удивлением замечаем, что среди кошачьих имён затесался какой-то сраный пёсик Бобик. Пробуем удалить его. Получилось! Теперь наш список выглядит правильно.</p>
+
+<pre><code class="java">
+@Override
+public boolean onItemLongClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+    String selectedItem = parent.getItemAtPosition(position).toString();
+
+    mAdapter.remove(selectedItem);
+    mAdapter.notifyDataSetChanged();
+
+    Toast.makeText(getApplicationContext(),
+            selectedItem + " удалён.",
+            Toast.LENGTH_SHORT).show();
+    return true;
+}
+</code></pre>
+
+<p>Метод <b>remove()</b> удаляет элемент из списочного массива, а метод <b>notifyDataSetChanged()</b> уведомляет список об изменении данных для обновления списка на экране.</p> 
+
+<p>На всякий случай ещё раз просмотрите список и если увидите чужеродное имя, то удалите его.</p>
+
+<p>Удаление - весьма опасная операция, пользователь может по ошибке нажать на пункт списка. Лучшим решением было бы показать диалоговое окно с подтверждением операции. В последнее время весьма популярным стало использование специального типа уведомления внизу экрана с кнопкой "Отмена", например, готовый компонент <b>SnackBar</b> (о нём говорилось на одном из уроков).</p>
+
+<h2 class="text-warning" id="final">Заключение</h2>
+
+<p>Поначалу эта статья может показаться вам сложной. Не отчаивайтесь, возьмите её как шаблон и на первых порах просто копируйте куски кода. Позже с практикой вы лучше разберётесь в работе со списком.</p>
+
+<p>В данном материале вы познакомились с простым и быстрым способом создания списка на основе системных настроек. Но, если вам нужны более навороченные списки, то изучите статью про элемент управления <a href="http://developer.alexanderklimov.ru/android/views/listview.php">ListView</a>, а также статью <a href="http://developer.alexanderklimov.ru/android/listview-icons.php">Списки со значками</a>.</p>
+
+<h2 class="text-warning" id="source">Исходный код</h2>
+
+<details>
+    <summary>Показать код (щелкните лапкой)</summary>
+<pre><code class="java">
+package ru.alexanderklimov.listactivitydemo;
+
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class MainActivity extends ListActivity implements AdapterView.OnItemLongClickListener {
+
+    final String[] catNamesArray = new String[]{"Рыжик", "Барсик", "Мурзик",
+            "Мурка", "Васька", "Томасина", "Бобик", "Кристина", "Пушок",
+            "Дымка", "Кузя", "Китти", "Барбос", "Масяня", "Симба"};
+
+    private ArrayAdapter&lt;String&gt; mAdapter;
+    private ArrayList&lt;String&gt; catNamesList = new ArrayList&lt;&gt;(Arrays.asList(catNamesArray));
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
+
+        mAdapter = new ArrayAdapter&lt;&gt;(this,
+                android.R.layout.simple_list_item_1, catNamesList);
+        setListAdapter(mAdapter);
+        getListView().setOnItemLongClickListener(this);
+
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+//        Toast.makeText(getApplicationContext(),
+//                "Вы выбрали " + (position + 1) + " элемент", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getApplicationContext(),
+                "Вы выбрали " + l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onItemLongClick(AdapterView&lt;?&gt; parent, View view, int position, long id) {
+        String selectedItem = parent.getItemAtPosition(position).toString();
+
+        mAdapter.remove(selectedItem);
+        mAdapter.notifyDataSetChanged();
+
+        Toast.makeText(getApplicationContext(),
+                selectedItem + " удалён.",
+                Toast.LENGTH_SHORT).show();
+        return true;
+    }
+}
+</code></pre>
+
+</details>
+
+<h2 class="text-warning" id="custom">Своя разметка</h2>
+
+<p>Когда в самом начале статьи я говорил, что для <b>ListActivity</b> не нужен шаблон <b>activity_main.xml</b>, то немножко лукавил. На самом деле вы можете подключить свой шаблон, но с одним условием - шаблон должен содержать элемент <b>ListView</b> с идентификатором <b>@android:id/list</b>.</p>
+
+<p>Можно заново создать файл <b>activity_main.xml</b>, если вы его удалили, как вас просили, или файл с другим именем, например, <b>activity_customlist.xml</b>:</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" &gt;
+
+    &lt;ListView
+        android:id="@android:id/list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FF00" /&gt;
+
+    &lt;TextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="List is Empty" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Я специально установил зелёный цвет для фона, чтобы вы поверили, что будет запускаться наш шаблон вместо системного, а <b>TextView</b> с системным идентификатором <b>android:id/empty</b> нужен для отображения текста, если список будет пустым. Осталось добавить строчку кода, который подключает шаблон:</p>
+
+<pre><code class="java">
+setContentView(R.layout.activity_customlist);
+</code></pre>
+
+<p>Запустите проект и убедитесь, что загружается наш шаблон. Если вы зададите пустой массив, то вместо списка вы увидите <b>TextView</b> с текстом <i>List is Empty</i>.</p>
+
+<p>Ещё раз напомню, что в стандартных списках отдельный его элемент представляет собой компонент <b>TextView</b>. Если вы хотите создать более сложную разметку с картинками, то вам надо изучить поближе <b>ListView</b>. Для этого на сайте есть <a href="http://developer.alexanderklimov.ru/android/listview/">отдельный раздел</a>.</p>
+
+<h2 class="text-warning" id="twolist">Переключаемся между двумя списками</h2>
+
+<p>Возможно, вам понадобится переходить из одного списка в другой. Например, первый список представляет собой месяцы, а второй - дни недели.</p>
+
+<pre><code class="java">
+public class TestActivity extends ListActivity {
+
+    private String[] mMonthArray = { "Январь", "Февраль", "Котомарт", "Апрель", "Май",
+            "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь",
+            "Декабрь" };
+
+    private String[] mDayOfWeekArray = new String[] { "Понедельник", "Вторник", "Среда",
+            "Четверг", "Котопятница", "Субкота", "Воскресенье" };
+
+    // Создадим два адаптера
+    private ArrayAdapter&lt;String&gt; mMonthAdapter, mWeekOfDayAdapter;
+    private String mMonth, mDayOfWeek;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		mMonthAdapter = new ArrayAdapter&lt;String&gt;(this,
+                android.R.layout.simple_list_item_1, mMonthArray);
+        mWeekOfDayAdapter = new ArrayAdapter&lt;String&gt;(this,
+                android.R.layout.simple_list_item_1, mDayOfWeekArray);
+
+        setListAdapter(mMonthAdapter);
+	}
+
+	@Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        if (getListAdapter() == mMonthAdapter) {
+            mMonth = (String) l.getItemAtPosition(position);
+            setListAdapter(mWeekOfDayAdapter);
+            mWeekOfDayAdapter.notifyDataSetChanged();
+        } else {
+            mDayOfWeek = (String) l.getItemAtPosition(position);
+            Toast.makeText(getBaseContext(), mMonth + ": " + mDayOfWeek,
+                    Toast.LENGTH_LONG).show();
+            setListAdapter(mMonthAdapter);
+            mMonthAdapter.notifyDataSetChanged();
+        }
+    }
+}
+</code></pre>
+
+<p>Мы создали два адаптера через массивы строк. Сначала используем первый адаптер. При выборе элемента списка через метод <b>onListItemClick()</b> подключаем другой адаптер. Чтобы изменения отразились на экране, необходимо вызвать метод <b>notifyDataSetChanged()</b>.</p>
+
+<p><img src="./21. ListActivity - создаём прокручиваемый список_files/listactivity4.png" alt="Два списка" width="413" height="530"></p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=24">Обсуждение статьи</a> на форуме.</p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./21. ListActivity - создаём прокручиваемый список_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" oszz6jz=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./21. ListActivity - создаём прокручиваемый список_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476609920118" name="I0_1476609920118" src="./21. ListActivity - создаём прокручиваемый список_files/fastbutton.html" data-gapiattached="true" hidden=""></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" oszz6jz="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./21. ListActivity - создаём прокручиваемый список_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./21. ListActivity - создаём прокручиваемый список_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./21. ListActivity - создаём прокручиваемый список_files/backtotop.js.Без названия"></script><iframe name="oauth2relay1113681067" id="oauth2relay1113681067" src="./21. ListActivity - создаём прокручиваемый список_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe>
+    <script src="./21. ListActivity - создаём прокручиваемый список_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

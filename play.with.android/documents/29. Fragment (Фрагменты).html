@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://developer.alexanderklimov.ru/android/fragment.php -->
+<html class="gr__developer_alexanderklimov_ru mdl-js"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: Fragment (Фрагменты)</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./29. Fragment (Фрагменты)_files/bootstrap.min.css">
+<link rel="stylesheet" href="./29. Fragment (Фрагменты)_files/font-awesome.min.css">
+<link rel="stylesheet" href="./29. Fragment (Фрагменты)_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./29. Fragment (Фрагменты)_files/material.indigo-light_blue.min.css"> 
+<script src="./29. Fragment (Фрагменты)_files/cb=gapi.loaded_1" async=""></script><script src="./29. Fragment (Фрагменты)_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./29. Fragment (Фрагменты)_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./29. Fragment (Фрагменты)_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flistactivity.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609920118&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=14774654"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmanual.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609923696&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=37396538"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5162908144060987"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.549538733559829"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreference.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609925712&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=66352315"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8636045283871643"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmybrowser.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609915130&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=39351780"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fkeyboard.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609918063&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34611376"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fphotocamera.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609924544&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=38449442"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreferences_framework.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245136&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=33320998"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8968678208909526"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Ftexteditor.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245913&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=29312210"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8235180848242223"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmapintent.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610247545&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=35891489"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5367906840651004"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fbroadcast.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610250333&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=33067180"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.22161993105217426"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./29. Fragment (Фрагменты)_files/icon">
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/fragment.php#" class="back-to-top" vhg4kwk="" hidden="">Back to Top</a>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/fragment.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./29. Fragment (Фрагменты)_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./29. Fragment (Фрагменты)_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>    
+<div class="clearfix"></div>
+    
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.25120505686816297" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+    <div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>
+<h1 class="text-warning">Fragment (Фрагменты)</h1>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment_cat.jpg" alt="Кот из фрагментов"></p>
+
+<p>Фрагменты немного пугают новичков. Постараюсь объяснить как можно проще, чтобы отдельные фрагменты пазла сложились в единую картину.</p>
+
+<h2 class="text-warning">Зачем?</h2>
+
+<p>Создатели операционной системы Android оказались недальновидными разработчиками. Не посоветовавшись с котами, они разработали систему под маленькие экраны телефонов. Но котам было неудобно пользоваться такими экранами, и тогда придумали планшеты.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragmentcat.gif"></p>
+
+<p>Старые программы прекрасно на них запускались, но  обнаружилось несколько недостатков. На больших экранах интерфейс выглядел не слишком элегантно, появились большие пустые пространства. И тогда возникла идея объединить два отдельных экрана из смартфона в один экран на планшете. Это самый классический пример применения фрагмента. По сути, это костыль. Возможно, если бы сразу подумали головой, то придумали бы более элегантное решение. Но теперь поздно пить Боржоми, будем использовать предложенную концепцию.</p>
+
+<p>Фрагменты были представлены в API 11 (Android 3.0), но в целях совместимости была написана специальная библиотека <b>Android Support library</b> для старых устройств. Таким образом сейчас существуют два класса <b>Fragment</b>: для новых устройств и для старых устройств. Названия методов и классов очень похожи, но не стоит смешивать в одном проекте два разных класса.</p>
+
+<p>При желании можно было продолжить писать приложения в старом стиле, отслеживая размеры экрана. Но такой код получится слишком сложным. Пришлось бы писать один код для переключения от одной активности к другой при использовании смартфона и другой код, когда взаимодействие между объектами происходит на одном экране в планшете. Чтобы устранить это противоречие, были придуманы фрагменты. Хотя там тоже придётся писать много кода.</p>
+
+<p>Несколько слов о том, как проще воспринимать фрагмент. Считайте, что фрагмент - это тот же компонент как <b>Button</b>, <b>TextView</b> или <b>LinearLayout</b> с дополнительными возможностями. Фрагмент, как и кнопку, нужно поместить на экран активности. Но фрагмент является модульным компонентом и один и тот же фрагмент можно встроить в две разные активности. С кнопкой такой номер не пройдёт. Для каждой активности вы должны создать свою отдельную кнопку, даже если их нельзя будет отличить друг от друга.</p> 
+
+<p>Но фрагменты - это не замена активности, они не существуют сами по себе, а только в составе активностей. Поэтому в манифесте прописывать их не нужно. Но в отличие от стандартной кнопки, для каждого фрагмента вам придётся создавать отдельный класс, как для активности.</p>
+
+<p>В составе активности есть специальный менеджер фрагментов, который может контролировать все классы фрагментов и управлять ими. О нём позже.</p>
+
+<p>Фрагменты являются строительным материалом для приложения. Вы можете в нужное время добавить новый фрагмент, удалить ненужный фрагмент или заменить один фрагмент на другой. Точно так же мы собираем пазл - подносим фрагмент кота в общую картину, иногда ошибаемся и тогда заменяем кусочек пазла на другой и т.д.</p>
+
+<p>Фрагмент может иметь свою разметку, а может обойтись без неё. Также у фрагмента есть свой жизненный цикл, во многом совпадающий с жизненным циклом активности. Пожалуй, это единственное сходство с активностью.</p>
+
+<p>Имеются специальные виды фрагментов, заточенные под определённые задачи - <b>ListFragment</b>, <b>DialogFragment</b> и другие, которые изучим в других уроках.</p>
+
+<p>Есть два варианта использования фрагментов в приложении (при желании можно использовать сразу оба варианта). Первый вариант заключается в том, что вы в разметке сразу указываете фрагмент с помощью тега <b>fragment</b>, так же как и с другими компонентами.</p>
+
+<p>Второй вариант использует динамическое подключение фрагмента. Принцип следующий - в разметку помещается макет из группы <b>ViewGroup</b>, который становится контейнером для фрагмента. Обычно, для этой цели используют <b>FrameLayout</b>, но это не обязательное условие. И в нужный момент фрагмент замещает контейнер и становится частью разметки.</p>
+
+<p>Поначалу фрагменты кажутся неудобными, так как количество кода увеличивается. Но если с ними работать постоянно, то станет понятнее их принцип.</p>
+
+<h2 class="text-warning">Работаем по старинке</h2>
+
+<p>Чтобы было легче перестроиться на новую технологию, начнём издалека и создадим сначала стандартную программу. Набросаем на экран несколько кнопок и других компонентов.</p>
+
+<pre><code class="xml">
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" &gt;
+
+    &lt;Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Рыжик" /&gt;
+
+    &lt;Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Барсик" /&gt;
+
+    &lt;Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Мурзик" /&gt;
+
+    &lt;TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Описание кота"
+        android:textAppearance="?android:attr/textAppearanceLarge" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cat_yellow" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment5.png"></p>
+
+<p>Думаю, вам уже не составит труда написать код для кнопок, чтобы в нижней части экрана менялась картинка и текстовое содержание про каждого кота. Но я этого делать пока не буду.</p>
+
+<h3 class="text-warning">Заворачиваем в фрагменты</h3>
+
+<p>Фрагмент, как и активность, состоит из разметки и класса. Сначала займёмся разметкой.</p>
+
+<p>Логически экран можно разделить на две части - верхняя неизменяемая часть с кнопками и нижняя часть с текстовым блоком и контейнером для картинки, которая изменяет свой вид в зависимости от нажатой кнопки.</p>
+
+<p>Создадим две отдельные разметки и скопируем нужные части из общей разметки в разметки для фрагментов. Делаем щелчок правой кнопкой мыши на папке <b>res/layout</b> и выбираем <b>New | Layout resource file</b>.</p>
+
+<p>Создаём новый файл <b>fragment1.xml</b> и размещаем верхнюю часть кода:</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" &gt;
+
+    &lt;Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Рыжик" /&gt;
+
+    &lt;Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Барсик" /&gt;
+
+    &lt;Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Мурзик" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Также поступаем со вторым фрагментом - создаём новый файл <b>fragment2.xml</b> и в него копируем код из нижней части кода.</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" &gt;
+
+    &lt;TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Описание кота"
+        android:textAppearance="?android:attr/textAppearanceLarge" /&gt;
+
+    &lt;ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cat_yellow" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>В обоих случаях мы вставляли код в корневой контейнер <b>LinearLayout</b>. Но если у вас была бы более сложная разметка с использованием контейнерных элементов, то вы могли бы копировать сразу готовый кусок кода без необходимости оборачивать его корневым элементом, как в нашем случае.</p>
+
+<p>Пока мы создали разметки для будущих фрагментов. Теперь нужно создать отдельные классы для двух фрагментов. Делаем щелчок правой кнопкой мыши на имени пакета и выбираем <b>New | Java Class</b>. Присваиваем имя <b>Fragment1</b>.</p>
+
+<p>На данный момент студия создаёт проекты с использованием библиотеки совместимости, поэтому будем использовать фрагменты из этой библиотеки. В будущем переделать код под обычные фрагменты будет не сложно. Если ваш проект создан сразу под новые устройства (в главной активности строчка <b>MainActivity extends Activity</b>), то можете сразу использовать новые фрагменты.</p>
+
+<p>Для начала укажем, что наш класс должен наследоваться от класса <b>Fragment</b>. Не копируйте, а пишите код самостоятельно.</p>
+
+<pre><code class="java">
+public class Fragment1 <b>extends Fragment</b> {
+    
+}
+</code></pre>
+
+<p>Следите, чтобы импортировался класс <b>android.support.v4.app.Fragment</b>, а не <b>android.app.Fragment</b>, который предназначен для новых устройств.</p>
+
+<p>Самостоятельно создайте класс для второго фрагмента <b>Fragment2</b> по такому же принципу.</p>
+
+<p>Настало время подключить разметки к фрагментам. В активностях мы подключали разметку в методе <b>onCreate()</b> через метод <b>setContentView()</b>. В фрагментах метод <b>onCreate()</b> служит для других задач. А для подключения разметки используется отдельный метод <b><u>o</u>n<u>C</u>reate<u>V</u>iew()</b>.</p>
+
+<p>Если у вас открыт код для <b>Fragment1</b>, то нажимаем комбинацию клавиш <b>Ctrl+O</b> (или меню <b>Code | Override Methods...</b>). Чтобы долго не искать нужный нам метод, просто вводите на клавиатуре первую и заглавные буквы метода - <kbd>ocv</kbd>. Такой комбинации соответствует только один метод, который нам и нужен. Нажимаем кнопку <b>OK</b> и в код фрагмента будет вставлен следующий шаблон:</p>
+
+<pre><code class="java">
+@Override
+public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, 
+            @Nullable Bundle savedInstanceState) {
+    return super.onCreateView(inflater, container, savedInstanceState);
+}
+</code></pre>
+
+<p>Студия вставляет в методе аннотации <b>@Nullable</b>, можете их удалить или оставить.</p>
+
+<p>У метода используются три параметра. В первом параметре используется объект класса <b>LayoutInflater</b>, который позволяет построить нужный макет, считывая информацию из указанного XML-файла. Удалим строчку, которая возвращает результат и напишем свой вариант.</p>
+
+<pre><code class="java">
+@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
+		Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	//return super.onCreateView(inflater, container, savedInstanceState);
+	
+    View rootView =
+            inflater.inflate(R.layout.fragment1, container, false);
+    return rootView;
+}
+</code></pre>
+
+<p>Для удобства код разбит на две части. Сначала мы получаем объект <b>View</b>, а затем уже его возвращаем в методе.</p>
+
+<p>Скопируйте код метода <b>onCreateView()</b> и вставьте его в код класса <b>Fragment2</b>, не забыв указать разметку <b>R.layout.fragment2</b>.</p>
+
+<p>Остальные два параметра <b>container</b>, <b>false</b> используются в связке и указывают на возможнось подключения фрагментов в активность через контейнер. Мы обойдёмся без контейнеров, а создадим собственные блоки для фрагментов, поэтому у нас используется значение <b>false</b>.</p>
+
+<p>Возвращаемся к главной разметке активности и переключаемся в режим <b>Design</b>. Смело удаляем все элементы с экрана, чтобы остался только корневой элемент <b>LinearLayout</b>, который удалить не получится.</p>
+
+<p>В панели <b>Palette</b> прокручиваем список вниз и находим в разделе <b>Custom</b> элемент <b>&lt;fragment&gt;</b>.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment16.png" alt="Fragment"></p>
+
+<p>Щёлкнув на нём, мы вызовем диалоговое окно, в котором нужно найти свой созданный фрагмент.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment17.png" alt="Fragment"></p>
+
+<p>Разместите его на экране активности и повторите эти действия для размещения второго фрагмента.</p>
+
+<p>Переключитесь в режим <b>Text</b> и посмотрите, как фрагменты описываются в XML-коде. Для фрагментов используется тег <b>fragment</b> с стандартными атрибутами. В атрибуте <b>name</b> указываются имена классов созданных фрагментов.</p>
+
+<pre><code class="xml">
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment"
+        android:name="ru.alexanderklimov.fragmentdemo.Fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" /&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment2"
+        android:name="ru.alexanderklimov.fragmentdemo.Fragment2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" /&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Если вас не пугает XML-код, то можете создавать сразу в редакторе кода.</p>
+
+<p>Стандартные настройки могут нас не устраивать. Укажем другие параметры, влияющие на вес элементов:</p>
+
+<pre><code class="xml">
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" &gt;
+
+    &lt;fragment
+        android:id="@+id/fragment1"
+        android:name="ru.alexanderklimov.fragmentdemo.Fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" /&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment2"
+        android:name="ru.alexanderklimov.fragmentdemo.Fragment2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Студия в окне <b>Preview</b> сообщает нам о проблемах. Она не может отобразить правильно разметку, так как немного туповата.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/0_9e333_f3540770_orig"></p>
+
+<p>Вы можете помочь ей. Щёлкните по ссылке <b>Use @layout/fragment1</b>, и нужная разметка фрагмента подключится к разметке активности. Аналогично проделайте со вторым фрагментом. Ссылка <b>Pick Layout...</b> выводит диалоговое окно, если надо выбрать разметку из списка.</p>
+
+<p>Внешне мы получим такой же результат, как и без фрагментов.</p>
+
+<p>Если посмотрите на XML-код, то увидите, что у тегов <b>fragment</b> появились новые строчки <b>tools:layout="@layout/fragmentX"</b>.</p>
+
+<p>Если сейчас запустим приложение, то тоже никаких изменений не увидим. Зачем тогда потратили столько времени на создание фрагментов? Непонятно.</p>
+
+<p>А, я понял. Можно теперь писать в резюме про свои умения: использую фрагменты.</p>
+
+<p>Однако, продолжим. Если повернуть устройство в альбомную ориентацию, то программа будет выглядеть не слишком красиво.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment7.png"></p>
+
+<p>Мы знаем, что можно создать отдельную папку <b>res/layout-land</b> (перечитайте урок <a href="http://developer.alexanderklimov.ru/android/orientation.php">Ориентация</a>) и разместить там разметку для такого случая. Скопируем файл <b>activity_main.xml</b> и вставим его в новую папку.</p>
+
+<p>Скорее всего вы не видите созданную папку, но она есть! Переключитесь в режим <b>Project</b> и заново откройте структуру проекта, найдя нужную папку. В дальнейшем оставайтесь в этом режиме для данного урока.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment15.png"></p>
+
+<p>Изменим разметку фрагмента для альбомной ориентации.</p>
+
+<pre><code class="xml">
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:baselineAligned="false"
+    tools:context=".MainActivity" &gt;
+
+    &lt;fragment
+        android:id="@+id/fragment1"
+        android:name="ru.alexanderklimov.fragmentdemo.Fragment1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment1" /&gt;
+
+    &lt;fragment
+        android:id="@+id/fragment2"
+        android:name="ru.alexanderklimov.fragmentdemo.Fragment1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment2" /&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>Не забывайте в имени фрагментов использовать свои названия пакетов. Совсем другое дело. Теперь в альбомной ориентации приложение выглядит намного лучше.</p>
+
+<p><img src="./29. Fragment (Фрагменты)_files/fragment8.png"></p>
+
+<p>Но это мы могли сделать и без фрагментов. Зачем же они нужны? Пока версия с лишней строчкой в резюме остаётся основной - чтобы работодатель уважал за прогрессивный стиль.</p>
+
+<p>Хотя небольшое удобство есть. Благодаря модульности, мы поменяли разметку только у фрагментов, а то, что было внутри фрагментов (кнопки, текстовые блоки и т.д.), мы не трогали.</p>
+
+<p>Как уже говорилось, фрагменты были придуманы для того, чтобы обеспечить быстрое написание приложения под разные типы экранов - для смартфонов и планшетов. Часто бывает так, что на смартфоне на первом экране находится список, а когда пользователь нажимает на отдельный элемент списка, то запускается отдельная активность. А на планшете можно уместить список и дополнительные данные на одном экране, как можно увидеть на нашем последнем примере с альбомной ориентацией.</p>
+
+<p>Давайте подключим поддержку планшетов. Создадим новую папку <b>layout-w600dp</b> и скопируем в него файл из папки <b>layout-land</b>. Идентификатор <b>sw600</b> говорит о минимальной ширине 600dp, что соответствует 7-дюймовым планшетам в альбомной ориентации. Существуют и другие варианты для планшетов с большими размерами.</p>
+
+<p>Тут возникает небольшая проблема - если нам понадобится что-то изменить в разметке для альбомной ориентации, то придётся редактировать файлы во всех папках. Но есть выход из этой ситуации - использовать псевдонимы.</p>
+
+<p>Мы можем создать одну копию разметки и указать, чтобы её использовали все нужные размеры устройств.</p>
+
+<p>Делаем следующее. В папке <b>layout-land</b> переименовываем файл <b>activity_main.xml</b> в <b>activity_main_wide.xml</b> (<b>Refactor | Rename</b>) и перемещаем файл в папку <b>layout</b>. Пустую папку <b>layout-land</b> можно удалить.</p>
+
+<p>Теперь создайте новую папку <b>res/values-land</b>. В созданной папке создаём новый файл <b>refs.xml</b> (имя не имеет значения, но так принято).</p>
+
+<pre><code class="xml">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;resources&gt;
+
+    &lt;item name="activity_main" type="layout"&gt;@layout/activity_main_wide
+&lt;/item&gt;
+
+&lt;/resources&gt;
+</code></pre>
+
+<p>Этот файл говорит, что в альбомной ориентации вместо ресурса <b>activity_main</b> следует подключать ресурс <b>layout/activity_main_wide</b>. Можете запустить приложение и убедиться, что ничего не изменилось.</p>
+
+<p>Если у вас будет поддержка альбомных ориентаций для разных размеров планшетов, то просто копируйте файл <b>refs.xml</b> в папки типа <b>values-720dp_land</b> и др.</p>
+
+<p>Теперь вы можете вносить изменения в одном файле <b>activity_main_wide.xml</b>, а не по отдельности в каждом файле.</p>
+
+<p>В первой части мы узнали, что для создания фрагмента необходимо создать разметку, затем новый класс и в методе <b>onCreateView()</b> указать разметку. Затем в разметке активности указать тег <b>fragment</b> и присвоить ему имя класса фрагмента.</p>
+
+<p><a href="http://developer.alexanderklimov.ru/android/fragment2.php">Часть вторая. Продолжение</a></p>
+
+<h2 class="text-warning">Дополнительное чтение</h2>
+
+<p><a href="http://forum.alexanderklimov.ru/viewtopic.php?id=31">Обсуждение статьи</a> на форуме.</p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+	
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./29. Fragment (Фрагменты)_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" vhg4kwk=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./29. Fragment (Фрагменты)_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476610251365" name="I0_1476610251365" src="./29. Fragment (Фрагменты)_files/fastbutton.html" hidden="" data-gapiattached="true"></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" vhg4kwk="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./29. Fragment (Фрагменты)_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./29. Fragment (Фрагменты)_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./29. Fragment (Фрагменты)_files/backtotop.js.Без названия"></script>
+    <script src="./29. Fragment (Фрагменты)_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay498908455" id="oauth2relay498908455" src="./29. Fragment (Фрагменты)_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

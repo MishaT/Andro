@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://developer.alexanderklimov.ru/android/broadcast.php -->
+<html class="mdl-js gr__developer_alexanderklimov_ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Android: Broadcast (Широковещательные сообщения)</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./28. Broadcast (Широковещательные сообщения)_files/bootstrap.min.css">
+<link rel="stylesheet" href="./28. Broadcast (Широковещательные сообщения)_files/font-awesome.min.css">
+<link rel="stylesheet" href="./28. Broadcast (Широковещательные сообщения)_files/custom.css">
+    
+<link rel="icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="http://developer.alexanderklimov.ru/favicon.ico" type="image/x-icon">
+<style type="text/css">
+body {
+    padding-top: 60px;
+    padding-bottom: 10px;
+}
+
+</style>
+
+<link rel="stylesheet" href="./28. Broadcast (Широковещательные сообщения)_files/material.indigo-light_blue.min.css"> 
+<script src="./28. Broadcast (Широковещательные сообщения)_files/cb=gapi.loaded_1" async=""></script><script src="./28. Broadcast (Широковещательные сообщения)_files/cb=gapi.loaded_0" async=""></script><script type="text/javascript" async="" src="./28. Broadcast (Широковещательные сообщения)_files/plusone.js.Без названия" gapi_processed="true"></script><script src="./28. Broadcast (Широковещательные сообщения)_files/material.min.js.Без названия"></script><style type="text/css">
+:root .banner_box,
+:root .adv,
+:root img[alt="Google+"],
+:root .g-plusone,
+:root .container > .infoBoxList > .shareInfoBox,
+:root .back-to-top
+{ display: none !important; }</style><style type="text/css">img[src="//ssl.gstatic.com/images/icons/gplus-16.png"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1"],
+img[src="http://feeds.feedburner.com/~fc/alexanderklimov/VJcl?bg=0099CC&fg=444444&anim=0"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flocale.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609919061&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34784785"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Flistactivity.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609920118&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=14774654"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.09536112298197907"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmanual.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609923696&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=37396538"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5162908144060987"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.549538733559829"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreference.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609925712&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=66352315"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8636045283871643"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmybrowser.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609915130&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=39351780"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fkeyboard.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609918063&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=34611376"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fphotocamera.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476609924544&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=38449442"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fpreferences_framework.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245136&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=33320998"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8968678208909526"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Ftexteditor.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610245913&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=29312210"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.8235180848242223"],
+iframe[src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&size=small&annotation=inline&width=300&align=right&hl=ru&origin=http%3A%2F%2Fdeveloper.alexanderklimov.ru&url=http%3A%2F%2Fdeveloper.alexanderklimov.ru%2Fandroid%2Fmapintent.php&gsrc=3p&ic=1&jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.LDDegL6ImS0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAGLTcCO3moWK4VG6CcM19m5AII4n45L9HA#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&id=I0_1476610247545&parent=http%3A%2F%2Fdeveloper.alexanderklimov.ru&pfname=&rpctoken=35891489"],
+img[src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.5367906840651004"]
+{display:none !important;}</style>
+<link rel="stylesheet" href="./28. Broadcast (Широковещательные сообщения)_files/icon">   
+</head>
+
+<body data-gr-c-s-loaded="true"><a href="http://developer.alexanderklimov.ru/android/broadcast.php#" class="back-to-top" csev5lq="" hidden="">Back to Top</a>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="http://developer.alexanderklimov.ru/android">Android <span class="sr-only">(current)</span></a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/dotnet/">C#/Visual Basic</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/windowsphone/wp.php">Windows Phone</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/php">PHP</a></li>
+        <li class=""><a href="http://developer.alexanderklimov.ru/arduino">Arduino</a></li>
+        <li class=""><a href="http://android-klimov.blogspot.ru/">Блог</a></li>
+        </ul>
+
+
+            <p class="navbar-text navbar-right">
+			    <a data-toggle="modal" href="http://developer.alexanderklimov.ru/android/broadcast.php#myModal" class="navbar-link">Гость</a>
+                
+            </p>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-md-5">
+        <p>
+		<a href="http://developer.alexanderklimov.ru/"><img src="./28. Broadcast (Широковещательные сообщения)_files/header.png" alt="Сайт разработчика Александра Климова" border="0" class="img-responsive"></a>
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-5">
+        <p style="color:green; font-style: italic; font-size: small;">
+		/* Моя кошка замечательно разбирается в программировании. Стоит мне объяснить проблему ей - и все становится ясно. */<br>John Robbins, Debugging Applications, Microsoft Press, 2000
+		</p>
+    </div><!--/span-->
+    
+	<div class="col-md-2">
+        <p>
+		<a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./28. Broadcast (Широковещательные сообщения)_files/kot-2-rss-100.png" border="0"></a>
+		</p>
+    </div><!--/span-->
+</div><!--/row-->
+</div>	
+<div class="clearfix"></div>
+	
+<noindex><!--Rating@Mail.ru COUNTER--><script language="JavaScript" type="text/javascript"><!--
+d=document;var a='';a+=';r='+escape(d.referrer)
+js=10//--></script><script language="JavaScript1.1" type="text/javascript"><!--
+a+=';j='+navigator.javaEnabled()
+js=11//--></script><script language="JavaScript1.2" type="text/javascript"><!--
+s=screen;a+=';s='+s.width+'*'+s.height
+a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth)
+js=12//--></script><script language="JavaScript1.3" type="text/javascript"><!--
+js=13//--></script><script language="JavaScript" type="text/javascript"><!--
+d.write('<IMG src="http://db.c7.b3.a0.top.mail.ru/counter'+
+'?id=228158;js='+js+a+';rand='+Math.random()+
+'" height="1" width="1" alt="top.mail.ru" border="0" />')
+if(11<js)d.write('<'+'!-- ')//--></script><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;js=13;r=http%3A//developer.alexanderklimov.ru/android/;j=false;s=1920*1080;d=24;rand=0.22161993105217426" height="1" width="1" alt="top.mail.ru" border="0" hidden="" style="display: none !important;"><!-- <noscript><img
+src="http://db.c7.b3.a0.top.mail.ru/counter?js=na;id=228158"
+height="1" width="1" alt="top.mail.ru" border="0" /></noscript><script language="JavaScript" type="text/javascript"><!--
+if(11<js)d.write('--'+'>')//--><!--/COUNTER--></noindex>
+<div class="container-fluid">
+    
+	<div class="row">
+        <!--левое меню -->
+		<div class="col-md-2 well-lg">
+            <div class="sidebar panel panel-default">
+            <ul class="nav nav-pills nav-stacked">
+<li class="active"><a href="http://developer.alexanderklimov.ru/android/index.php" class="leftmenu">Главная</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/theory/" class="leftmenu">Теория</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/views/" class="leftmenu">Palette</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/listview/" class="leftmenu">ListView</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/catshop/" class="leftmenu">Котошоп</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/animation/" class="leftmenu">Анимация</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/sqlite/" class="leftmenu">SQLite</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opengles/" class="leftmenu">OpenGL ES</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/library/" class="leftmenu">Библиотеки</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/games/" class="leftmenu">Игры</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/wear/" class="leftmenu">Wear</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/emulator/" class="leftmenu">Эмулятор</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/studio/" class="leftmenu">Android Studio</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/tips-android.php" class="leftmenu">Советы</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/articles-android.php" class="leftmenu">Статьи</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/books.php" class="leftmenu">Книги</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/java/java.php" class="leftmenu">Java. Экспресс-курс</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/design/" class="leftmenu">Дизайн</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/debug/" class="leftmenu">Отладка</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/opensource.php" class="leftmenu">Open Source</a></li>
+<li class=""><a href="http://developer.alexanderklimov.ru/android/links.php" class="leftmenu">Полезные ресурсы</a></li>
+</ul>            </div><!--/.well -->
+        </div><!--/span-->
+
+        <div class="col-md-8">
+
+		<div class="row">
+            <div class="col-md-12">
+			
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h3 class="modal-title" id="myModalLabel">Читайте на здоровье!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Статья проплачена кошками - всемирно известными производителями котят.</p>
+            <p>Если статья вам понравилась, то можете <a href="http://developer.alexanderklimov.ru/donate.php">поддержать проект</a>.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+        </div>
+    </div>
+</div>      
+<h1 class="text-warning">Broadcast (Широковещательные сообщения)</h1>
+
+<p>
+<a href="http://developer.alexanderklimov.ru/android/broadcast.php#send">Передача сообщений</a><br>
+<a href="http://developer.alexanderklimov.ru/android/broadcast.php#receiver">Приёмники широковещательных сообщений</a><br>
+<a href="http://developer.alexanderklimov.ru/android/broadcast.php#time_pick">Периодическое срабатывание каждую минуту</a><br>
+<a href="http://developer.alexanderklimov.ru/android/broadcast.php#boot">Автостарт Activity или Service при загрузке (перезагрузке) девайса</a><br>
+<a href="http://developer.alexanderklimov.ru/android/broadcast.php#power">Следим за питанием</a><br>
+</p>
+
+<p>В Android существует понятие широковещательных сообщений, которые можно отправлять или принимать. Оба процесса между собой не связаны и их можно использовать по отдельности.</p>
+
+<h2 class="text-warning" id="send">Передача сообщений</h2>
+
+<p>Для начала научимся отправлять сообщения. В одном из уроков мы учились запускать другую активность с помощью намерения <b>Intent</b>. Но намерения можно использовать для отправки сообщений, предназначенные не какому-то отдельному приложению, объекту или компоненту, а всем. И любая программа, оборудованная специальным приёмником, может поймать это сообщение и предпринять свои шаги на основе полученной информации.</p>
+
+<p>Для понимания, представьте, что радистка Кэт отправляет сообщение: "Срочно пришлите кота! Хочу быть сильной независимой женщиной. А ваш Штирлиц - фашист!". Возможно в этом сообщении содержится шифровка, что нужно прислать жену, столик для жены разведчика в кафе заказан, а Штирлиц - козёл! Но это не важно для нашего урока.</p>
+
+<p>Любой человек, имеющий специальный оборудованный радиоприёмник, может принять это сообщение. Так же поступают и программы. Они обзаводятся приёмниками и прослушивают определённый тип сообщений.</p>
+
+<p>Сообщения может создавать сама система, а также ваша программа и чужие программы.</p>
+
+<p>Передача сообщений весьма проста в реализации. В вашем приложении необходимо создать сообщение, которое вы хотите передать. Установите при необходимости поля <b>action</b>, <b>data</b> и <b>category</b> (действие, данные и категорию) вашего сообщения и путь, который позволяет приёмникам широковещательных сообщений точно определять "своё" сообщение. В этом сообщении строка действия <b>ACTION</b> должна быть уникальной, чтобы идентифицировать передаваемое действие. В таких случаях создают строку-идентификатор действия по правилам именования пакетов Java. Например, для обнаружения кота в большом здании:</p>
+
+<pre>public static final String NEW_CAT_DETECTED = "ru.alexanderklimov.action.NEW_CAT";
+</pre>
+
+<p>Далее вы создаёте объект <b>Intent</b>, загружаете в него нужную информацию и вызываете метод <b>sendBroadcast()</b>, передав ему в качестве параметра созданный объект <b>Intent</b>. Дополнительные данные можно использовать в <b>extras</b> как необязательные параметры.</p>
+
+<p>Виртуальный код для обнаружения кота:</p>
+
+<pre><code class="java">
+Intent intent = new Intent(NEW_CAT_DETECTED);
+// Или так
+// Intent intent = new Intent();
+// intent.setAction(NEW_CAT_DETECTED);
+
+intent.putExtra("catname", CatName);
+intent.putExtra("longitude", currentLongitude);
+intent.putExtra("latitude", currentLatitude);
+sendBroadcast(intent);
+</code></pre>
+
+<p>В этом примере мы создали намерение с уникальной строкой, передали дополнительные данные (имя кота и его координаты), отправили сообщение. Другое приложение, связанное с картами, может принять сообщение и показать кота на карте.</p>
+
+<p>Существуют также родственные методы <b>sendStickyBroadcast()</b> и  <b>sendOrderedBroadcast()</b>.</p>
+
+<p>Для старых устройств этого было вполне достаточно, но начиная с Android 3.0, в целях безопасности сообщения будут игнорироваться остановленными приложениями, чтобы они не запускались. Поэтому следует добавлять дополнительный флаг, разрешающий запуск активности.</p>
+
+<pre><code class="java">
+intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+</code></pre>
+
+<p>Мы напишем простой пример, который будет отправлять сообщения и также создадим приёмник для его получения. О приёмнике мы поговорим подробно во второй части урока. А пока получим первое представление о нём.</p>
+
+<p>Создайте новый проект и разместите на экране кнопку с надписью "Отправить сообщение". Присвойте атрибуту <b>onClick</b> название метода, в котором будет происходит отправка широковещательного сообщения.</p>
+
+<pre><code class="xml">
+&lt;Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Отправить сообщение"
+    android:id="@+id/button"
+    android:layout_gravity="center_horizontal"
+    android:onClick="sendMessage" /&gt;
+</code></pre>
+
+<p>В классе активности создаём уникальную строку и реализуем метод для щелчка кнопки. Также добавим дополнительные данные - первую часть послания радистки.</p>
+
+<pre><code class="java">
+public static final String WHERE_MY_CAT_ACTION = "ru.alexanderklimov.action.CAT";
+public static final String ALARM_MESSAGE = "Срочно пришлите кота!";
+
+public void sendMessage(View view) {
+    Intent intent = new Intent();
+    intent.setAction(WHERE_MY_CAT_ACTION);
+    intent.putExtra("ru.alexanderklimov.broadcast.Message", ALARM_MESSAGE);
+    intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+    sendBroadcast(intent);
+}
+</code></pre>
+
+<p>Запустив пример, вы можете нажать на кнопку и отправлять сообщение. Только ваше сообщение уйдёт в никуда, так как ни одно приложение не оборудовано приёмником для него. Исправим ситуацию и создадим приёмник в своём приложении. Мы будем сами принимать свои же сообщения.</p>
+
+<p>Приёмник представляет собой обычный Java-класс на основе <b>BroadcastReceiver</b>. Вы можете создать вручную класс и наполнить его необходимыми методами. Раньше так и поступали. Но в студии есть готовый шаблон, который поможет немного сэкономить время.</p>
+
+<p>Щёлкаем правой кнопкой мыши на названии пакета и выбираем <b>New | Other | Broadcast Receiver</b></p>
+
+<p><img src="./28. Broadcast (Широковещательные сообщения)_files/broadcast1.png" alt="Create Broadcast Receiver"></p>
+
+<p>В диалоговом окне задаём имя приёмника, остальные настройки оставляем без изменений.</p>
+
+<p><img src="./28. Broadcast (Широковещательные сообщения)_files/broadcast2.png" alt="New Broadcast Receiver"></p>
+
+<p>Студия создаст изменения в двух местах. Во-первых, будет создан класс <b>MessageReceiver</b>:</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+public class MessageReceiver extends BroadcastReceiver {
+    public MessageReceiver() {
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        // TODO: This method is called when the BroadcastReceiver is receiving
+        // an Intent broadcast.
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+}
+</code></pre>
+
+<p>Во-вторых, в манифесте будет добавлен новый блок.</p>
+
+<pre><code class="xml">
+&lt;receiver
+    android:name=".MessageReceiver"
+    android:enabled="true"
+    android:exported="true" &gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<p>В него следует добавить фильтр, по которому он будет ловить сообщения.</p>
+
+<pre><code class="xml">
+&lt;receiver
+    android:name=".MessageReceiver"
+    android:enabled="true"
+    android:exported="true"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="ru.alexanderklimov.action.CAT" /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<p>Вернёмся в класс приёмника и модифицируем метод <b>onReceive()</b>.</p>
+
+<pre><code class="java">
+@Override
+public void onReceive(Context context, Intent intent) {
+    Toast.makeText(context, "Обнаружено сообщение: " +
+                    intent.getStringExtra("ru.alexanderklimov.broadcast.Message"),
+            Toast.LENGTH_LONG).show();
+}
+</code></pre>
+
+<p>Снова запустим пример и ещё раз отправим сообщение. Так как наше приложение теперь оборудовано не только передатчиком, но и приёмником, то оно должно уловить сообщение и показать его нам.</p>
+
+<p><img src="./28. Broadcast (Широковещательные сообщения)_files/broadcast3.png" alt="Send Broadcast"></p>
+
+<p>Вы можете создать другое приложение с приёмником, чтобы одно приложение посылало сообщение, а другое принимало.</p>
+
+<h2 class="text-warning" id="receiver">Приёмники широковещательных сообщений</h2>
+
+<p>Вот плавно мы перешли к приёмникам широковещательных сообщений. На самом деле вам не так часто придётся рассылать сообщения, гораздо чаще встречается потребность принимать сообщения. В первую очередь, сообщения от системы. Примерами таких сообщений могут быть:</p>
+
+<ul>
+<li>Низкий заряд батареи</li>
+<li>Нажатие на кнопку камеры</li>
+<li>Установка нового приложения</li>
+</ul>
+
+<p>Приёмник можно создать двумя способами - через манифест (мы использовали этот способ в примере) и программно через метод <b>registerReceiver()</b>. Между двумя способами есть существенная разница. Приёмник, заданный в манифесте, известен системе, которая сканирует файлы манифеста всех установленных приложений. Поэтому, даже если ваше приложение не запущено, оно всё равно сможет отреагировать на поступающее сообщение.</p>
+
+<p>Приёмник, созданный программно, может работать только в том случае, когда активность вашего приложения активна. Казалось, это является недостатком и нет смысла использовать такой подход. Но всё не так просто. Некоторые системные сообщения могут обрабатываться только приёмниками, созданными программно. И в этом есть свой резон. Например, если ваше приложение не запущено, ему нет смысла принимать сообщения о заряде батареи. Иначе заряд батареи будет расходоваться ещё быстрее при лишней бесполезной работе. Информацию о заряде батареи ваше приложение может получить, когда в этом есть необходимость. Следует сверяться с документацией, какой вид приёмника следует использовать.</p>
+
+<p>При программной регистрации приёмника мы можем также снять регистрацию, когда больше не нуждаемся в нём с помощью метода <b>unregisterBroadcastReceiver()</b>.</p>
+
+<h2 class="text-warning" id="time_pick">Периодическое срабатывание каждую минуту</h2>
+
+<p>Рассмотрим пример периодического срабатывания приёмника каждую минуту с помощью системного намерения <b>android.intent.action.TIME_TICK</b>. Приёмник будет создан программно. Добавим на экран активности две кнопки для регистрации и отмены регистрации широковещательного сообщения.</p>
+
+<pre><code class="xml">
+&lt;Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:onClick="registerBroadcastReceiver"
+    android:text="Регистрация" /&gt;
+
+&lt;Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:onClick="unregisterBroadcastReceiver"
+    android:text="Отмена" /&gt;
+</code></pre>
+
+<p>Создадим вручную новый класс <b>TimeBroadcastReceiver</b>, наследующий от <b>BroadcastReceiver</b>:</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Toast;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class TimeBroadcastReceiver extends BroadcastReceiver {
+    public TimeBroadcastReceiver() {
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        StringBuilder msgStr = new StringBuilder("Текущее время: ");
+        Format formatter = new SimpleDateFormat("hh:mm:ss a");
+        msgStr.append(formatter.format(new Date()));
+        Toast.makeText(context, msgStr, Toast.LENGTH_SHORT).show();
+    }
+}
+</code></pre>
+
+<p>Вы можете создать класс приёмника и через шаблон, как мы это сделали в предыдущем примере. Но в этом случае удалите запись о нём в манифесте, так как нам он не понадобится. Но если вы забудете сделать это, то ничего страшного не произойдёт, так как там не прописаны фильтры.</p>
+
+<p>Откроем код главной активности и зарегистрируем (а также снимем регистрацию) приёмник:</p>
+
+<pre><code class="java">
+package ru.alexanderklimov.testapplication;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.IntentFilter;
+import android.view.Menu;
+import android.view.View;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+
+    private TimeBroadcastReceiver mTimeBroadCastReceiver = new TimeBroadcastReceiver();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    // регистрируем широковещательный приёмник
+    // для намерения "android.intent.action.TIME_TICK".
+    // Данное намерение срабатывает каждую минуту
+    public void registerBroadcastReceiver(View view) {
+        this.registerReceiver(mTimeBroadCastReceiver, new IntentFilter(
+                "android.intent.action.TIME_TICK"));
+        Toast.makeText(getApplicationContext(), "Приёмник включен",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    // Отменяем регистрацию
+    public void unregisterBroadcastReceiver(View view) {
+        this.unregisterReceiver(mTimeBroadCastReceiver);
+
+        Toast.makeText(getApplicationContext(), "Приёмник выключён", Toast.LENGTH_SHORT)
+                .show();
+    }
+}
+</code></pre>
+
+<p>Запускаем проект и нажимаем на первую кнопку, чтобы включить рассылку широковещательного сообщения. Теперь каждую минуту будет срабатывать запуск всплывающего сообщения с текущим временем. Даже если вы переключитесь на другое приложение, то всё равно будете видеть сообщения.</p>
+
+<p>Это один из примеров, когда приёмник следует регистрировать программно. Я видел часто на форумах вопросы, почему не работает данное намерение <b>android.intent.action.TIME_TICK</b>. А не надо было его регистрировать в манифесте.</p>
+
+<p>В нашем примере мы устанавливали и снимали регистрацию через нажатия кнопок. Обычно включают регистрацию в методе <b>onResume()</b>, а снимают регистрацию в методе <b>onPause()</b>.</p>
+
+<p>Необходимо помнить, что программная регистрация широковещательного сообщения создаётся в основном потоке приложения и это может послужить источником ошибок, если операции в <b>BroadcastReceiver</b> занимают длительное время. Как вариант, используйте сервисы. Почитайте на эту тему <a href="http://gmariotti.blogspot.ru/2013/02/antipattern-freezing-ui-with-broadcast.html">статью (en)</a>.</p>
+
+<h2 class="text-warning" id="boot">Автостарт Activity или Service при загрузке (перезагрузке) девайса</h2>
+
+<p>Ещё один полезный пример, который часто используется приложениями.</p>
+
+<p>Если ваше приложение (сервис) должно запускаться сразу после перезагрузки устройства, то используйте намерение <b>android.intent.action.BOOT_COMPLETED</b>:</p>
+
+<pre><code class="java">
+public class BootReceiver extends BroadcastReceiver {
+    Context mContext;
+    private final String BOOT_ACTION = "android.intent.action.BOOT_COMPLETED";
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        mContext = context;
+        String action = intent.getAction();
+        if (action.equalsIgnoreCase(BOOT_ACTION)) {
+            // здесь ваш код
+            // например, запускаем уведомление
+            Intent intent = new Intent(context, ru.alexanderklimov.NotifyService.NotifyService.class);
+            context.startService(intent);
+            // в общем виде
+            //для Activity 
+            Intent activivtyIntent = new Intent(context, MyActivity.class);  
+            activivtyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(activivtyIntent);  
+              
+            //для Service
+            Intent serviceIntent = new Intent(context, MyService.class);
+            context.startService(serviceIntent);
+        }
+    }
+}
+</code></pre>
+
+<p>Мы создали отдельный класс для широковещательного сообщения. Также нужно создать разрешение и зарегистрировать приёмник в манифесте.</p>
+
+<pre><code class="xml">
+&lt;uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /&gt;
+
+&lt;receiver android:enabled="true" android:name=".BootReceiver"
+        android:permission="android.permission.RECEIVE_BOOT_COMPLETED"&gt;
+
+        &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.BOOT_COMPLETED" /&gt;
+                &lt;category android:name="android.intent.category.DEFAULT" /&gt;
+        &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+
+<p>Смотри также <a href="http://developer.alexanderklimov.ru/android/theory/boot.php">Автозапуск приложения при загрузке</a></p>
+
+<h2 class="text-warning" id="power">Следим за питанием</h2>
+
+<p>Нет, речь пойдёт не о правильном питании кота. Имеется в виду питание от электричества. Если ваше устройство отключить от зарядки, то система оповещает об этом событии через широковещательное намерение <b>android.intent.action.ACTION_POWER_DISCONNECTED</b>.</p>
+
+<p>Не станем заводить новый приёмник, а откроем манифест и добавим дополнительный фильтр к приёмнику сообщений от радистки Кэт.</p>
+
+<pre><code class="xml">
+&lt;receiver
+    android:name=".MessageReceiver"
+    android:enabled="true"
+    android:exported="true"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="ru.alexanderklimov.action.CAT" /&gt;
+    &lt;/intent-filter&gt;
+    <b>&lt;intent-filter&gt;
+        &lt;action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"&gt;&lt;/action&gt;
+    &lt;/intent-filter&gt;</b>
+
+&lt;/receiver&gt;
+</code></pre>
+
+<p>А в классе <b>MessageReceiver</b> добавим код для метода.</p>
+
+<pre><code class="java">
+@Override
+public void onReceive(Context context, Intent intent) {
+    //Toast.makeText(context, "Обнаружено сообщение: " +
+    //                intent.getStringExtra("ru.alexanderklimov.broadcast.Message"),
+    //        Toast.LENGTH_LONG).show();
+
+    if (intent.getAction().equalsIgnoreCase("android.intent.action.ACTION_POWER_DISCONNECTED")) {
+        String message = "Обнаружено сообщение "
+                + intent.getAction();
+
+        Toast.makeText(context, message,
+                Toast.LENGTH_LONG).show();
+    }
+}
+</code></pre>
+
+<p>Пример нужно проверять на реальном устройстве. Подключите устройство к питанию, а затем выдерните кабель. На экране появится сообщение.</p>
+
+<h2 class="text-warning">Другие примеры</h2>
+
+<p><a href="http://developer.alexanderklimov.ru/android/theory/broadcast.php">Теория</a></p>
+<p><a href="http://developer.alexanderklimov.ru/android/battery.php#getlevel">Получаем показания батареи в реальном времени</a></p>
+<p><a href="http://developer.alexanderklimov.ru/android/wifi.php#statechange">Отслеживание состояния соединения Wi-Fi</a></p>
+<p><a href="http://developer.alexanderklimov.ru/android/downloadmanager.php">DownloadManager</a></p>
+<p><a href="http://developer.alexanderklimov.ru/android/secretcode.php">Секретный код</a></p>
+
+<h5 class="text-error">Реклама</h5>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4224968932772057";
+/* Полноразмерный баннер 728х90 */
+google_ad_slot = "4077523505";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<p>
+
+</p>
+
+</div><!--/span-->
+</div><!--/row-->	
+</div><!--/span-->
+		
+	<div class="col-md-2">
+        <div class="well sidebar-nav">
+    <h4><span class="label label-info">Реклама</span></h4>
+    <script type="text/javascript">
+    google_ad_client = "ca-pub-4224968932772057";
+    google_ad_slot = "8217353101";
+    google_ad_width = 160;
+    google_ad_height = 600;
+</script>
+<!-- 160 x 600 -->
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><!--/.well -->    </div><!--/span-->
+</div><!--/row-->
+
+<hr>
+	  
+<div class="row">
+	<div class="col-md-12">
+	    <img src="./28. Broadcast (Широковещательные сообщения)_files/cat_bottom.png" align="right">
+    </div><!--/span-->
+</div><!--/row-->
+
+<footer>
+    <noindex>
+    <span style="float:left; margin:3px 1px 1px 2px;">
+	    © 2016 <a href="mailto:rusproject@mail.ru">А.Климов</a>
+		<!-- Place this code where you want the badge to render. -->
+        <a href="http://plus.google.com/109061106977829925124?prsrc=3" rel="publisher" style="text-decoration:none;">
+        <img src="http://ssl.gstatic.com/images/icons/gplus-16.png" alt="Google+" style="border: 0px; width: 16px; height: 16px; display: none !important;" hidden="" csev5lq=""></a>
+    </span>
+	
+    <span style="float: right; margin:3px 5px 1px 1px; font-size:22px;">
+        <!--Rating@Mail.ru LOGO--><a target="_top" href="http://top.mail.ru/jump?from=228158"><img src="http://db.c7.b3.a0.top.mail.ru/counter?id=228158;t=223;l=1" border="0" height="31" width="88" alt="Рейтинг@Mail.ru" hidden="" style="display: none !important;"></a><!--/LOGO-->
+	</span>
+    
+    <span style="float: right; margin:2px 70px 1px 1px; font-size:22px;">
+        <a href="http://feeds.feedburner.com/alexanderklimov/VJcl"><img src="./28. Broadcast (Широковещательные сообщения)_files/VJcl" height="26" width="88" style="border: 0px; display: none !important;" alt="" hidden=""></a>
+	</span>
+	
+<div style="float: right; margin:2px 70px 1px 1px;">
+    <!-- Place this tag where you want the +1 button to render. -->
+    <div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: absolute; top: -10000px; width: 450px; margin: 0px; border-style: none; display: none !important;" tabindex="0" vspace="0" width="100%" id="I0_1476610250333" name="I0_1476610250333" src="./28. Broadcast (Широковещательные сообщения)_files/fastbutton.html" hidden="" data-gapiattached="true"></iframe></div><div class="g-plusone" data-size="small" data-annotation="inline" data-width="300" data-align="right" data-gapiscan="true" data-onload="true" data-gapistub="true" csev5lq="" hidden=""></div>
+</div>
+
+<!-- Place this tag after the last +1 button tag. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'ru'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+	
+</noindex>
+</footer>
+
+</div><!--/.fluid-container-->    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./28. Broadcast (Широковещательные сообщения)_files/jquery-1.11.0.min.js.Без названия"></script>
+	<script src="./28. Broadcast (Широковещательные сообщения)_files/jquery-migrate-1.2.1.min.js.Без названия"></script>
+    <!-- 
+    <script src="http://developer.alexanderklimov.ru/assets/js/jquery.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-transition.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-alert.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-modal.js"></script> 
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tab.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-popover.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-button.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://developer.alexanderklimov.ru/assets/js/bootstrap-typeahead.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    -->
+    
+    <script src="./28. Broadcast (Широковещательные сообщения)_files/backtotop.js.Без названия"></script>
+    <script src="./28. Broadcast (Широковещательные сообщения)_files/bootstrap.min.js.Без названия" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    
+    
+    
+
+
+<iframe name="oauth2relay448421834" id="oauth2relay448421834" src="./28. Broadcast (Широковещательные сообщения)_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>
