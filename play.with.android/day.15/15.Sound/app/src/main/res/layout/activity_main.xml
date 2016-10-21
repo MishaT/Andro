@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:columnCount="2"
-    android:rowCount="3"
+    android:rowCount="4"
     tools:context=".MainActivity">
 
     <ImageButton
@@ -34,4 +34,8 @@
         android:background="@android:color/transparent"
         android:src="@drawable/cow"/>
 
+    <ImageButton
+        android:id="@+id/imageButtonHuman"
+        android:background="@android:color/transparent"
+        android:src="@drawable/human5"/>
 </GridLayout>

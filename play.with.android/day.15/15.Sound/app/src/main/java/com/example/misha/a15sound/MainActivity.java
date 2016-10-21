@@ -8,6 +8,7 @@ import android.media.SoundPool;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SoundPool soundPool;
     private AssetManager assetManager;
-    private int catSound, chickenSound, cowSound, duckSound, sheepSound, dogSound;
+    private int catSound, chickenSound, cowSound, duckSound, sheepSound, dogSound, humanSound;
     private int streamID;
 
     @Override
@@ -32,13 +33,17 @@ public class MainActivity extends AppCompatActivity {
         ImageButton dogImageButton = (ImageButton) findViewById(R.id.imageButtonDog);
         ImageButton duckImageButton = (ImageButton) findViewById(R.id.imageButtonDuck);
         ImageButton sheepImageButton = (ImageButton) findViewById(R.id.imageButtonSheep);
+        ImageButton humanImageButton = (ImageButton) findViewById(R.id.imageButtonHuman);
 
-        cowImageButton.setOnClickListener(onClickListener);
+        //cowImageButton.setOnClickListener(onClickListener);
         catImageButton.setOnClickListener(onClickListener);
         chickenImageButton.setOnClickListener(onClickListener);
         dogImageButton.setOnClickListener(onClickListener);
         duckImageButton.setOnClickListener(onClickListener);
         sheepImageButton.setOnClickListener(onClickListener);
+        humanImageButton.setOnClickListener(onClickListener);
+
+        cowImageButton.setOnTouchListener(onTouchListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -63,8 +68,33 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.imageButtonSheep:
                     playSound(sheepSound);
                     break;
+                case R.id.imageButtonHuman:
+                    playSound(humanSound);
+                    break;
             }
         }
+    };
+
+    View.OnTouchListener onTouchListener = new View.OnTouchListener(){
+      @Override
+      public boolean onTouch(View v, MotionEvent event){
+        int eventAction = event.getAction();
+        if (eventAction == MotionEvent.ACTION_UP){
+            //release inger
+            if (streamID > 0)
+                soundPool.stop(streamID);
+        }
+
+         if (eventAction == MotionEvent.ACTION_DOWN){
+            //press button
+            streamID = playSound(cowSound);
+          }
+
+         if (event.getAction() == MotionEvent.ACTION_CANCEL){
+            soundPool.stop(streamID);
+         }
+         return true;
+      }
     };
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -116,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         duckSound = loadSound("duck.ogg");
         sheepSound = loadSound("sheep.ogg");
         dogSound = loadSound("dog.ogg");
+        humanSound = loadSound("human.mp3");
     }
 
     @Override
