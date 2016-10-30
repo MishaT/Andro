@@ -1,4 +1,4 @@
-package com.example.misha.a16graphics;
+package com.example.misha.graphics;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
