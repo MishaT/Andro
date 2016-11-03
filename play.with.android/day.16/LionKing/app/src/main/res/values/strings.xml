@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Lion King</string>
+    <string name="printing_text">Lion the King</string>
+    <string name="rotate_text">The Sun is shining</string>
+</resources>
