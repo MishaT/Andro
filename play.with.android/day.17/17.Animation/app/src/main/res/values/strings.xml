@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">17.Animation</string>
+    <string name="app_name">17 Sunrise</string>
+    <string name="sun">The Sun </string>
+    <string name="grass">Grass</string>
+    <string name="sky">Sky</string>
+    <string name="clock">Clock</string>
+    <string name="hour">Hour</string>
 </resources>
