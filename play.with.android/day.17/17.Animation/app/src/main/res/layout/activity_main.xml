@@ -23,14 +23,20 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/sun"
         android:scaleType="fitCenter"
-        android:src="@drawable/sun"
-        />
+        android:src="@drawable/sun" />
     <ImageView
         android:id="@+id/grass"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/grass"
-        android:src="@drawable/grass"
-        />
+        android:src="@drawable/grass" />
+    <ImageView
+        android:id="@+id/clock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/clock"
+        android:src="@drawable/clock"/>
 </RelativeLayout>
