@@ -24,8 +24,8 @@
     </item>
     <item
         android:bottom="44dp"
-        android:left="48dp"
-        android:right="48dp"
+        android:left="49dp"
+        android:right="49dp"
         android:top="5dp">
         <shape
             android:shape="rectangle">

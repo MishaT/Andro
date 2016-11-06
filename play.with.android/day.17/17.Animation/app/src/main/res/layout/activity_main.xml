@@ -39,4 +39,13 @@
         android:layout_alignParentRight="true"
         android:contentDescription="@string/clock"
         android:src="@drawable/clock"/>
+    <ImageView
+        android:id="@+id/clock_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/clock"
+        android:src="@drawable/hour_hand"/>
+
 </RelativeLayout>

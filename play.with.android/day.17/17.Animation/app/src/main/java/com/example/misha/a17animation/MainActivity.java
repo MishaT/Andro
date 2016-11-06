@@ -28,5 +28,10 @@ public class MainActivity extends Activity {
         Animation clockAnimation = AnimationUtils.loadAnimation(this, R.anim.clock_move);
         clockImageView.startAnimation(clockAnimation);
 
+        //hour animation
+        ImageView hourImageView = (ImageView)findViewById(R.id.clock_hour);
+        Animation hourAnimation = AnimationUtils.loadAnimation(this, R.anim.clock_hour);
+        hourImageView.startAnimation(hourAnimation);
+
     }
 }
