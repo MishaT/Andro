@@ -48,4 +48,14 @@
         android:contentDescription="@string/clock"
         android:src="@drawable/hour_hand"/>
 
+    <ImageView
+        android:src="@drawable/cat_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="38dp"
+        android:id="@+id/imageView"
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/clock"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
