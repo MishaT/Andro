@@ -1,5 +1,7 @@
 package com.example.misha.a18browser;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
@@ -12,7 +14,11 @@ public class MainActivity extends AppCompatActivity {
     private class localWebViewClient extends WebViewClient{
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url){
-            view.loadUrl(url);
+            if (Uri.parse(url).getHost().endsWith(getResources().getString(R.string.local_host))){
+                return  false;
+            }
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            view.getContext().startActivity(intent);
             return true;
         }
     }

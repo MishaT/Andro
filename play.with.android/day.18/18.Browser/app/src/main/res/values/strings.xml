@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">18.Browser</string>
     <string name="first_url">http://developer.alexanderklimov.ru/android</string>
+    <string name="local_host">developer.alexanderklimov.ru</string>
 </resources>
