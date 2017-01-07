@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
     private class localWebViewClient extends WebViewClient{
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url){
-            if (Uri.parse(url).getHost().endsWith(getResources().getString(R.string.local_host))){
+            String localHost = new String(getResources().getString(R.string.local_host));
+            if (Uri.parse(url).getHost().endsWith(localHost)){
                 return  false;
             }
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
