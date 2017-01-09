@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">18.BrowserRunner</string>
+    <string name="start_page">http://www.tolkachov.ho.ua/child</string>
+</resources>
