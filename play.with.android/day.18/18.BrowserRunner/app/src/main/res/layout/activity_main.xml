@@ -16,4 +16,13 @@
         android:layout_height="wrap_content"
         android:text="Run foreign activity"
         android:onClick="theButtonClick"/>
+
+    <Button
+        android:id="@+id/theSecondBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Chooser"
+        android:onClick="theSecondButton"
+        android:layout_below="@+id/theButton"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

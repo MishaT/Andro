@@ -19,4 +19,10 @@ public class MainActivity extends AppCompatActivity {
         intent.setData(Uri.parse(getResources().getString(R.string.start_page)));
         startActivity(intent);
     }
+
+    public void theSecondButton(View v){
+        Intent intent = new Intent("ua.ho.tolkachov.Browser");
+        intent.setData(Uri.parse("http://www.tolkachov.ho.ua/chess"));
+        startActivity(Intent.createChooser(intent, "Kuku..."));
+    }
 }
