@@ -3,4 +3,5 @@
     <string name="exit_dialog_title">Quit: Are You Sure?</string>
     <string name="exit_dialog_Yes">Yes, Sure</string>
     <string name="exit_dialog_No">No!</string>
+    <string name="double_press_to_exit">Press once again to quit</string>
 </resources>
